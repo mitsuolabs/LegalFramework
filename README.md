@@ -112,9 +112,3 @@ This is more than a repository; it's the beginning of a movement to build a more
 *   **Discuss:** For questions, legal notices, or inquiries regarding the canonical license texts, please contact the steward of the licenses:
 
     **contact@mitsuolabs.com**
-# licenses
-# licenses
-# licenses
-# licenses
-# licenses
-# LegalFramework
