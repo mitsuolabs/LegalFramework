@@ -1,0 +1,51 @@
+# This GitHub Action workflow is designed to protect the integrity of the STEWARD.md file.
+# It prevents the unauthorized removal of entries from the public ledger of Stewards.
+
+name: 'Steward Ledger Integrity Check'
+
+on:
+  pull_request:
+    paths:
+      - 'STEWARD.md'
+
+jobs:
+  verify-steward-ledger:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Checkout base branch'
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.base_ref }}
+
+      - name: 'Get base STEWARD.md content'
+        id: base
+        run: |          
+          content=$(cat STEWARD.md)
+          echo "::set-output name=content::$content"
+
+      - name: 'Checkout head branch'
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.head_ref }}
+
+      - name: 'Get head STEWARD.md content'
+        id: head
+        run: |
+          content=$(cat STEWARD.md)
+          echo "::set-output name=content::$content"
+
+      - name: 'Verify that no Steward was removed'
+        run: |
+          base_stewards=$(echo "${{ steps.base.outputs.content }}" | grep -o "### .*" | sort)
+          head_stewards=$(echo "${{ steps.head.outputs.content }}" | grep -o "### .*" | sort)
+          
+          removed_stewards=$(comm -23 <(echo "$base_stewards") <(echo "$head_stewards"))
+          
+          if [[ -n "$removed_stewards" ]]; then
+            echo "Error: This pull request attempts to remove the following Steward(s) from STEWARD.md:"
+            echo "$removed_stewards"
+            echo "The removal of a Steward is a significant governance event and requires the explicit, signed approval of a Project Lead. This pull request will be blocked."
+            exit 1
+          fi
+          
+          echo "STEWARD.md check passed. No Stewards were removed."

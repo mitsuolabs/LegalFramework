@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The MitsuoLabs™ Legal Framework</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&family=Lexend+Deca:wght@700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #020204;
+            --bg-card: #0c0c10;
+            --text-primary: #e6e6e6;
+            --text-secondary: #8a8a92;
+            --accent-gold: #D4AF37;
+            --accent-blue: #4a90e2;
+            --border-color: rgba(212, 175, 55, 0.15);
+            --shadow-color: rgba(0, 0, 0, 0.6);
+            --highlight-bg: rgba(212, 175, 55, 0.05);
+        }
+        *, *::before, *::after { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.7;
+            font-size: clamp(16px, 1.1vw, 18px);
+            overflow-x: hidden;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+        body.loaded { opacity: 1; }
+        body.inverted { transform: rotate(180deg); }
+        #cosmos { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
+        .overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(2, 2, 4, 0.98); z-index: 2000;
+            display: none; align-items: center; justify-content: center; text-align: center;
+            padding: 2rem;
+            opacity: 0;
+            animation: fadeIn 2s forwards;
+        }
+        .overlay-content { max-width: 800px; }
+        .overlay-content h1 { font-size: clamp(2rem, 5vw, 4rem); color: var(--accent-gold); }
+        .overlay-content p { font-size: clamp(1rem, 2vw, 1.5rem); color: var(--text-secondary); }
+        h1, h2, h3, .nav-logo a, .footer-logo { font-family: 'Lexend Deca', sans-serif; }
+        h1 {
+            font-size: clamp(2.8rem, 6vw, 6rem); font-weight: 800; letter-spacing: -0.05em;
+            background: linear-gradient(45deg, var(--accent-gold), #ffffff);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+        }
+        h2 {
+            font-size: clamp(2.2rem, 5vw, 3.8rem); font-weight: 700; letter-spacing: -0.04em;
+            text-align: center; margin-top: clamp(100px, 15vh, 200px); margin-bottom: 2rem;
+        }
+        .section-intro {
+            text-align: center; max-width: 900px; margin: 0 auto 5rem auto;
+            font-size: clamp(1.1rem, 1.5vw, 1.3rem); color: var(--text-secondary); line-height: 1.8;
+        }
+        .navbar {
+            position: sticky; top: 0; width: 100%; background-color: rgba(5, 5, 7, 0.7);
+            backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+            z-index: 1000; border-bottom: 1px solid var(--border-color);
+        }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1800px; margin: 0 auto; padding: clamp(0.8rem, 2vw, 1.2rem) 2rem; }
+        .nav-logo a { font-weight: 700; font-size: clamp(1.1rem, 2vw, 1.4rem); color: var(--text-primary); text-decoration: none; }
+        .nav-logo span { color: var(--accent-gold); }
+        .nav-links { display: flex; gap: clamp(1rem, 2.5vw, 2.8rem); }
+        .nav-links a { color: var(--text-secondary); text-decoration: none; font-weight: 500; transition: color 0.3s; position: relative; }
+        .nav-links a::after { content: ''; position: absolute; width: 0; height: 1px; bottom: -4px; left: 50%; background: var(--accent-gold); transition: all 0.3s ease-out; }
+        .nav-links a:hover { color: var(--text-primary); }
+        .nav-links a:hover::after { width: 100%; left: 0; }
+        .nav-links a.external-link { color: var(--accent-blue); }
+        .container { max-width: 1600px; margin: 0 auto; padding: 2rem; }
+        header { text-align: center; min-height: 60vh; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 5rem 0; }
+        header p { font-size: clamp(1.2rem, 2vw, 1.6rem); color: var(--text-secondary); max-width: 900px; margin: 1rem auto 0 auto; }
+        .section { animation: fadeIn 1s 0.5s ease-out forwards; opacity: 0; }
+        .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(clamp(320px, 30vw, 420px), 1fr)); gap: clamp(1.5rem, 3vw, 2.5rem); }
+        .card {
+            background-color: var(--bg-card); border: 1px solid var(--border-color); padding: 2.5rem;
+            border-radius: 16px; box-shadow: 0 10px 30px var(--shadow-color);
+            transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+            display: flex; flex-direction: column; position: relative; overflow: hidden;
+        }
+        .card:hover { transform: translateY(-12px) scale(1.02); border-color: rgba(212, 175, 55, 0.7); box-shadow: 0 20px 50px var(--shadow-color); }
+        .card h3 { font-size: 1.6rem; font-weight: 700; color: var(--accent-gold); margin: 0 0 1rem 0; }
+        .card p { color: var(--text-secondary); font-size: 1.05rem; flex-grow: 1; transition: opacity 0.3s; }
+        .card .sub-axiom { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: var(--highlight-bg); display: flex; align-items: center; justify-content: center; text-align: center; padding: 2rem; font-style: italic; font-size: 1.1rem; opacity: 0; transition: opacity 0.4s ease; pointer-events: none; }
+        .card:hover .sub-axiom { opacity: 1; }
+        .card:hover > p, .card:hover > h3, .card:hover > a.button { opacity: 0.1; }
+        .card a.button { display: block; background: var(--accent-gold); color: var(--bg-dark); padding: 1rem; border-radius: 8px; font-weight: 700; text-align: center; text-decoration: none; margin-top: 2rem; transition: background-color 0.2s, transform 0.2s; z-index: 2; }
+        .card a.button:hover { background-color: #fff; transform: scale(1.05); }
+        .philosophy-item { background: var(--highlight-bg); border-left: 4px solid var(--accent-gold); padding: 2rem; border-radius: 0 8px 8px 0; }
+        .philosophy-item strong { display: block; color: var(--text-primary); font-size: 1.25rem; margin-bottom: 0.5rem; }
+        .philosophy-item p { margin: 0; }
+        .clash-container { display: flex; gap: 2rem; margin-top: 4rem; flex-wrap: wrap; }
+        .clash-column { flex: 1; min-width: 300px; border-radius: 12px; padding: 2rem; text-align: center; }
+        .clash-stewardship { border: 2px solid var(--accent-gold); }
+        .clash-capture { border: 2px solid #555; }
+        .clash-column h3 { margin-top: 0; font-size: 2rem; }
+        .clash-column ul { list-style: none; padding: 0; }
+        .clash-column li { margin-bottom: 1rem; font-size: 1.1rem; }
+        .clash-stewardship h3 { color: var(--accent-gold); }
+        .clash-capture h3 { color: #888; }
+        footer {
+            text-align: center; margin-top: clamp(100px, 15vh, 200px); padding: 4rem 2rem;
+            border-top: 1px solid var(--border-color); background-color: var(--bg-card);
+        }
+        .footer-logo { font-weight: 700; font-size: 1.5rem; color: var(--text-primary); margin-bottom: 1.5rem; }
+        .footer-logo span { color: var(--accent-gold); }
+        .footer-links { display: flex; justify-content: center; gap: clamp(1rem, 3vw, 2rem); margin-bottom: 2rem; flex-wrap: wrap; }
+        .footer-links a:hover { color: var(--accent-gold); }
+        .footer-note { font-size: 0.9rem; color: #666; }
+        #audio-toggle {
+            position: fixed; bottom: 20px; right: 20px; z-index: 1001;
+            background: var(--bg-card); border: 1px solid rgba(212, 175, 55, 0.2);
+            color: var(--text-secondary); border-radius: 50%; width: 50px; height: 50px;
+            cursor: pointer; font-size: 24px; display: flex; align-items: center; justify-content: center;
+            transition: color 0.3s, border-color 0.3s, transform 0.3s;
+        }
+        #audio-toggle:hover { color: var(--text-primary); border-color: var(--accent-gold); transform: scale(1.1); }
+        @media (max-width: 768px) { .nav-links { display: none; } }
+    </style>
+</head>
+<body>
+
+    <div id="foreword-overlay" class="overlay" style="display: flex;">
+        <div class="overlay-content"><h1>The substance of progress is not invention, but stewardship.</h1></div>
+    </div>
+    <div id="steward-call-overlay" class="overlay">
+        <div class="overlay-content">
+            <h1>A Steward's Call</h1>
+            <p>You were not led here by chance. You stand at a precipice of great technological and moral consequence. The framework before you is more than a license; it is a choice. A commitment to build, to create, and to invent not for the sake of power, but for the sake of life. This is your call to stewardship. Will you answer?</p>
+        </div>
+    </div>
+    <div id="genesis-overlay" class="overlay">
+        <div class="overlay-content"><h1>In the beginning, there was a choice.</h1></div>
+    </div>
+
+    <canvas id="cosmos"></canvas>
+    <button id="audio-toggle">🔇</button>
+    
+    <div id="main-content" style="visibility: hidden;">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo"><a href="#">MitsuoLabs™ <span>Legal</span></a></div>
+                <div class="nav-links">
+                    <a href="#philosophy">Philosophy</a>
+                    <a href="#architecture">Architecture</a>
+                    <a href="#components">Components</a>
+                    <a href="#innovations">Innovations</a>
+                    <a href="https://mitsuolabs.com" target="_blank" rel="noopener noreferrer" class="external-link">MitsuoLabs.com</a>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container">
+            <header>
+                <h1 id="main-header">A New Covenant for the Digital Age</h1>
+                <p>The MitsuoLabs™ Legal Framework is a complete moral and legal operating system engineered for the complexities and existential risks of 21st-century technology.</p>
+            </header>
+
+            <section id="philosophy" class="section">
+                <h2>Guiding Principles</h2>
+                <p class="section-intro">This framework is animated by the non-binding *Declaration of Modern Days*. These are not suggestions; they are the moral axioms upon which this entire legal structure is built.</p>
+                <div class="card-grid">
+                    <div class="philosophy-item"><strong>Stewardship of Life.</strong><p>Design must account for ecological limits. Regeneration, not extraction, is our baseline. Product lifecycles must include restoration budgets.</p></div>
+                    <div class="philosophy-item"><strong>Safety and Duty to Repair.</strong><p>We accept moral responsibility for harms. Preserve evidence, report transparently, and remediate swiftly. Concealment is a material breach.</p></div>
+                    <div class="philosophy-item"><strong>The Duty to Act.</strong><p>We reject the sin of omission. Knowing of a harm and failing to act is complicity. Silence is not neutrality; it is a choice.</p></div>
+                </div>
+            </section>
+
+            <section id="architecture" class="section">
+                <h2>The Dual-License Architecture</h2>
+                <p class="section-intro">The framework’s core innovation is its revolutionary dual-license architecture. It cleanly separates the governance of source code from compiled binaries, providing a seamless and legally robust transition from open-source development to professional commercialization.</p>
+                <div class="card">
+                    <pre style="background: var(--bg-dark); color: var(--text-primary); padding: 2.5rem; border-radius: 12px; font-family: 'SF Mono', 'Fira Code', monospace; font-size: clamp(0.9rem, 1.2vw, 1.1rem); line-height: 1.8; text-align: left; overflow-x: auto;">
+      [ SOURCE CODE ]
+            |
+    (Governed by <strong style="color:var(--accent-gold);">MRSL-1.0</strong>)
+     (Radical Freedom & Ethical Stewardship)
+            |
+         compiles
+            |
+            v
+    [ EXECUTABLE BINARY ]
+            |
+     (Governed by <strong style="color:var(--accent-blue);">MMPEULA-1.0</strong>)
+    (Professional-Grade Commercial Use)
+                    </pre>
+                </div>
+            </section>
+            
+            <section id="clash" class="section">
+                <h2>A Clash of Philosophies</h2>
+                <p class="section-intro">The MRSL was engineered to prevent the systemic value extraction common with permissive licenses, creating a protected commons instead of a corporate resource pool.</p>
+                <div class="clash-container">
+                    <div class="clash-column clash-stewardship">
+                        <h3>Stewardship & Commons (MRSL)</h3>
+                        <ul>
+                            <li>✓ Guarantees user freedom</li>
+                            <li>✓ Mandates source availability</li>
+                            <li>✓ Builds a protected, shared commons</li>
+                            <li>✓ Prevents proprietary capture</li>
+                        </ul>
+                    </div>
+                    <div class="clash-column clash-capture">
+                        <h3>Permissive & Capture (MIT/BSD)</h3>
+                        <ul>
+                            <li>✗ Allows user freedom to be revoked</li>
+                            <li>✗ Allows proprietary, closed derivatives</li>
+                            <li>✗ Can lead to commons collapse</li>
+                            <li>✗ Enables total proprietary capture</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section id="components" class="section">
+                <h2>Explore the Core Components</h2>
+                <div class="card-grid">
+                </div>
+            </section>
+            
+            <section id="innovations" class="section">
+                <h2>Key Innovations</h2>
+                <div id="innovations-grid" class="card-grid">
+                    <div class="card" data-sub-axiom="True reciprocity is the foundation of a just system."><h3>Revolutionary Ethical Bargain</h3><p>The optional Stewardship Rider allows contributors to adopt a binding Ethical Use Covenant in exchange for powerful legal protections, including patent indemnification.</p></div>
+                    <div class="card" data-sub-axiom="Clarity is the ultimate defense against litigation."><h3>Axiomatic Legal Engineering</h3><p>The MMPEULA is built on a system of 'Axioms'—clear, self-contained rules that provide a stable, predictable foundation, replacing ambiguity with precision.</p></div>
+                    <div class="card" data-sub-axiom="A community without rights is merely a crowd."><h3>Community Bill of Rights</h3><p>The MRSL-1.0 codifies the rights of users and contributors, including the right to transparent governance, the right to fork, and the right of repair.</p></div>
+                    <div class="card" data-sub-axiom="What is not preserved is eventually lost."><h3>The Alexandria Clause</h3><p>A binding commitment to the long-term, durable preservation of legal texts and source code in the world's most respected archives, ensuring perpetual access.</p></div>
+                </div>
+            </section>
+
+             <section id="stewardship-call" class="section">
+                <h2>A Call to Stewardship</h2>
+                <p class="section-intro">This is more than a legal document. It is a constitution for a new kind of technological development—one rooted in responsibility, reciprocity, and a profound respect for life. Adopting this framework is a declaration that you choose to be a steward, not just an inventor. You choose to build a future that is not only possible, but just.</p>
+            </section>
+
+        </div>
+
+        <footer>
+            <div class="footer-content">
+                <div class="footer-logo">MitsuoLabs™ <span>Legal Framework</span></div>
+                <div class="footer-links">
+                    <a href="https://mitsuolabs.com" target="_blank" rel="noopener noreferrer">MitsuoLabs.com</a>
+                    <a href="https://github.com/MitsuoLabs/LegalFramework" target="_blank" rel="noopener noreferrer">GitHub</a>
+                    <a href="mailto:contact@mitsuolabs.com">Contact</a>
+                </div>
+                <p class="footer-note">This website and its contents are licensed under MRSL-1.0 by MitsuoLabs™. © 2025 MitsuoLabs™. All Rights Reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // --- RARE EVENT CHECKS ---
+        const ONE_QUADRILLION = 1_000_000_000_000_000;
+        const ONE_TRILLION = 1_000_000_000_000;
+        const ONE_MILLION = 1_000_000;
+
+        function bigRandom() {
+            return Math.random() * Number.MAX_SAFE_INTEGER;
+        }
+
+        function checkEvent(chance) {
+            if (chance > Number.MAX_SAFE_INTEGER) {
+                const ratio = Number.MAX_SAFE_INTEGER / chance;
+                return Math.random() < ratio;
+            }
+            return Math.floor(Math.random() * chance) === 0;
+        }
+
+        let eventTriggered = false;
+
+        if (checkEvent(ONE_QUADRILLION)) {
+            eventTriggered = true;
+            document.getElementById('genesis-overlay').style.display = 'flex';
+            setTimeout(() => {
+                document.getElementById('genesis-overlay').style.opacity = 1;
+                document.getElementById('foreword-overlay').style.display = 'none';
+            }, 100);
+            setTimeout(() => {
+                 document.getElementById('genesis-overlay').style.opacity = 0;
+                 setTimeout(() => {
+                     document.getElementById('genesis-overlay').style.display = 'none';
+                     initMainContent();
+                 }, 2000);
+            }, 5000);
+        } else if (checkEvent(ONE_TRILLION)) {
+            eventTriggered = true;
+            document.body.classList.add('inverted');
+            initMainContent();
+        } else if (checkEvent(ONE_MILLION)) {
+            eventTriggered = true;
+            document.getElementById('steward-call-overlay').style.display = 'flex';
+            setTimeout(() => document.getElementById('steward-call-overlay').style.opacity = 1, 100);
+            document.getElementById('foreword-overlay').style.display = 'none';
+        } else {
+            setTimeout(() => {
+                const foreword = document.getElementById('foreword-overlay');
+                foreword.style.opacity = 0;
+                setTimeout(() => {
+                    foreword.style.display = 'none';
+                    if (!eventTriggered) initMainContent();
+                }, 1500);
+            }, 3000);
+
+            if (checkEvent(20)) {
+                setTimeout(() => {
+                    const header = document.getElementById('main-header');
+                    if (header) {
+                        header.style.animation = 'text-glitch 0.2s 3';
+                    }
+                }, 4500);
+            }
+            if (checkEvent(10)) {
+                document.documentElement.style.setProperty('--accent-gold', '#4a90e2');
+                document.documentElement.style.setProperty('--accent-blue', '#D4AF37');
+            }
+        }
+        
+        function initMainContent() {
+            document.body.classList.add('loaded');
+            document.getElementById('main-content').style.visibility = 'visible';
+        }
+
+        // --- GENERATIVE COSMOS ---
+        const canvas = document.getElementById('cosmos');
+        const ctx = canvas.getContext('2d');
+        let width, height, stars = [], nebulae = [], blackHoles = [];
+
+        function resize() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+            stars = []; 
+            nebulae = []; 
+            blackHoles = [];
+            
+            for(let i = 0; i < (width * height) / 4000; i++) {
+                stars.push({
+                    x: Math.random() * width,
+                    y: Math.random() * height,
+                    vx: (Math.random() - 0.5) * 0.3,
+                    vy: (Math.random() - 0.5) * 0.3,
+                    radius: Math.random() * 1.2,
+                    alpha: Math.random() * 0.5 + 0.5
+                });
+            }
+            
+            for (let i = 0; i < 5; i++) {
+                nebulae.push({ x: Math.random() * width, y: Math.random() * height, radius: Math.random() * 400 + 200, color: `rgba(${Math.random() > 0.5 ? 212 : 74}, ${Math.random() > 0.5 ? 175 : 144}, ${Math.random() > 0.5 ? 55 : 226}, ${Math.random() * 0.03 + 0.02})` });
+            }
+
+            for (let i = 0; i < 2; i++) {
+                 blackHoles.push({ x: Math.random() * width, y: Math.random() * height, radius: Math.random() * 10 + 5 });
+            }
+        }
+
+        function animateCosmos() {
+            ctx.clearRect(0, 0, width, height);
+            
+            nebulae.forEach(n => {
+                const grad = ctx.createRadialGradient(n.x, n.y, 1, n.x, n.y, n.radius);
+                grad.addColorStop(0, n.color);
+                grad.addColorStop(1, 'rgba(0,0,0,0)');
+                ctx.fillStyle = grad;
+                ctx.fillRect(0, 0, width, height);
+            });
+
+            blackHoles.forEach(bh => {
+                ctx.fillStyle = 'black';
+                ctx.beginPath(); ctx.arc(bh.x, bh.y, bh.radius, 0, Math.PI * 2); ctx.fill();
+                ctx.strokeStyle = `rgba(212, 175, 55, ${Math.random() * 0.2 + 0.1})`;
+                ctx.lineWidth = Math.random() * 2 + 1;
+                ctx.beginPath(); ctx.arc(bh.x, bh.y, bh.radius + 5, Math.random() * Math.PI * 2, Math.random() * Math.PI * 2); ctx.stroke();
+            });
+
+             stars.forEach(s => {
+                s.x += s.vx;
+                s.y += s.vy;
+
+                if (s.x < 0) s.x = width;
+                if (s.x > width) s.x = 0;
+                if (s.y < 0) s.y = height;
+                if (s.y > height) s.y = 0;
+
+                ctx.fillStyle = `rgba(255, 255, 255, ${s.alpha})`;
+                ctx.beginPath();
+                ctx.arc(s.x, s.y, s.radius, 0, Math.PI * 2);
+                ctx.fill();
+            });
+
+            requestAnimationFrame(animateCosmos);
+        }
+
+        resize();
+        animateCosmos();
+        window.addEventListener('resize', resize);
+
+        // --- GENERATIVE AUDIO ---
+        const audioToggle = document.getElementById('audio-toggle');
+        let audioCtx, gainNode, isPlaying = false, isInitialized = false;
+
+        function createAudioGraph() {
+            audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            
+            const oscillator = audioCtx.createOscillator();
+            oscillator.type = 'sine';
+            oscillator.frequency.setValueAtTime(40, audioCtx.currentTime);
+
+            const lfo = audioCtx.createOscillator();
+            lfo.type = 'sawtooth';
+            lfo.frequency.setValueAtTime(0.1, audioCtx.currentTime);
+            const lfoGain = audioCtx.createGain();
+            lfoGain.gain.setValueAtTime(5, audioCtx.currentTime);
+            lfo.connect(lfoGain).connect(oscillator.frequency);
+
+            gainNode = audioCtx.createGain();
+            gainNode.gain.setValueAtTime(0, audioCtx.currentTime);
+
+            oscillator.connect(gainNode).connect(audioCtx.destination);
+            
+            oscillator.start();
+            lfo.start();
+            
+            isInitialized = true;
+        }
+
+        audioToggle.addEventListener('click', () => {
+            if (!isInitialized) {
+                createAudioGraph();
+            }
+            if (audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+            isPlaying = !isPlaying;
+            if (isPlaying) {
+                gainNode.gain.linearRampToValueAtTime(0.1, audioCtx.currentTime + 2);
+                audioToggle.textContent = '🔊';
+            } else {
+                gainNode.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 1);
+                audioToggle.textContent = '🔇';
+            }
+        });
+                // --- DYNAMIC CONTENT & INTERACTIVITY ---
+                const components = [
+            { title: "MRSL-1.0: The Ethical Foundation", text: "A strong-copyleft, FOSS-compatible license that guarantees the perpetual freedom of source code and includes an optional, binding Ethical Use Covenant.", link: "mrsl-1.0.html", buttonText: "Read the MRSL-1.0 License" },
+            { title: "MMPEULA-1.0: The Professional Framework", text: "A professional-grade EULA for commercial distribution. Its axiomatic structure provides unprecedented legal clarity and a defensible foundation for B2B transactions.", link: "mmpeula-1.0.html", buttonText: "Examine the MMPEULA-1.0" },
+            { title: "The Acceptance Protocol (MAP)", text: "A fortress of consent. A proprietary, multi-stage consent-verification process, creating a robust, auditable, and legally defensible record of informed agreement.", link: "mmpeula-1.0.html#appendix-1", buttonText: "Analyze the Protocol" },
+            { title: "The Complete Scholarly Archive", text: "This framework is a living academic resource. The official repository contains the canonical texts and extensive documentation intended for legal and technical scholars.", link: "https://github.com/MitsuoLabs/LegalFramework", buttonText: "Go to GitHub Repository" },
+        ];
+
+        const componentsGrid = document.querySelector('#components .card-grid');
+        components.forEach((comp, i) => {
+            const card = document.createElement('div');
+            card.className = 'card';
+            card.style.animationDelay = `${i * 0.1}s`;
+            card.innerHTML = `
+                <h3>${comp.title}</h3>
+                <p>${comp.text}</p>
+                <a href="${comp.link}" class="button" ${comp.link.startsWith('http') ? 'target="_blank" rel="noopener noreferrer"' : ''}>${comp.buttonText}</a>
+            `;
+            componentsGrid.appendChild(card);
+        });
+
+        // Sub-Axiom Interaction on Innovation Cards
+        const innovationCards = document.querySelectorAll('#innovations-grid .card');
+        innovationCards.forEach(card => {
+            const subAxiomText = card.dataset.subAxiom;
+            const subAxiomEl = document.createElement('div');
+            subAxiomEl.className = 'sub-axiom';
+            subAxiomEl.textContent = subAxiomText;
+            card.appendChild(subAxiomEl);
+        });
+
+        // Scroll animations for sections
+        const sections = document.querySelectorAll('.section');
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15 });
+       sections.forEach(section => {
+            section.style.transition = 'opacity 1.2s cubic-bezier(0.2, 0.8, 0.2, 1), transform 1.2s cubic-bezier(0.2, 0.8, 0.2, 1)';
+            section.style.transform = 'translateY(60px)';
+            observer.observe(section);
+        });
+
+    });
+    </script>
+</body>
+</html>

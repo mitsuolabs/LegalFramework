@@ -1,0 +1,30 @@
+# This GitHub Action workflow automates the archival process described in PRESERVATION.md.
+# On every new release, it creates a tarball and prints instructions for submitting it to the designated public archives.
+
+name: 'Release Archival preparation'
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  prepare-archive:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Checkout code'
+        uses: actions/checkout@v3
+
+      - name: 'Create release tarball'
+        run: |
+          tar -czvf "${{ github.event.repository.name }}-${{ github.event.release.tag_name }}.tar.gz" .
+
+      - name: 'Print archival instructions'
+        run: |
+          echo "A release tarball has been created: ${{ github.event.repository.name }}-${{ github.event.release.tag_name }}.tar.gz"
+          echo ""
+          echo "As per PRESERVATION.md, you must now submit this artifact to the designated public archives:"
+          echo "1. Software Heritage: https://www.softwareheritage.org/save-code-now/"
+          echo "2. The Internet Archive: https://archive.org/upload/"
+          echo "3. The Bodleian Libraries (Digital Archives): https://www.bodleian.ox.ac.uk/"
+          echo ""
+          echo "Please log the archival transaction details in the project's permanent records."

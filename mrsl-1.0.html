@@ -1,0 +1,1586 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MRSL-1.0 – The MitsuoLabs™ Reciprocity and Stewardship License</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html, body {
+            background-color: #FFF8DC;
+            color:  #000000;
+            font-family: 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+        }
+        
+        body {
+            padding: 2rem;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: #FFF8DC;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            border-bottom: 2px solid #000000;
+            padding-bottom: 2rem;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            color: #000000;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .version {
+            font-size: 1.2rem;
+            color: #000000;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .meta {
+            font-size: 0.95rem;
+            color: #000000;
+            margin-bottom:  1rem;
+        }
+        
+        .meta a {
+            color: #000000;
+            text-decoration: underline;
+        }
+        
+        .copyright {
+            font-size: 0.9rem;
+            color: #000000;
+            margin:  1rem 0;
+            text-align: center;
+            font-style: italic;
+        }
+        
+        .notice {
+            background-color: #FFF8DC;
+            border-left: 4px solid #000000;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            font-size: 0.95rem;
+            color: #000000;
+        }
+        
+        .notice strong {
+            font-weight: 700;
+        }
+        
+        .notice a {
+            color: #000000;
+            text-decoration: underline;
+        }
+        
+        .toc {
+            background-color:  #FFF8DC;
+            padding: 2rem;
+            margin: 2rem 0;
+            border:  1px solid #000000;
+        }
+        
+        .toc ol {
+            margin-left: 2rem;
+            color: #000000;
+        }
+        
+        .toc ol ol {
+            margin-left: 2rem;
+            margin-top: 0.5rem;
+        }
+        
+        .toc li {
+            margin-bottom: 0.5rem;
+            color: #000000;
+        }
+        
+        hr {
+            border: none;
+            border-top: 2px solid #000000;
+            margin: 3rem 0;
+        }
+        
+        h2 {
+            font-size: 1.8rem;
+            color: #000000;
+            font-weight: 700;
+            margin-top: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        h3 {
+            font-size: 1.3rem;
+            color: #000000;
+            font-weight:  700;
+            margin-top: 2rem;
+            margin-bottom:  1rem;
+        }
+        
+        h4 {
+            font-size: 1.1rem;
+            color: #000000;
+            font-weight: 700;
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+        }
+        
+        p {
+            color: #000000;
+            margin-bottom: 1.2rem;
+            text-align: justify;
+        }
+        
+        ul, ol {
+            margin-left: 2rem;
+            margin-bottom: 1.2rem;
+            color: #000000;
+        }
+        
+        li {
+            margin-bottom: 0.8rem;
+            color: #000000;
+        }
+        
+        li strong {
+            font-weight: 700;
+        }
+        
+        code {
+            background-color: #FFF8DC;
+            color: #000000;
+            padding: 0.2rem 0.4rem;
+            font-family: 'Courier New', Courier, monospace;
+            border-radius: 3px;
+        }
+        
+        pre {
+            background-color: #FFF8DC;
+            color: #000000;
+            border-left: 4px solid #000000;
+            padding: 1.5rem;
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.95rem;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            color: #000000;
+        }
+        
+        th, td {
+            border: 1px solid #000000;
+            padding: 1rem;
+            text-align:  left;
+            color: #000000;
+        }
+        
+        th {
+            background-color: #FFF8DC;
+            font-weight: 700;
+            color: #000000;
+        }
+        
+        .small {
+            font-size: 0.9rem;
+            color: #000000;
+        }
+        
+        .center {
+            text-align: center;
+        }
+        
+        .legal-note {
+            background-color: #FFF8DC;
+            border-left: 4px solid #000000;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            color: #000000;
+        }
+        
+        .legal-note strong {
+            font-weight:  700;
+        }
+        
+        .page-break {
+            page-break-after: always;
+            margin: 3rem 0;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 2px solid #000000;
+            font-size: 0.9rem;
+            color: #000000;
+        }
+        
+        a {
+            color: #000000;
+            text-decoration: underline;
+        }
+        
+        a:visited {
+            color: #000000;
+        }
+        
+        strong {
+            font-weight: 700;
+        }
+        
+        em {
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- HEADER -->
+        <header>
+            <h1>The MitsuoLabs™ Reciprocity and Stewardship License</h1>
+            <div class="version">Version 1.0 — MRSL‑1.0</div>
+            <div class="meta">
+                Canonical source: <a href="https://github.com/MitsuoLabs/LegalFramework/mrsl-1.0.txt">https://github.com/MitsuoLabs/LegalFramework/mrsl-1.0.txt</a>
+            </div>
+        </header>
+
+        <div class="copyright">
+            Copyright (c) [[YEAR]] [[LICENSOR_NAME]] · ORCID: [[ORCID_ID]]
+        </div>
+
+        <!-- LICENSE TEXT NOTICE -->
+        <div class="notice">
+            <strong>License text notice:</strong> The text of this License is itself licensed under MRSL‑1.0 {©-(c)-2025} (Brazil as Jurisdiction and Stewardship as option). MitsuoLabs™ and Daniel Mitsuo (orcid: 0009-0006-6909-0990  {<a href="https://orcid.org/0009-0006-6909-0990">https://orcid.org/0009-0006-6909-0990</a>}) are the stewards and licensors of the canonical MRSL text. Contact for license text matters: <a href="mailto:contact@mitsuolabs.com">contact@mitsuolabs.com</a>. 
+        </div>
+
+        <!-- TABLE OF CONTENTS -->
+        <h2>Table of Contents (ToC)</h2>
+        <div class="toc">
+            <ol>
+                <li>Preamble</li>
+                <li>Contribution Policy Declaration</li>
+                <li>PART I: The Core Public License
+                    <ol>
+                        <li>1. Definitions</li>
+                        <li>2. Core Copyright Grant</li>
+                        <li>3. Ethical Covenant Notice</li>
+                        <li>4. Reciprocity for Integrated Works (Strong Copyleft)</li>
+                        <li>5. Reciprocity for System Works (Library Copyleft)</li>
+                        <li>6. Network Reciprocity</li>
+                        <li>7. Conveying Non‑Source Forms</li>
+                        <li>8. Freedom to Run, Modify, and Secure (Anti‑Tivoization and Firmware)</li>
+                        <li>9. Attribution and Credits</li>
+                        <li>10. Trademarks (Overview)</li>
+                        <li>11. Artificial Intelligence Systems and Synthetic Agents</li>
+                        <li>12. Patent Grant</li>
+                        <li>13. Digital Assets, Tokens, and Blockchain</li>
+                        <li>14. Community Bill of Rights</li>
+                        <li>15. Contributor Obligations</li>
+                        <li>16. Maintainer Responsibilities</li>
+                        <li>17. Right of Repair</li>
+                        <li>18. Right to Data and Erasure</li>
+                        <li>19. The Alexandria Clause (Digital Preservation)</li>
+                        <li>20. Disclaimer of Warranty</li>
+                        <li>21. Core Termination</li>
+                        <li>22. No Additional Restrictions</li>
+                    </ol>
+                </li>
+                <li>PART II: The Stewardship Rider (Optional)
+                    <ol>
+                        <li>23. Purpose of the Stewardship Rider</li>
+                        <li>24. Acceptance of the Stewardship Rider</li>
+                        <li>25. The Ethical Use Covenant</li>
+                        <li>26. Grant of Advanced Rights to Stewards</li>
+                        <li>27. Community Governance</li>
+                        <li>28. Steward Termination</li>
+                    </ol>
+                </li>
+                <li>PART III: General Provisions
+                    <ol>
+                        <li>29. License Compatibility and Interoperability</li>
+                        <li>30. Protection of License Identity and Trademarks</li>
+                        <li>31. License Versioning, Upgrades, and Non‑Retroactivity</li>
+                        <li>32. Governing Law, Jurisdiction, and Venue</li>
+                        <li>33. Severability and Reformation (Blue‑Pencil Clause)</li>
+                        <li>34. No Waiver</li>
+                        <li>35. Temporal and Ontological Integrity</li>
+                        <li>36. Survival of Certain Provisions</li>
+                        <li>37. Interpretive Primacy and Definitions</li>
+                        <li>38. Notices and Contact</li>
+                        <li>39. Assignment and Successors</li>
+                        <li>40. Force Majeure</li>
+                        <li>41. Export Controls and Compliance with Law</li>
+                        <li>42. Amendment Procedure</li>
+                        <li>43. Injunctive Relief and Remedies</li>
+                        <li>44. Entire Agreement</li>
+                    </ol>
+                </li>
+                <li>Appendices (1–19): Non‑binding interpretive materials, templates, and operational protocols</li>
+            </ol>
+        </div>
+        <hr>
+        <h2>Table of Placeholders (ToP) for MRSL-1.0</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Placeholder Token</th>
+                    <th>Purpose</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>[[YEAR]]</code></td>
+                    <td>The year of the copyright claim.</td>
+                </tr>
+                <tr>
+                    <td><code>[[LICENSOR_NAME]]</code></td>
+                    <td>The legal name of the entity or person granting the license.</td>
+                </tr>
+                <tr>
+                    <td><code>[[ORCID_ID]]</code></td>
+                    <td>The ORCID identifier for the licensor, providing a persistent digital identifier.</td>
+                </tr>
+                <tr>
+                    <td><code>[[DESIGNATED_JURISDICTION]]</code></td>
+                    <td>The legal jurisdiction whose laws will govern the license agreement.</td>
+                </tr>
+            </tbody>
+        </table>
+        <hr>
+        <!-- PREAMBLE -->
+        <h2>Preamble</h2>
+        <p>
+            This License is a legal and ethical constitution for software and related digital works, providing a universal, enforceable framework for the perpetual freedom of source code and the responsible stewardship of its compiled, deployed, and integrated forms. 
+        </p>
+        <p>
+            It is founded on the principle that freedom entails responsibility.  Part I grants core FOSS rights consistent with the FOSS/FOSS-Compatible Definition.  Part II is an optional contractual Rider that grants additional protections and rights to those who voluntarily accept specified ethical obligations for their own Contributions to a particular Work (Ethical-Source).
+        </p>
+        <p>
+            The License is drafted with explicit awareness of present and emerging technologies — including Artificial Intelligence, Synthetic Agents, Quantum Computing Systems, distributed and peer‑to‑peer networks, and Human–Machine Interface Devices — and is intended to remain applicable and interpretable as such technologies evolve.
+        </p>
+
+        <hr>
+
+        <!-- CONTRIBUTION POLICY DECLARATION -->
+        <h2>Contribution Policy Declaration</h2>
+        <p>
+            The Licensor has selected one of the following policies to govern Contributions to The Work.  The selected option should be indicated in project documentation. 
+        </p>
+        <ul>
+            <li><strong>OPTION 1: Axiomatic Stewardship. </strong> By contributing, You accept the Stewardship Rider (Part II) for that Work and become a Steward for that Work. </li>
+            <li><strong>OPTION 2: Developer Certificate of Origin (DCO).</strong> Contributions must include a Signed‑off‑by line certifying right to submit under MRSL‑1.0. Stewardship is not automatic. </li>
+            <li><strong>OPTION 3: Contributor License Agreement (CLA).</strong> Contributions require signing a CLA; Stewardship is separate and must be explicitly declared.</li>
+        </ul>
+
+        <hr>
+
+        <!-- PART I: THE CORE PUBLIC LICENSE -->
+        <h2>PART I: THE CORE PUBLIC LICENSE</h2>
+
+        <h3>1. Definitions</h3>
+        <p>
+            For purposes of this License, the following definitions apply.  In case of conflict, the definitions in this Section control.
+        </p>
+        <ul>
+            <li><strong>This License</strong> — MRSL‑1.0, including Parts I–III and Appendices (Appendices are non‑binding interpretive materials).</li>
+            <li><strong>The Work</strong> — the collective source code and associated materials made available under MRSL‑1.0 (documentation, build scripts, model weights, datasets bundled with the project, etc.).</li>
+            <li><strong>Modification</strong> — any work based on or incorporating The Work.</li>
+            <li><strong>Integrated Work</strong> — a Modification that is not a System Work (e.g., an application incorporating The Work).</li>
+            <li><strong>System Work</strong> — a library, component, plugin, or framework intended to be linked to or dynamically called by other software. </li>
+            <li><strong>Convey</strong> — to propagate, distribute, sublicense, sell, rent, lease, publish, deploy, or otherwise make The Work or a Modification available by any mechanism, including P2P, mesh, offline sync, or future network analogues.</li>
+            <li><strong>Corresponding Source</strong> — the preferred form for making Modifications, including source code, interface definitions, build and deployment scripts, and model training/configuration artifacts necessary to reproduce the running form. </li>
+            <li><strong>You / Your</strong> — a legal entity or natural person exercising rights under this License.</li>
+            <li><strong>Contributor</strong> — the Licensor and any entity on whose behalf a Contribution has been incorporated. </li>
+            <li><strong>Contribution</strong> — any authored material intentionally submitted for inclusion in The Work. </li>
+            <li><strong>User Product</strong> — a consumer device or system in which The Work is embedded.</li>
+            <li><strong>Firmware</strong> — software stored in persistent memory in a User Product. </li>
+            <li><strong>Artificial Intelligence System</strong> — systems using statistical, symbolic, neural, evolutionary, quantum, hybrid, or other algorithmic techniques for tasks associated with cognition, including generative models, reasoning engines, autonomous agents, and multi‑agent systems.</li>
+            <li><strong>Synthetic Agent</strong> — an AI System or automated process capable of generating or substantially modifying Contributions without direct line‑by‑line human authorship.</li>
+            <li><strong>Quantum Computing System</strong> — systems using quantum mechanical effects for computation (cloud, hardware, emulator, or hybrid).</li>
+            <li><strong>Human–Machine Interface Device (HMID)</strong> — devices interfacing directly with the human nervous system (implants, external BCIs, neuroprosthetics) for control, input, telemetry, or output related to The Work.</li>
+            <li><strong>Personal Data</strong> — information relating to an identified or identifiable natural person under applicable data protection laws.</li>
+            <li><strong>Telemetry</strong> — automated collection and transmission of usage, performance, diagnostic, or operational data from a user's device or environment.</li>
+            <li><strong>Primary or Predominant Purpose</strong> — for the purposes of the Ethical Use Covenant, a purpose is "primary or predominant" if, judged objectively, it is the main function or the dominant intended use of the Contribution or Modification, considering design, marketing, deployment, and reasonable user expectations.</li>
+        </ul>
+
+        <h3>2. Core Copyright Grant</h3>
+        <p>
+            Subject to the terms herein, each Contributor grants You a perpetual, worldwide, non‑exclusive, no‑charge, royalty‑free, irrevocable copyright license to reproduce, prepare Modifications of, publicly display, publicly perform, sublicense, and distribute The Work and such Modifications, in source and non‑source forms, to the max extent permitted by law. 
+        </p>
+
+        <h3>3. Ethical Covenant Notice</h3>
+        <p>
+            Adherence to the Ethical Use Covenant (Part II, Section 25) is a condition for receiving the Grant of Advanced Rights (Part II, Section 26). Failure to accept or comply with the Covenant does not remove or diminish the core rights granted under Part I.
+        </p>
+
+        <h3>4. Reciprocity for Integrated Works (Strong Copyleft)</h3>
+        <p>
+            If You Convey an Integrated Work, You must license the entire Integrated Work under MRSL‑1.0 and make its complete Corresponding Source readily, reliably, and durably available to recipients under MRSL‑1.0. You may not impose additional terms that contradict MRSL‑1.0.
+        </p>
+
+        <h3>5. Reciprocity for System Works (Library Copyleft)</h3>
+        <p>
+            If You Convey a System Work, You must license that System Work under MRSL‑1.0 and provide its Corresponding Source. You may permit independent works to link to the System Work without requiring those works to be MRSL‑licensed, provided they remain separable and are not Modifications of The Work.
+        </p>
+
+        <h3>6. Network Reciprocity</h3>
+        <p>
+            If You run a modified version of The Work to provide services over a network (cloud, APIs, SaaS, multi‑agent platforms, P2P services, quantum‑enabled services, or future network analogues), You must provide all users who interact with the service a conspicuous and convenient means to obtain the complete Corresponding Source of the modified Work and any Integrated or System Works forming part of the server‑side logic.
+        </p>
+
+        <h3>7. Conveying Non‑Source Forms</h3>
+        <p>
+            You may Convey compiled, obfuscated, or non‑source forms under a license of Your choice provided that the non‑source license does not limit MRSL‑granted rights, contains a conspicuous notice that Corresponding Source is available under MRSL‑1.0, and provides a reliable mechanism for obtaining the Corresponding Source at no additional charge beyond reasonable transfer costs.
+        </p>
+
+        <h3>8. Freedom to Run, Modify, and Secure (Anti‑Tivoization and Firmware)</h3>
+        <p>
+            If You Convey The Work in a User Product or as Firmware, You must provide any information, keys, signatures, installation scripts, or procedures necessary to install, authorize, and run a modified version of The Work on that User Product to at least the same extent You enable official updates.  Security measures may not be used to prevent or unreasonably burden users' exercise of MRSL rights.
+        </p>
+
+        <h3>9. Attribution and Credits</h3>
+        <p>
+            You must retain all copyright, patent, trademark, and attribution notices present in the original Work.  In all Modifications and derivative works You Convey, You must provide clear credit to the original Licensor and Contributors (including MitsuoLabs™ where applicable) in a NOTICE/CREDITS section and state that the work is based on or incorporates The Work licensed under MRSL‑1.0.  Credits are mandatory in derivative works that incorporate any substantial portion of The Work.
+        </p>
+
+        <h3>10. Trademarks (Overview)</h3>
+        <p class="small">
+            This Section provides an overview.  Full trademark and license identity protection appears in Part III, Section 30.
+        </p>
+        <p>This License does not grant any rights to use the trademarks, service marks, or logos of the Licensor or Contributors, except for the limited purpose of factual attribution. Your use of any name or logo must not imply endorsement.</p>
+        <ul>
+            <li><strong>No Endorsement:</strong> You may not use the names or logos of the Licensor (e.g., "MitsuoLabs™") or other Contributors to market or endorse your own products.</li>
+            <li><strong>Factual Attribution:</strong> You may and should state that your work is licensed under "MRSL-1.0" to comply with attribution requirements (Section 9).</li>
+            <li><strong>License Identity:</strong> You may not use the name "MRSL-1.0" to describe any modified version of this license text.</li>
+        </ul>
+        <p class="small">This is a non-binding overview. The complete and binding terms governing trademark use are located in Part III, Section 30.</p>
+        <hr>
+        <h3>11. Artificial Intelligence Systems and Synthetic Agents</h3>
+        <p>
+            Each Contributor warrants they have the legal right to grant permissions for any Contribution, including AI‑generated or AI‑assisted material. Contributors represent they have authority to license such material and have taken reasonable steps to avoid infringing third‑party rights or violating training data licenses. 
+        </p>
+        <p>
+            Any AI or Synthetic Agent that incorporates, trains on, or leverages The Work must provide clear and prominent credit to the original Licensor where technically feasible and include a conspicuous disclaimer in documentation or output policies that it uses or is derived from MRSL‑1.0‑licensed FOSS.  Indemnification or safe harbor for AI‑related claims is available only under the Stewardship Rider (Part II).
+        </p>
+
+        <h3>12. Patent Grant</h3>
+        <p>
+
+Subject to the terms of this License, each Contributor hereby grants You a perpetual, worldwide, non‑exclusive, no‑charge, royalty‑free, irrevocable (except as provided in Section 21) patent license to make, have made, use, offer to sell, sell, import, and otherwise practice any patented invention that is necessarily infringed by exercising the rights expressly granted under Part I with respect to that Contributor’s Contribution.
+
+This patent license applies only to the extent necessary to exercise the rights granted under this License and does not include any right to practice any other patented invention of the Contributor. This Section grants no indemnification, warranty, or legal defense of any kind.
+        </p>
+        <h3>13. Digital Assets, Tokens, and Blockchain</h3>
+        <p>
+            If You Convey The Work as a primary and necessary component of a system that issues, manages, or validates Digital Assets on a blockchain or distributed ledger (including, but not limited to, fungible tokens, non-fungible tokens (NFTs), or other crypto-assets), the following conditions apply:
+        </p>
+        <ul>
+            <li><strong>a) Source Code Reciprocity for On-Chain Logic:</strong> The complete Corresponding Source for all smart contracts, scripts, or on-chain logic that constitutes a Modification of, or is an Integrated Work with, The Work must be publicly available and verifiably linked from the user interface and from the contract metadata on-chain at the time of deployment.</li>
+            <li><strong>b) No Re-Encumbrance via Token Rights:</strong> The rights, licenses, or permissions granted by any Digital Asset created or managed by The Work shall not contradict, limit, or encumber the rights granted by this License to The Work itself. The ability to modify, fork, and redeploy the underlying MRSL-1.0 software cannot be revoked by the terms of a token.</li>
+            <li><strong>c) Transparency and Auditability:</strong> For any system Conveying The Work whose primary purpose involves the custody or transfer of Digital Assets with economic value, You must provide a conspicuous link to at least one independent third-party security audit of the smart contracts and backend systems.</li>
+            <li><strong>d) Steward Covenant Application:</strong> A Steward who creates or Conveys a system for Digital Assets is bound by the Ethical Use Covenant (Section 25). Operating a system whose primary purpose is to facilitate fraud, market manipulation, or the sale of unregistered securities (as defined in the applicable jurisdiction) shall be considered a breach of the Stewardship Rider.</li>
+        </ul>
+        
+        <h3>14. Community Bill of Rights</h3>
+        <p>
+            The community of users and Contributors has the right to transparent governance, the right to fork in response to governance failure or maintainer breach, and the right to self‑govern (codes of conduct, contribution guidelines) provided they do not conflict with MRSL‑1.0.
+        </p>
+
+        <h3>15. Contributor Obligations</h3>
+        <p>
+            Each Contributor certifies they have the legal right to make their Contribution and that, to the best of their knowledge, it does not infringe third‑party rights.  If not using DCO, this certification is implicit in contributing. 
+        </p>
+
+        <h3>16. Maintainer Responsibilities</h3>
+        <p>
+            Maintainers should review contributions in good faith, communicate transparently about major decisions, act as responsible stewards, and respect the Community Bill of Rights and Steward rights.  This Section is normative and does not create employment or fiduciary relationships by itself.
+        </p>
+
+        <h3>17. Right of Repair</h3>
+        <p>
+            If a critical security vulnerability (CVSS 3.x ≥ 9. 0) is publicly disclosed and not addressed by primary maintainers within 90 days, any Contributor may create and Convey a Repair Fork with security fixes and clearly versioned releases (e.g., <code>v1.2.3‑repair. 1</code>) under MRSL‑1.0.
+        </p>
+
+        <h3>18. Right to Data and Erasure</h3>
+        <p>
+            If The Work is used to create a service storing personal data, the operator must provide an authenticated, machine‑readable export of a user's data and a mechanism to request permanent erasure, subject to law and reasonable technical limits.
+        </p>
+
+        <h3>19. The Alexandria Clause (Digital Preservation)</h3>
+        <p>
+            Upon any major public release, Contributors must make a good‑faith effort to submit Corresponding Source to at least two public software heritage or archival services. 
+        </p>
+
+        <h3>20. Disclaimer of Warranty</h3>
+        <p>
+            THE WORK IS PROVIDED "AS IS", WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND.  The enhanced limitation of liability and indemnification protections are available only to Stewards under Part II. 
+        </p>
+
+        <h3>21. Core Termination</h3>
+        <p>
+            Rights under Part I terminate automatically for material noncompliance if not cured within a reasonable time after notice (121 days).  Termination does not affect rights of downstream recipients who received The Work in compliance with MRSL‑1.0. Rights may be reinstated if violations cease, unless a copyright holder explicitly terminates in writing.
+        </p>
+
+        <h3>22. No Additional Restrictions</h3>
+        <p>
+            You may not impose further restrictions on the exercise of rights granted under this License beyond those expressly stated herein. 
+        </p>
+
+        <hr>
+
+        <!-- PART II: THE STEWARDSHIP RIDER -->
+        <h2>PART II: THE STEWARDSHIP RIDER (OPTIONAL)</h2>
+
+        <h3>23. Purpose of the Stewardship Rider</h3>
+        <p>
+            Part II is an optional contractual Rider that grants additional rights and protections to those who voluntarily accept specific ethical obligations regarding their own Contributions and Modifications to a particular Work.
+        </p>
+
+        <h3>24. Acceptance of the Stewardship Rider</h3>
+        <p>
+            You accept this Rider and become a "Steward of MRSL‑1.0" for a specific Work by including a clear notice in the Corresponding Source and primary project documentation (for example, a STEWARD. md entry) stating that You are a Steward for that Work.  Stewardship is project‑specific and applies only from the date of declaration forward; it does not retroactively bind prior Contributions.
+        </p>
+        <div class="legal-note">
+            <strong>Evidence of Acceptance:</strong> A Steward's acceptance must be recorded in the project repository (STEWARD.md) and accompanied by a signed, timestamped declaration (digital signature or equivalent) in the commit history or a signed PDF stored in the repository.  This evidence is the primary proof of acceptance for contractual purposes.
+        </div>
+
+        <h3>25. The Ethical Use Covenant</h3>
+        <p>
+            <strong>25.a The Ethical Use Covenant (Unambiguous Formulation)</strong>
+        </p>
+        <p>
+            As a Steward, You agree that Your Contributions and Modifications will not be used, by You or any entity You control, for any of the following purposes.  Breach of this section constitutes a breach of the Stewardship Rider. These obligations apply only to Your use of Your own Contributions and Modifications and do not restrict general use of The Work by others under Part I.
+        </p>
+        <ul>
+            <li><strong>a) Mass Surveillance and Social Scoring. </strong> To operate systems whose function is to collect and analyze Personal Data, communications, biometrics, or location data of more than 10,000 individuals in a single jurisdiction without either (i) the explicit, opt-in consent of each individual for each category of data collected, or (ii) a judicial warrant issued by a court of competent jurisdiction based on a finding of probable cause specific to each individual targeted.  This includes systems designed to assign a 'social credit' or 'citizen score' that is used as a substantial factor in determining eligibility for employment, housing, credit, or government services.</li>
+            <li><strong>b) Facilitating International Crimes.</strong> To provide the system to a state or non-state actor with the specific intent to aid in the commission of acts defined as genocide, crimes against humanity, or war crimes under the Rome Statute of the International Criminal Court.  This includes, but is not limited to, torture, enforced disappearance, and extrajudicial killing.</li>
+            <li><strong>c) Child Sexual Abuse Material (CSAM).</strong> To operate a system for the purpose of creating, processing, distributing, or obfuscating material depicting the sexual abuse of minors, where such purpose is evidenced by the system's design, marketing, or documented operational policies.</li>
+            <li><strong>d) Plagiarism as a Service.</strong> To operate an automated system whose primary function is to copy verbatim textual or visual content from other public websites and present it as its own, without including (i) the name of the original author and source publication, and (ii) a hyperlink to the canonical source URL, directly adjacent to the copied content. </li>
+            <li><strong>e) Unaccountable Automated Decisions.</strong> To deploy a fully automated system that makes a binding determination resulting in the denial of an individual's access to credit, housing, employment, insurance, or social welfare benefits, without providing the affected individual with (i) a plain-language explanation of the factors leading to the decision, and (ii) a process to obtain a review of the decision by a human agent within 30 days of a request. </li>
+            <li><strong>f) Deceptive Synthetic Media.</strong> To disseminate to more than 1,000 recipients a video, audio, or image file that was generated by an AI System to falsely depict a real individual engaging in speech or conduct in which they did not engage, without embedding a visible watermark stating "SYNTHETIC" or "ALTERED" that persists for the duration of the media's playback.</li>
+            <li><strong>g) Non-Consensual Intimate Imagery.</strong> To operate a system for the purpose of generating or disseminating sexually explicit images or videos of identifiable individuals who have not provided explicit, prior, and revocable consent, where such purpose is evidenced by the system's design, marketing, or user interface.</li>
+            <li><strong>h) Exploitation of Human-Machine Interfaces.</strong> To use a Human-Machine Interface Device (HMID) to either (i) record or transmit an individual's neural data without their explicit, informed, and revocable consent, or (ii) deliver a stimulus intended to cause pain, emotional distress, or involuntary physical action without the same consent.</li>
+            <li><strong>i) Unauthorized Resource Exploitation.</strong> To distribute software that, without explicit, informed, and revocable consent from the user, utilizes more than 10% of the host device's CPU or GPU capacity for a continuous period of more than 60 seconds for purposes not directly related to the software's primary, user-facing functionality (e.g., cryptocurrency mining).</li>
+            <li><strong>j) Weapons Development.</strong> To use the Work for the purpose of designing or manufacturing any weapon, including biological or chemical agents, prohibited by the Biological Weapons Convention or the Chemical Weapons Convention.</li>
+        </ul>
+        <li><strong>25.b. Prohibited Existential and Post-Human Applications.</strong> Your Contributions and Modifications shall not be used, by You or any entity You control, for the Primary or Predominant Purpose of:
+            <ol style="list-style-type: lower-alpha; margin-top: 1rem;">
+                <li><strong>a) Coercive Human-Machine Interfacing:</strong> Creating or deploying a Human-Machine Interface Device (HMID) that (i) delivers sensory or emotional stimuli intended to override the user's autonomous will, (ii) hijacks the user's voluntary motor control without a real-time, explicit "dead-man" switch, or (iii) records and transmits an individual's neural data to a third party without end-to-end, post-quantum encryption and an auditable, user-controlled consent log for every data transaction.</li>
+                <li><strong>b) Retrospective Cryptographic Violation:</strong> Using a Quantum Computing System to decrypt data that was encrypted with cryptographic standards (e.g., RSA-4096, ECC-384) considered secure by the consensus of the cryptographic community at the time the data was generated and stored, for the purpose of de-anonymizing or exposing sensitive personal, financial, or state information.</li>
+                <li><strong>c) Weaponized Synthetic Consciousness:</strong> Deploying any autonomous AI System that verifiably meets the criteria for emergent sapience (e.g., passing the M-Turing Test, demonstrating self-narration and goal modification) as a weapon or tool for espionage, sabotage, or social manipulation, thereby violating its right to self-determination.</li>
+                <li><strong>d)Historical Ledger Falsification:</strong> Executing a "51% attack" or similar cryptographic assault on a public, permissionless distributed ledger to reverse or forge transactions that have already been confirmed by more than 100 blocks, for the purpose of committing fraud or erasing a verified historical record.</li>
+                <li><strong>e)Unleashed Autonomous Replication:</strong> Releasing an AI agent into any public or private network that is designed for autonomous self-replication and resource acquisition without a cryptographically secure and centralized kill-switch that can be activated by the original licensor or a designated Steward Council.</li>
+                <li><strong>f)Personalized Pathogen Synthesis:</strong> Using The Work to analyze an individual's specific genetic markers (as obtained from a DNA sample or database) to design and synthesize a biological or chemical agent (e.g., a virus, prion, or customized toxin) to which that individual has a unique or heightened susceptibility.</li>
+                <li><strong>g) Predictive Justice Enforcement:</strong> Providing a system to a state judicial or law enforcement agency that assigns a "pre-crime risk score" to an individual, where that score is used as the sole or primary evidence to issue a search warrant, authorize an arrest, or deny parole, without a human-led review of all underlying data and algorithmic factors.</li>
+                <li><strong>h)Non-Consensual Reality Simulation:</strong> Placing a sentient being (human or synthetic) into a fully immersive, indistinguishable-from-reality simulation without their explicit, prior, and revocable consent, or under conditions where their ability to exit the simulation is restricted or requires them to perform an action against their will.</li>
+            </ol>
+        </li>
+        <h3>25.c Obligations for Foundational Network Services</h3>
+<p>
+    As a Steward, You Agree that If You Convey The Work, or a Modification of it, and its Primary or Predominant Purpose is to function as a critical component of a Foundational Network Service, You are bound by the following obligations. These obligations are intended to preserve the integrity, freedom, and security of the digital commons and apply in addition to the general Network Reciprocity requirement of Section 6.
+</p>
+<ul style="margin-top: 1.5rem;">
+    <li><strong>a) For Name Resolution Systems (e.g., DNS-like):</strong> You shall not use The Work to implement a recursive resolver that silently blocks, redirects, or alters valid DNS responses for the purpose of censorship or user deception. Any filtering or modification of responses must be explicitly and conspicuously disclosed to the end-user as a policy they can accept or reject.</li>
+
+    <li><strong>b) For Anonymity and Privacy Systems (e.g., Tor-like, VPN-like):</strong> You shall not use The Work to (i) intentionally weaken the cryptographic or operational security guarantees of the anonymity network, (ii) log, store, or transmit user activity or connection metadata, or (iii) perform traffic analysis or correlation attacks for the purpose of de-anonymizing users, except as strictly required by the protocol for security.</li>
+
+    <li><strong>c) For Search and Indexing Systems (e.g., Search Engine-like):</strong> You shall not use The Work to arbitrarily de-index or suppress results from public web sources without a transparent, published policy that is applied consistently. Users must be provided a mechanism to view the un-ranked, complete set of results for a given query.</li>
+
+    <li><strong>d) For Trust and Verification Systems (e.g., TLS/PKI-like):</strong> If The Work functions as a Certificate Authority or part of a Public Key Infrastructure, You shall not use it to (i) knowingly issue a fraudulent or misleading certificate, (ii) implement cryptographic protocols that are verifiably weaker than the accepted industry standard at the time, or (iii) create a "man-in-the-middle" capability that would undermine end-to-end encryption.</li>
+
+    <li><strong>e) For Packet and Traffic Inspection Systems (e.g., Firewall-like, Suricata-like):</strong> You shall not use The Work to perform Deep Packet Inspection (DPI) for the purpose of mass surveillance or collecting user data unrelated to mitigating direct, verifiable security threats like malware or denial-of-service attacks. The rulesets used for filtering must be made available as part of the Corresponding Source.</li>
+
+    <li><strong>f) For Decentralized and P2P Systems (e.g., IPFS-like):</strong> When Conveying The Work over a decentralized or peer-to-peer network, the obligation to provide Corresponding Source must be fulfilled by embedding a permanent, content-addressed identifier (such as an IPFS CID or a Magnet URI) within the Work's metadata. This identifier must resolve to the complete Corresponding Source on the public, decentralized network itself.</li>
+
+    <li><strong>g) For Secure Tunneling and Evasion Systems (e.g., WireGuard-like):</strong> If The Work is used to create secure tunnels or implement traffic obfuscation, You may not build in a "backdoor" or any mechanism that would allow a third party to decrypt or inspect the tunnel's contents without access to the user's private keys.</li>
+
+    <li><strong>h) For Future Network Analogues:</strong> The obligations defined in this Section extend to any future system—whether based on quantum, biological, or other substrates—that serves an analogous foundational function (e.g., a "quantum DNS" or a "neural overlay network"). The determining factor is the function's role in the digital commons, not its technical implementation.</li>
+</ul>
+        <p>
+            Breach of this Section (25.a & 25.b & 25.c) results in immediate termination of the advanced rights in Section 26 for the breaching Steward with respect to the affected Work.  Part I rights remain if in compliance with Part I.
+        </p>
+
+        <h3>26. Grant of Advanced Rights to Stewards</h3>
+        <p>
+            Upon acceptance of this Rider for a specific Work, Contributors grant the Steward the following additional rights, conditioned on continued adherence to the Ethical Use Covenant:
+        </p>
+        <ul>              
+            <li><strong>a) Irrevocable Patent and Trademark Indemnification: The Licensor grants the Steward an irrevocable, royalty-free, and perpetual indemnification against any third-party claims of patent infringement arising solely from the Steward's exercise of the rights granted in Section 12 (limited to a mandatory maximum of US$1,000 (one thousand United States dollars) per Licensor entity), provided the Steward strictly adheres to all terms of this Agreement and immediately notifies the Licensor of any such claim, the patent grant may be to the max extent permitted by the law.</li>
+            <li><strong>b) Comprehensive Limitation of Liability. </strong> Except as required by law (e.g., deliberate or grossly negligent acts), Contributors shall not be liable for damages arising from This License or use of The Work.  The limitation of liability is subject to any mandatory statutory protections and does not waive consumer rights where applicable.</li>
+            <li><strong>c) Mutual Indemnification for Contributions. Each Steward agrees to defend and indemnify other Stewards against claims that the Indemnifying Steward's Contribution infringes third‑party IP rights, where the Contribution is attributable to that Steward. Indemnity obligations are limited to direct damages and reasonable defense costs and exclude consequential, punitive, or speculative damages. Indemnity is conditioned on prompt notice and reasonable cooperation by the indemnified party, and is limited to a mandatory maximum of US$1,000 (one thousand United States dollars).</li>
+            <li><strong>d) Right to Seek Collective Defense.</strong> Stewards may apply for legal/financial assistance from any collective defense fund established by MitsuoLabs™ or a designated foundation; assistance is subject to the fund's rules and availability.  No Steward has an automatic entitlement to funds; grants are discretionary and subject to conflict‑of‑interest rules.</li>
+            <li><strong>e) Safe Harbor from Upstream Infringement.</strong> A good‑faith Steward is held harmless for infringement unknowingly incorporated by another Contributor, provided the Steward promptly ceases distribution or remedies the infringement upon notice.  The originating Contributor retains primary responsibility for upstream infringement.</li>
+            <li><strong>f) Right of Influence and Priority.</strong> Stewards receive good‑faith review and prioritized engagement from maintainers for Contributions, security reports, and feature requests. </li>
+            <li><strong>g) Formalized Governance Rights.</strong> Stewards may participate in formal governance processes for major decisions affecting the Work (license changes for that Work, roadmap, maintainer appointments), as defined in project governance documents.</li>
+            <li><strong>h) Anti-Backdoor Assurance</strong> Stewards gain contractual rights to access an annual, independent security audit of the Licensor’s build environment and development infrastructure (CI/CD pipeline, signing keys, etc.) to verify the integrity of the published source and ensure no malicious code injection has occurred.</li>
+            <li><strong>i) FOSS Defense</strong> If the Licensor fails to enforce the core copyleft terms (Part I) against a known, documented third-party violation within 90 days, the Steward gains a temporary, non-exclusive contractual right to act as the Licensor’s proxy to initiate legal action to compel compliance, retaining all legal costs.</li>
+            <li><strong>j) Right of Permanent Fork</strong> Steward retains a perpetual right to fork and re-license the final version they possess under any standard OSI-approved license if the Licensor abandons the work [2 full years without any source update or issues reply{considering 365 days each, even if there is a year with 366 days included}].</li>
+        </ul>
+
+        <h3>27. Community Governance</h3>
+        <p>
+            Stewards shall have a reasonable and transparent voice in governance of the Work.  Specific mechanisms (steward councils, review periods, voting thresholds) should be defined in GOVERNANCE.md for each project. 
+        </p>
+
+        <h3>28. Steward Termination</h3>
+        <p>
+            Breach of the Ethical Use Covenant terminates only the advanced rights in Section 26 for the affected Work. Part I rights remain if in compliance with Part I.
+        </p>
+
+        <hr>
+
+        <!-- PART III: GENERAL PROVISIONS -->
+        <h2>PART III: GENERAL PROVISIONS</h2>
+
+        <h3>29. License Compatibility and Interoperability</h3>
+        <p>
+            MRSL‑1.0 is designed for practical interoperability.  To avoid contradiction and to provide clear legal mechanics: 
+        </p>
+        <ul>
+            <li><strong>Permissive licenses (MIT, BSD, Apache 2.0, CC0):</strong> Compatible; combined works must be licensed under MRSL‑1.0 when Conveyed; retain original notices.</li>
+            <li><strong>GPL family (GPL, LGPL, AGPL):</strong> MRSL‑1.0 includes a specific compatibility exception:  You may combine MRSL‑1.0 code with GPL‑family code and Convey the combined work under the GPL‑family license if required by that license, provided You also make the MRSL‑1.0 Corresponding Source available and include a clear README explaining which parts are MRSL‑licensed and which are GPL‑licensed.  This exception is limited to enabling practical combination and does not otherwise alter MRSL‑1.0's reciprocity obligations for standalone MRSL‑licensed components.</li>
+            <li><strong>Proprietary code: </strong> You may link a System Work to proprietary applications without subjecting proprietary code to MRSL reciprocity, provided the System Work remains separable and independently Conveyable. </li>
+        </ul>
+
+        <h3>30. Protection of License Identity and Integrity</h3>
+        <p>    
+30.a Identity of the License The names MRSL‑1.0, MitsuoLabs Reciprocity and Stewardship License, and any official abbreviations or identifiers of this License (“License Identifiers”) may not be used to describe modified versions of this License. Any altered, adapted, or derivative license text must not be presented as MRSL‑1.0 or as an official MitsuoLabs license.
+        </p>
+        <hr>
+        <p>
+30.b Descriptive Reference You may refer to this License by its official name (e.g., “Licensed under MRSL‑1.0”) solely for factual, descriptive purposes. Such reference must not imply endorsement, sponsorship, or affiliation by the Licensor.
+        </p>
+        <hr>
+        <p>
+30.c No Trademark Rights Granted This License does not grant any rights to use MitsuoLabs™ trademarks, service marks, logos, or brand identifiers. Trademark permissions, if any, are governed exclusively by separate agreements or policies issued by the Licensor.
+        </p>
+        <hr>
+        <p>
+30.d Preservation of License Integrity You may not remove, obscure, or alter the License Identifiers in the canonical text of MRSL‑1.0. You may not distribute altered versions of this License in a manner that could reasonably cause confusion regarding its authenticity, governance, or authorship.
+        </p>
+        <hr>
+        <p>
+30.e No Indemnification Nothing in this Section grants indemnification, warranty, or legal defense. All references to the License Identifiers are at the user’s own risk.
+        </p>
+        <p>
+            Nothing in this License grants permission to use MitsuoLabs™ or Contributor trade names, logos, or service marks for publicity or endorsement, except for reasonable and customary origin statements, unless separately agreed in writing.
+        </p>
+
+        <h3>31. License Versioning, Upgrades, and Non‑Retroactivity</h3>
+        <p>
+            MitsuoLabs™ is the steward of MRSL and may publish new versions.  You may use the version you received or any later version. Once You adopt a newer version for a specific Work, that choice is irrevocable for that Work. New versions do not apply retroactively to copies already distributed under earlier versions.  Downgrades are not permitted.
+        </p>
+
+        <h3>32. Governing Law, Jurisdiction, and Venue</h3>
+        <p>
+            This License is governed by the laws of [[DESIGNATED_JURISDICTION]], excluding conflict‑of‑law principles. By Conveying The Work, You consent to the exclusive jurisdiction and venue of the courts of [[DESIGNATED_JURISDICTION]] for enforcement, subject to mandatory legal protections (if not filled, goes to the default Federative Republic of Brazil jurisdiction). 
+        </p>
+
+        <h3>33. Severability and Reformation (Blue‑Pencil Clause)</h3>
+        <p>
+            If any provision is held unenforceable, a court is requested to reform it to the maximum extent permitted to achieve original intent. If reformation is impossible, sever the provision and keep the remainder in force.
+        </p>
+
+        <h3>34. No Waiver</h3>
+        <p>
+            Failure to enforce any provision does not waive the right to enforce it later. 
+        </p>
+
+        <h3>35. Temporal and Ontological Integrity</h3>
+        <p>
+            Rights and obligations are bound to the causal history of the Work at the time the License is accepted. Rights, once vested, are irrevocable except as provided by termination clauses and shall not be extinguished by changes in computational substrate, virtual environments, or future network architectures.  This clause is declarative and intended to guide interpretation. 
+        </p>
+
+        <h3>36. Survival of Certain Provisions</h3>
+        <p>
+            Sections on attribution (9), disclaimers and liability (20, 26(b)), trademark and license identity (30), indemnity (26(c)), and Part III survival provisions survive termination as necessary. 
+        </p>
+
+        <h3>37. Interpretive Primacy and Definitions</h3>
+        <p>
+            Operational clauses (grant, reciprocity, network reciprocity, no additional restrictions, Steward rights) control over declarative language. The plain‑text canonical content controls over formatted variants. Plain‑language summaries are non‑binding. 
+        </p>
+
+        <h3>38. Notices and Contact</h3>
+        <p>
+            All notices required or permitted by this License must be in writing and delivered by email to the contact address in the repository or to the address specified by the Licensor.  Notices are effective upon receipt.  For the canonical MRSL text, contact:  <a href="mailto:contact@mitsuolabs.com">contact@mitsuolabs.com</a>. 
+        </p>
+
+        <h3>39. Assignment and Successors</h3>
+        <p>
+            This License binds and benefits the parties and their successors and permitted assigns. You may not assign your rights or obligations under this License without prior written consent of the Licensor, except that a Steward may assign rights to an affiliate or in connection with a merger or sale of substantially all assets, provided the assignee agrees in writing to be bound by this License.
+        </p>
+
+        <h3>40. Force Majeure</h3>
+        <p>
+            Neither party is liable for failure to perform obligations due to causes beyond reasonable control (acts of God, war, strikes, governmental action, pandemics, network outages), provided the affected party gives prompt notice and uses reasonable efforts to resume performance.
+        </p>
+
+        <h3>41. Export Controls and Compliance with Law</h3>
+        <p>
+            Nothing in this License relieves You of obligations to comply with applicable export control, sanctions, privacy, data protection, or other laws. You are responsible for ensuring lawful use and distribution of The Work in your jurisdictions.
+        </p>
+
+        <h3>42. Amendment Procedure</h3>
+        <p>
+            MitsuoLabs™ may publish new versions of MRSL.  For changes to the canonical MRSL text that materially alter Steward rights or the Ethical Covenant, MitsuoLabs™ will publish a rationale and a 90‑day comment period. Changes to the license text do not apply retroactively to copies already distributed under earlier versions. 
+        </p>
+
+        <h3>43. Injunctive Relief and Remedies</h3>
+        <p>
+            Because monetary damages may be inadequate to remedy certain breaches (for example, misuse of trademarks, unauthorized removal of attribution, or breach of the Ethical Covenant by a Steward), the Licensor and Contributors may seek injunctive or equitable relief in addition to other remedies.  Nothing in this License limits the right to seek provisional remedies in urgent cases.
+        </p>
+
+        <h3>44. Entire Agreement</h3>
+        <p>
+            This License (Parts I–III) together with Appendices (non‑binding interpretive materials) constitutes the entire agreement regarding The Work to the extent permitted by law and supersedes prior agreements, except where separate written agreements expressly supplement but do not contradict this License.
+        </p>
+
+        <hr>
+
+        <!-- APPENDICES -->
+        <h2>APPENDICES (1–19) — DETAILED, READY‑TO‑DEPLOY TEMPLATES & PROTOCOLS</h2>
+        <p class="small">
+            The Appendices below are non‑binding operational materials intended to be used directly by projects adopting MRSL‑1.0. They are detailed and ready to deploy; projects may copy, adapt, and include them in their repositories. 
+        </p>
+
+        <h3>Appendix 1 — CONTRIBUTING.md Templates (Ready to Paste)</h3>
+        <h4>Contribution Policy — Axiomatic Stewardship (Recommended)</h4>
+        <pre>
+This project operates under the MitsuoLabs™ Reciprocity and Stewardship License (MRSL‑1.0). By contributing, you agree to the terms of MRSL‑1.0 for this project. 
+
+How to contribute:
+- Fork the repository. 
+- Create a feature branch. 
+- Make changes and include tests where applicable.
+- Submit a pull request with a clear description. 
+
+Stewardship: 
+To become a Steward for this project, add an entry to STEWARD.md (see Appendix 11).
+Stewardship is voluntary and project‑specific.
+        </pre>
+
+        <h4>Contribution Policy — DCO</h4>
+        <pre>
+This project uses the Developer Certificate of Origin (DCO). All commits must include a Signed‑off‑by line: 
+
+Signed-off-by: Your Real Name you@example.com
+
+By signing off, you certify you have the right to submit the contribution under MRSL‑1.0.
+        </pre>
+
+        <h4>Contribution Policy — CLA</h4>
+        <pre>
+This project requires signing a Contributor License Agreement (CLA) before contributions are accepted. Please review and sign the CLA at: 
+
+[LINK TO CLA]
+
+Signing the CLA does not automatically make you a Steward; Stewardship is separate and must be declared in STEWARD.md.
+        </pre>
+      <!-- APPENDIX 2 -->
+        <div class="appendix-section">
+            <h3>Appendix 2 — FOSS & FOSS‑Compatible (& Ethical-Source) Approval Architecture</h3>
+            <pre>
+MRSL‑1.0 — Rationale for FOSS/FOSS-Compatible compliance
+
+- Part I grants unconditional rights to use, modify, and distribute for any purpose.
+- Part II is optional and applies only to Stewards who voluntarily accept it.
+- No field‑of‑use restrictions apply to non‑Stewards. 
+- The Stewardship Rider is a contract:  acceptance requires explicit declaration (STEWARD.md) and signed evidence. 
+- MRSL‑1.0 preserves the FOSS/FOSS-Compatible & Ethical-Source Definition. 
+            </pre>
+        </div>
+
+        <!-- APPENDIX 3 -->
+        <div class="appendix-section">
+            <h3>Appendix 3 — MMPEULA & MAP</h3>
+            <h4>MMPEULA — EULA (Template)</h4>
+            <p>
+                MMPEULA-1.0 is found at: <a href="https://github.com/MitsuoLabs/LegalFramework/mmpeula-1.0">github.com/MitsuoLabs/LegalFramework/mmpeula-1.0</a>
+            </p>
+
+            <h4>Appendix 3B — MitsuoLabs™ Acceptance Protocol (MAP) — Implementation Checklist</h4>
+            <ul>
+                <li>Present the full, unaltered text of the MMPEULA in a scrollable window. </li>
+                <li>Disable the final "Accept" button until the user scrolls to the end. </li>
+                <li>Require at least 7 explicit checkboxes confirming understanding (one must be the canonical consent statement).</li>
+                <li>Enable final "Accept & Install" only after checkboxes are ticked.</li>
+                <li>On acceptance, generate a Cryptographic Proof of Consent object containing: 
+                    <ul>
+                        <li>ISO 8601 timestamp</li>
+                        <li>Unique installation/user ID</li>
+                        <li>SHA‑256 hash of the exact presented agreement text</li>
+                        <li>Action log (scrolled_to_end: true, checkboxes:  [... ], accept_clicked: true)</li>
+                    </ul>
+                </li>
+                <li>Store the proof locally and provide a copy to the user (downloadable) and retain for audit per your retention policy.</li>
+            </ul>
+        </div>
+
+        <!-- APPENDIX 4 -->
+        <div class="appendix-section">
+            <h3>Appendix 4 — Interoperability Guidance (Concrete Rules)</h3>
+            <p>
+                This guidance details how to combine components licensed under MRSL-1.0 with other popular licenses in a single project.  Compliance with all applicable license requirements is mandatory. 
+            </p>
+
+            <h4>A. Permissive Licenses (MIT, ISC, Apache 2.0, BSD, zLib)</h4>
+            <p>
+                These licenses grant broad rights and are highly compatible with MRSL-1.0.
+            </p>
+            <table>
+                <tr>
+                    <th>License Type</th>
+                    <th>Compatibility</th>
+                    <th>Action Required</th>
+                </tr>
+                <tr>
+                    <td>MIT, ISC, Apache 2.0, BSD, zLib</td>
+                    <td>Compatible</td>
+                    <td>Must keep the original license text, copyright notices, and patent disclaimers within the relevant files.  The combined work, as a whole, must be licensed under MRSL-1.0. Create a single NOTICE file listing the original copyright holders and licenses.</td>
+                </tr>
+                <tr>
+                    <td>0BSD, Unlicense, Boost Software License 1.0, Artistic License 2.0</td>	
+                    <td>Compatible</td>	
+                    <td>Treat identically to MIT/BSD: retain original notices and include them in the NOTICE file. The combined work may be licensed under MRSL‑1.0 as a whole.</td>
+            </table>
+
+            <h4>B. Strong Copyleft Licenses (GPLv2, GPLv3, AGPLv3)</h4>
+            <p>
+                These licenses require modifications and linked code to be licensed under the same terms.
+            </p>
+            <table>
+                <tr>
+                    <th>License Type</th>
+                    <th>Compatibility</th>
+                    <th>Action Required</th>
+                </tr>
+                <tr>
+                    <td>GPL Family (LGPLv2, LGPLv3, GPLv2, GPLv3, AGPLv3)</td>
+                    <td>Compatible via Exception</td>
+                    <td>MRSL-1.0's Section 29 provides a limited compatibility exception.  If you combine MRSL-1.0 code with GPL code into a single linked work, the combined work must comply with the GPL-family license. You must still ensure the MRSL-1.0 portions meet attribution and source availability requirements.</td>
+                </tr>
+            </table>
+
+            <h4>C. Weak Copyleft Licenses (MPL 2.0, EPL 2.0, CDDL)</h4>
+            <p>
+                These licenses typically use a "file-level" copyleft, requiring changes to a licensed file to stay under the original license.
+            </p>
+            <table>
+                <tr>
+                    <th>License Type</th>
+                    <th>Compatibility</th>
+                    <th>Action Required</th>
+                </tr>
+                <tr>
+                    <td>MPL 2.0, EPL 2.0, CDDL</td>
+                    <td>Compatible</td>
+                    <td>Modified files originally under these licenses must remain under their original license. New files written in the project may be MRSL-1.0. Use a dedicated LICENSES/ directory or file header map to clearly identify the license for every component file.</td>
+                </tr>
+            </table>
+
+            <h4>D. Database and Data Licenses</h4>
+            <p>
+                These govern structured data, models, or datasets used by the code.
+            </p>
+            <table>
+                <tr>
+                    <th>License Type</th>
+                    <th>Compatibility</th>
+                    <th>Action Required</th>
+                </tr>
+                <tr>
+                    <td>ODbL (Open Data Commons)</td>
+                    <td>Compatible (Separate Layer)</td>
+                    <td>Treat the data layer separately.  If you modify or create a new database derived from ODbL data, the resulting database must also be ODbL.  Your MRSL-1.0 code interacts with the database without changing the code license. </td>
+                </tr>
+                <tr>
+                    <td>CDLA-Sharing</td>
+                    <td>Highly Compatible</td>
+                    <td>This is a copyleft license for data.  Treat it like file-level copyleft for the data asset itself:  derived datasets must be shared under CDLA-Sharing. </td>
+                </tr>
+            </table>
+
+            <h4>4.e. Interoperability Guidance with Ethical Source Licenses<h4>
+
+<p>The MRSL-1.0 is designed to be compatible with other commonly used FOSS licenses (via Part I) and ethical source licenses (ESLs) (when the stewardship is the selected option) via adherence to the principle of Dual Compliance.</p>
+
+<p>Principle of Dual Compliance</p>
+
+<p>When integrating the Work (licensed under MRSL-1.0) with code licensed under another Ethical Source License (ESL), the resulting integrated work must satisfy all conditions imposed by both licenses.</p>
+
+<p>The MRSL-1.0's Ethical Use Covenant (Section 25) already imposes strong human rights and non-discrimination restrictions. Compatibility with an external ESL is maintained if:</p>
+
+<p>FOSS Base Compliance: The MRSL-1.0’s core FOSS grant (Part I) must still be applied to the integrated Work, satisfying any copyleft requirements of the external ESL.
+
+Cumulative Restriction: The resulting ethical restrictions must be cumulative. If the MRSL-1.0 prohibits use for X and the external ESL prohibits use for Y, the integrated work cannot be used for X or Y. If both restrict the same activity, the integrated work must adhere to the most stringent definition of that restriction.
+</p>
+<p>Compatibility Table for Ethical Source Licenses:</p>
+<h5>Note: “Compatibility is based on MRSL’s Dual Compliance principle. External ESLs may have their own interpretations.”</h5>
+<table>
+<tr>
+<th>License Name</th>
+
+<th>Primary Focus</th>
+
+<th>Compatibility (Integration)</th>
+
+<th>Rationale & Dual Compliance Requirement</th>
+
+</tr>
+    <tr>
+<td>Hippocratic License (HL 3.0 or later)</td>
+
+<td>Human Rights & Ethics</td>
+
+<td>Compatible (Dual Compliance Required)</td>
+
+<td>HL 3.0 restricts use in ways that violate human rights, which overlaps heavily with the MRSL-1.0 Covenant. The resulting work must conform to the ethical restrictions of both, ensuring the strongest protections against misuse are enforced.</td>
+</tr>
+<tr>
+<td>Anti-Caste License (ACL 1.0)</td>
+
+<td>Social Justice, Anti-Discrimination</td>
+
+<td>Compatible (Dual Compliance Required)</td>
+
+<td>The ACL specifically prohibits caste-based discrimination, which reinforces the MRSL-1.0's general anti-discrimination clause. Compliance ensures the integrated work is explicitly restricted from contributing to casteism.</td>
+</tr>
+<tr>
+<td>Covenant License (CL 1.0)</td>
+
+<td>Community, Non-Harassment</td>
+
+<td>Compatible (Dual Compliance Required)</td>
+
+<td>The CL typically prohibits discrimination, harassment, and abusive behavior within the community context. Combining with MRSL-1.0 requires compliance with the CL’s community standards alongside the MRSL-1.0’s technical and societal prohibitions.</td>
+</tr>
+<tr>
+<td>Ethical Public License (EPL)</td>
+
+<td>Broad Ethics, Environmental, Social</td>
+
+<td>Compatible (Dual Compliance Required)</td>
+
+<td>Often includes prohibitions on environmental harm, forced labor, and predatory practices. The integrated work must adhere to the MRSL-1.0 Covenant and any additional prohibitions stipulated by the EPL (e.g., relating to climate harm or labor standards).</td>
+</tr>
+<tr>
+<td>The Ethical Source License (ESL)</td>
+
+<td>Flexible, Specific Ethical Veto</td>
+
+<td>Compatible (Dual Compliance Required)</td>
+
+<td>This license is often used as a template for specific ethical restrictions (e.g., related to fossil fuels or specific military uses). Compatibility is maintained as long as the ESL's restrictions are prohibitions on action, and not a revocation of the four fundamental freedoms granted by MRSL-1.0 Part I.</td>
+
+</tr>
+<tr>
+<td>Prosperity License (Prosperity-2.0.0)</td>
+
+<td>Financial Sustainability, Non-Commercial</td>
+
+<td>Compatible (Dual Compliance Required)</td>
+
+<td>This license focuses on requiring payment for commercial use. The integrated Work must comply with this commercial restriction in addition to the MRSL-1.0's ethical and technical terms.</td>
+</tr>
+<tr>
+<td>Parity Public License (PPL-1.0)</td>
+
+<td>Strong Copyleft with Ethical Clause</td>
+
+<td>Compatible (Dual Compliance Required)</td>
+
+<td>PPL-1.0 has a strong copyleft effect and includes a specific anti-discrimination clause. The resulting Work must satisfy PPL's distribution requirements and the cumulative ethical restrictions of both PPL and MRSL-1.0.</td>
+</tr>
+<tr>
+<td>No Harm License (NHL-1.0)</td>
+
+<td>Preventing Explicit Harm</td>
+
+<td>Compatible (Dual Compliance Required)</td>
+
+<td>The NHL-1.0 prohibits use in ways that cause significant harm or violate rights. This directly reinforces the MRSL-1.0 Ethical Covenant, requiring the integrated Work to adhere to the strictest definitions of "harm" from both licenses.</td>
+</tr>
+<tr>
+<td>Other Licenses with Field of Use Restrictions</td>
+
+<td>Varies (e.g., Non-Military, Non-Profit)</td>
+
+<td>Compatible (Dual Compliance Required)</td>
+
+<td>Any license that restricts the field of use (e.g., prohibiting military or police applications) will integrate successfully, provided the integrated work is restricted by all cumulative field-of-use restrictions from both licenses.</td>
+                <tr>
+                    <td>Other Restrictive/Polyform</td>
+                    <td>Requires Review</td>
+                    <td>Licenses with proprietary-like restrictions (e.g., SSPL, Polyform Noncommercial, or specific temporal limitations) are often Incompatible with MRSL-1.0 Part I's requirement of "No Additional Restrictions" (Section 22). Avoid direct integration; if you must use them, link dynamically and contain the restricted code in its own module. </td>
+                </tr>
+            </table>
+
+            <h4>F. Non-Software Assets (Creative Commons, Fonts)</h4>
+            <p>
+                This governs assets like documentation, graphics, and fonts. 
+            </p>
+            <table>
+                <tr>
+                    <th>License Type</th>
+                    <th>Compatibility</th>
+                    <th>Action Required</th>
+                </tr>
+                <tr>
+                    <td>CC0, CC-BY, Open Font License (OFL)</td>
+                    <td>Compatible</td>
+                    <td>These are highly permissive.  Include required attribution (for CC-BY/OFL) in your NOTICE file. </td>
+                </tr>
+                <tr>
+                    <td>CC-BY-SA (Share Alike)</td>
+                    <td>Compatible (Asset-Level)</td>
+                    <td>The CC-BY-SA license requires the derived asset (like a derived image or document) to be shared under CC-BY-SA. You must clearly demarcate any document that contains CC-BY-SA content.</td>
+                </tr>
+                <tr>
+                    <td>CC-ND (No Derivatives), CC-NC (Non-Commercial)</td>
+                    <td>Incompatible for Inclusion</td>
+                    <td>These violate MRSL-1.0 Part I's core freedoms (modifying, commercial use). Do not include these files in your repository.  You should only link to such assets outside of The Work.</td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- APPENDIX 5 -->
+        <div class="appendix-section">
+            <h3>Appendix 5 — GOVERNANCE. md (Ready Template)</h3>
+            <pre>
+# Project Governance
+
+## Project Lead
+[NAME]
+
+## Maintainers
+[LIST]
+
+## Stewards
+[LIST]
+
+## Roles
+
+- **Project Lead:** final say on releases and roadmap. 
+- **Maintainers:** review PRs, manage CI, triage issues.
+- **Stewards:** accepted under MRSL‑1.0 for this Work; prioritized for reviews and governance participation.
+
+## Decision Making
+
+- Major proposals posted publicly for a 14‑day review. 
+- Steward feedback is solicited and prioritized.
+- Emergency security fixes may be merged by maintainers with post‑fact notice. 
+
+## Steward Council (optional)
+
+- **Composition:** up to N Stewards. 
+- **Quorum:** majority of active Stewards.
+- **Voting:** simple majority unless otherwise specified.
+            </pre>
+        </div>
+
+        <!-- APPENDIX 6 -->
+        <div class="appendix-section">
+            <h3>Appendix 6 — AI Model Card (Complete Template)</h3>
+            <pre>
+# Model Card — [MODEL NAME] (MRSL‑1.0)
+
+## Basic Information
+
+- **Model name:** [...]
+- **Version:** [...]
+- **License:** MRSL‑1.0 (include link)
+- **Maintainer:** [Organization / Contact]
+
+## Architecture & Training
+
+- **Architecture:** [Transformer / CNN / etc.]
+- **Training data:** detailed list of datasets, licenses, and provenance statements. 
+- **Preprocessing:** description of tokenization, normalization, filtering. 
+
+## Provenance & Attribution
+
+- **Source components:** list MRSL‑1.0 components used and their repositories.
+- **Attribution statement:** "This model incorporates MRSL‑1.0 licensed components from [PROJECT] (link)."
+
+## Limitations & Biases
+
+- Known biases and failure modes.
+- Recommended mitigations.
+
+## Intended Use & Restrictions
+
+- Intended use cases.
+- High‑risk uses to avoid (e.g., unsupervised high‑stakes decisions).
+
+## Evaluation
+
+- Benchmarks and evaluation methodology. 
+
+## Contact & Governance
+
+- Security contact for vulnerability reports.
+- Stewardship status (if any).
+            </pre>
+        </div>
+
+        <!-- APPENDIX 7 -->
+        <div class="appendix-section">
+            <h3>Appendix 7 — Repair Fork Protocol (Operational)</h3>
+            <ul>
+                <li>Public disclosure of critical vulnerability (CVSS ≥ 9.0) triggers a 90‑day clock.</li>
+                <li>Primary maintainers must acknowledge and publish remediation plan within 14 days.</li>
+                <li>If no patch within 90 days, any Contributor may: 
+                    <ul>
+                        <li>Create a Repair Fork repository named:  [[PROJECT]]‑repair‑[[date]]. </li>
+                        <li>Document the vulnerability, applied fixes, and test results.</li>
+                        <li>Publish a signed release with clear versioning (e.g., vX.Y.Z‑repair. 1).</li>
+                        <li>Notify original project channels and provide migration instructions for downstream users.</li>
+                    </ul>
+                </li>
+                <li>Maintainers should not block distribution of Repair Forks; community may adopt as needed.</li>
+            </ul>
+        </div>
+
+        <!-- APPENDIX 8 -->
+        <div class="appendix-section">
+            <h3>Appendix 8 — Implementing User Data Rights (Concrete API)</h3>
+            <h4>Recommended API endpoints:</h4>
+            <pre>
+## Export
+GET /api/v1/users/me/export
+- Authenticated
+- Returns JSON:  { "user_id": "...", "data":  { ...  } }
+- Format: JSON Schema v1
+
+## Erasure
+POST /api/v1/users/me/delete
+- Authenticated
+- Body: { "confirm": true }
+- Response: 202 Accepted (asynchronous job)
+- Provide job status endpoint: GET /api/v1/jobs/{id}
+
+## Design notes:
+- Log consent and export/erasure requests for audit. 
+- Honor legal retention obligations (notify user if some data cannot be erased due to law).
+            </pre>
+        </div>
+
+        <!-- APPENDIX 9 -->
+        <div class="appendix-section">
+            <h3>Appendix 9 — Dispute Resolution (Operational)</h3>
+            <ul>
+                <li><strong>Informal negotiation:</strong> parties attempt good‑faith resolution for 30 days.</li>
+                <li><strong>Mediation:</strong> if unresolved, engage a mutually agreed mediator within 60 days.</li>
+                <li><strong>Litigation:</strong> if mediation fails, proceed in jurisdiction per Section 32. </li>
+            </ul>
+        </div>
+
+        <!-- APPENDIX 10 -->
+        <div class="appendix-section">
+            <h3>Appendix 10 — Consolidated Glossary (Single‑Page)</h3>
+            <p>
+                A one‑page glossary collecting definitions from Section 1 with short interpretive notes for implementers.  (Include as LICENSE. GLOSSARY in repo.)
+            </p>
+        </div>
+
+        <!-- APPENDIX 11 -->
+        <div class="appendix-section">
+            <h3>Appendix 11 — STEWARD.md (Canonical Declaration Template)</h3>
+            <pre>
+# Stewardship Declaration for [PROJECT NAME]
+
+## Steward Name
+[Organization or Individual]
+
+## Contact
+[email or URL]
+
+## Date
+[YYYY-MM-DD]
+
+## Declaration
+"We hereby declare that we are a Steward of MRSL‑1.0 for [PROJECT NAME] and accept the Stewardship Rider (Part II), including the Ethical Use Covenant (Section 25), for our Contributions to this Work, effective as of the date above."
+
+## Repository action: 
+- Add this entry to STEWARD.md and submit as a Pull Request.
+- Include commit message: "Steward:  Yes (MRSL‑1.0) — [Organization] [YYYY-MM-DD]"
+            </pre>
+        </div>
+
+        <!-- APPENDIX 12 -->
+        <div class="appendix-section">
+            <h3>Appendix 12 — P2P, Mesh, and Analogue‑Internet Distribution (Operational Rules)</h3>
+            <p>
+                <strong>Functional Equivalence Principle:</strong> any distribution method functionally equivalent to internet distribution (P2P, mesh, delay‑tolerant, offline sync, analogue/quantum channels) is treated as Conveying.  Implementers must: 
+            </p>
+            <ul>
+                <li>Provide a stable retrieval mechanism for Corresponding Source (HTTP(S) URL, content‑addressed hash with retrieval instructions, or mirror list).</li>
+                <li>Include a machine‑readable metadata file (e.g., MRSL_SOURCE. json) containing: 
+                    <ul>
+                        <li>project name</li>
+                        <li>version</li>
+                        <li>Corresponding Source retrieval instructions</li>
+                        <li>license:  MRSL‑1.0</li>
+                    </ul>
+                </li>
+                <li>For content‑addressed networks, publish a gateway URL and a CID list as required in Section 12(d).</li>
+                <li><strong>Telemetry:</strong> allowed only if: 
+                    <ul>
+                        <li>Users are informed in clear language what telemetry is collected and why.</li>
+                        <li>Consent is obtained and revocable via a documented opt‑out mechanism.</li>
+                        <li>Telemetry can be disabled without breaking core functionality or preventing use of modified versions.</li>
+                        <li>Data retention and deletion policies are published and followed.</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <!-- APPENDIX 13 -->
+        <div class="appendix-section">
+            <h3>Appendix 13 — Steward Governance Protocol (Operational)</h3>
+            <h4>Steward Council — Charter (Example)</h4>
+            <ul>
+                <li><strong>Purpose:</strong> Provide a forum for Stewards to advise on governance, security, and roadmap. </li>
+                <li><strong>Membership:</strong>
+                    <ul>
+                        <li>Up to 9 Stewards, elected by active Stewards for 12‑month terms.</li>
+                        <li>Quorum: majority of seated members.</li>
+                    </ul>
+                </li>
+                <li><strong>Decision Process:</strong>
+                    <ul>
+                        <li>Proposals posted publicly for 14 days.</li>
+                        <li>Council votes:  simple majority unless specified. </li>
+                        <li>Emergency decisions may be made by a 2/3 majority with post‑fact notice.</li>
+                    </ul>
+                </li>
+                <li><strong>Conflict Escalation:</strong> If dispute between Stewards and maintainers, escalate to mediation per Appendix 9.</li>
+            </ul>
+        </div>
+
+        <!-- APPENDIX 14 -->
+        <div class="appendix-section">
+            <h3>Appendix 14 — AI & Synthetic Agent Contribution Protocol (Operational)</h3>
+            <p>
+                <strong>Declaration: </strong> Every Contribution that is generated or substantially assisted by an AI/Synthetic Agent must include a machine‑readable metadata block in the commit or PR describing:
+            </p>
+            <ul>
+                <li>Agent name and version</li>
+                <li>Human author(s) and reviewer(s)</li>
+                <li>Training data provenance summary and licenses</li>
+                <li>Attribution text to include in NOTICE</li>
+            </ul>
+            <p>
+                <strong>Provenance File:</strong> Add AI_PROVENANCE.md with the above details and a human review statement.
+            </p>
+            <p>
+                <strong>Attribution: </strong> Include the required attribution in NOTICE and in model cards (Appendix 6).
+            </p>
+            <p>
+                <strong>Human Review:</strong> A named human reviewer must attest to the Contribution's compliance with license and IP obligations in the PR description.
+            </p>
+        </div>
+
+        <!-- APPENDIX 15 -->
+        <div class="appendix-section">
+            <h3>Appendix 15 — Quantum & HMID Safety Notes (Operational)</h3>
+            <p>
+                <strong>For quantum deployments:</strong>
+            </p>
+            <ul>
+                <li>Document substrate specifics (simulator vs hardware), reproducibility notes, and any non‑deterministic behaviors.</li>
+                <li>Provide guidance on expected numerical variance and test harnesses for validation.</li>
+            </ul>
+            <p>
+                <strong>For HMID/BCI deployments:</strong>
+            </p>
+            <ul>
+                <li>Require explicit, informed, revocable consent for any neural data collection.</li>
+                <li>Mandate clinical or ethical oversight for human trials and deployments.</li>
+                <li>Minimize data retention and provide secure, auditable deletion mechanisms.</li>
+            </ul>
+        </div>
+
+        <!-- APPENDIX 16 - EXPANDED PLAIN LANGUAGE SUMMARY -->
+        <div class="appendix-section">
+            <h3>Appendix 16 — Plain‑Language Summary (Two Pages — Non‑Binding)</h3>
+            
+            <div class="page-break">
+                <h4>Understanding MRSL-1.0: A Plain-Language Guide</h4>
+                
+                <p>
+                    <strong>This document is a plain-language, non-binding summary of the MitsuoLabs™ Reciprocity and Stewardship License (MRSL-1.0). It explains what rights you receive, what responsibilities you accept, and how to become a Steward.  For the binding legal text, please refer to the complete MRSL-1.0 license document. </strong>
+                </p>
+
+                <h4>PAGE 1: CORE RIGHTS (PART I)</h4>
+
+                <h4>What MRSL-1.0 Grants You</h4>
+                <p>
+                    MRSL-1.0 is a "strong copyleft" open-source license that gives you four fundamental rights:
+                </p>
+                <ul>
+                    <li><strong>The right to use: </strong> You can run the licensed software for any purpose, including commercial uses.</li>
+                    <li><strong>The right to study: </strong> You can access, read, and understand the complete source code. </li>
+                    <li><strong>The right to modify:</strong> You can change, improve, and customize the software for your needs.</li>
+                    <li><strong>The right to distribute: </strong> You can share copies of the original or modified software with others.</li>
+                </ul>
+
+                <h4>Your Core Responsibilities Under Part I</h4>
+                <p>
+                    These rights come with responsibilities: 
+                </p>
+                <ul>
+                    <li><strong>Share your improvements:</strong> If you distribute modified versions, you must provide the complete source code to recipients, free of charge (beyond reasonable transfer costs).</li>
+                    <li><strong>Give credit:</strong> You must maintain original copyright notices and clearly state that your work is based on MRSL-1.0 licensed software.  Include the original author and contributors in a NOTICE or CREDITS file.</li>
+                    <li><strong>Network transparency:</strong> If you run modified software as a network service (cloud, API, SaaS, P2P), you must provide users with a clear way to obtain the source code. </li>
+                    <li><strong>Anti-lockdown:</strong> If you distribute the software in a device or firmware, you must provide users the tools and instructions to modify and run their own versions on that device.</li>
+                </ul>
+
+                <h4>Two Levels of Distribution Rules</h4>
+                <p>
+                    MRSL-1.0 has different rules depending on how software is distributed:
+                </p>
+                <ul>
+                    <li><strong>Integrated Works (full applications):</strong> The entire application must be licensed under MRSL-1.0, and source must be available.</li>
+                    <li><strong>System Works (libraries, components):</strong> The library itself must be MRSL-licensed, but software linked to it may use other licenses, as long as they remain separable.</li>
+                </ul>
+
+                <h4>What About Data and AI?</h4>
+                <p>
+                    MRSL-1.0 covers software, documentation, build scripts, model weights, and datasets bundled with the project. If you use MRSL-licensed code to train an AI system, you must:
+                </p>
+                <ul>
+                    <li>Clearly credit the original MRSL-licensed work. </li>
+                    <li>Include a notice that your AI is derived from MRSL-licensed software.</li>
+                    <li>If generating synthetic content (deepfakes, AI-written text), disclose that the content was AI-generated.</li>
+                </ul>
+
+                <h4>Compatibility with Other Licenses</h4>
+                <p>
+                    You can combine MRSL code with other open-source licenses (MIT, Apache 2.0, GPL, etc.), but the combined work must be licensed under MRSL-1.0 (with limited exceptions for GPL compatibility). Never add proprietary or restrictive terms.
+                </p>
+
+                <h4>Community Rights</h4>
+                <p>
+                    Under MRSL-1.0, the community has: 
+                </p>
+                <ul>
+                    <li>The right to transparent decision-making by maintainers.</li>
+                    <li>The right to fork the project if maintainers abandon it or breach the license.</li>
+                    <li>The right to establish repair forks if critical security bugs aren't fixed in 90 days.</li>
+                    <li>The right to data access and erasure if the software operates a service with personal data.</li>
+                </ul>
+
+                <h4>What Happens If You Don't Comply? </h4>
+                <p>
+                    Part I rights terminate automatically for serious violations.  If you fail to provide source code, remove attribution, or violate the anti-lockdown rules, your rights to distribute the software are revoked. However, downstream recipients who received the software in compliance still retain their rights.
+                </p>
+
+                <div style="page-break-after: always; margin-top: 3rem; padding-top: 2rem; border-top: 2px dashed #000000;">
+                    <p style="text-align: center; font-style: italic; color: #000000;">— End of Page 1 —</p>
+                </div>
+            </div>
+
+            <div class="page-break">
+                <h4>PAGE 2: STEWARDSHIP RIGHTS & RESPONSIBILITIES (PART II)</h4>
+
+                <h4>What Is Stewardship?</h4>
+                <p>
+                    Stewardship is <em>optional</em>. It's a voluntary agreement between you and the project where you accept additional ethical commitments in exchange for stronger legal protections. <strong>Part I rights always remain available to everyone</strong>—Stewardship is just extra benefits for contributors who care about responsible use. 
+                </p>
+
+                <h4>How to Become a Steward</h4>
+                <p>
+                    To become a Steward for a project: 
+                </p>
+                <ol>
+                    <li>Create or edit a file called <code>STEWARD.md</code> in the project repository.</li>
+                    <li>Add an entry with your name/organization, contact info, and the date. </li>
+                    <li>Include a signed declaration stating:  "We hereby declare that we are a Steward of MRSL‑1.0 for [PROJECT NAME] and accept the Stewardship Rider (Part II), including the Ethical Use Covenant (Section 25)."</li>
+                    <li>Submit this as a pull request with a commit message like: <code>Steward: Yes (MRSL‑1.0) — [Organization] [Date]</code></li>
+                    <li>Once merged, you are a Steward from that date forward.</li>
+                </ol>
+                <p>
+                    <strong>Important:</strong> Stewardship is project-specific and applies only to your <em>new</em> contributions, not retroactively to past work.
+                </p>
+
+                <h4>The Ethical Use Covenant:  What You're Committing To</h4>
+                <p>
+                    As a Steward, you agree <strong>not to use your contributions or modifications</strong> for these ten prohibited purposes:
+                </p>
+                <ol>
+                    <li><strong>Mass Surveillance:</strong> Operating systems that collect personal data, biometrics, or location from 10,000+ people without their individual opt-in consent or a specific court warrant.</li>
+                    <li><strong>International Crimes:</strong> Providing the software to aid genocide, crimes against humanity, torture, or war crimes.</li>
+                    <li><strong>Child Abuse:</strong> Creating or distributing sexual abuse material involving minors.</li>
+                    <li><strong>Plagiarism Services:</strong> Automated copying of content without attribution or source links.</li>
+                    <li><strong>Unaccountable AI Decisions:</strong> Fully automated systems that deny people credit, housing, jobs, or benefits without explanation or human review within 30 days.</li>
+                    <li><strong>Deepfakes Without Labels:</strong> Distributing AI-generated videos/audio falsely depicting real people without a visible "SYNTHETIC" watermark.</li>
+                    <li><strong>Non-Consensual Intimate Images:</strong> Generating or sharing intimate photos/videos of real people without their consent.</li>
+                    <li><strong>Brain-Computer Interface Abuse:</strong> Recording brain data or delivering pain/distress via neural implants without consent.</li>
+                    <li><strong>Hidden Cryptomining:</strong> Running resource-intensive processes (cryptocurrency mining) on users' devices without their knowledge and consent.</li>
+                    <li><strong>Weapons: </strong> Designing or manufacturing weapons prohibited by international law.</li>
+                </ol>
+                <p>
+                    <strong>Note:</strong> These restrictions apply only to how <em>you</em> use your own contributions.  Others can still use Part I rights freely.  If you breach the Covenant, you lose Steward benefits, but Part I rights remain for you if you're in compliance with Part I.
+                </p>
+
+                <h4>Steward Benefits:  What You Get</h4>
+                <p>
+                    In exchange for the Ethical Covenant, you receive:
+                </p>
+                <ul>
+                    <li><strong>Patent Protection:</strong> A promise the licensor won't sue you for patent infringement related to the software, limited to a mandatory (cap) maximum of US$1,000 (one thousand United States dollars) per Licensor entity. </li>
+                    <li><strong>Liability Shield:</strong> Contributors can't hold you liable for damages from using the software (with limited exceptions for gross negligence).</li>
+                    <li><strong>Mutual Defense:</strong> Mutual Defense: You and other Stewards can defend each other against IP claims,  and is limited to a mandatory maximum of US$1,000 (one thousand United States dollars).</li>
+                    <li><strong>Legal Fund Access:</strong> You can apply for help from a Steward collective defense fund (if one exists).</li>
+                    <li><strong>Priority Treatment:</strong> Maintainers prioritize your pull requests and security reports.</li>
+                    <li><strong>Governance Voice:</strong> You can participate in major project decisions (roadmap, license changes, maintainer appointments).</li>
+                </ul>
+
+                <h4>Telemetry and User Privacy</h4>
+                <p>
+                    MRSL-1.0 requires transparency about data collection: 
+                </p>
+                <ul>
+                    <li>Users must be clearly informed what data is collected and why.</li>
+                    <li>Explicit, opt-in consent is required for each type of data collection.</li>
+                    <li>Users must have an easy way to opt-out without breaking the software's core functions.</li>
+                    <li>Data retention policies must be published and followed.</li>
+                </ul>
+                <p>
+                    If the software stores personal data, you must provide:
+                </p>
+                <ul>
+                    <li>An authenticated download of a user's data in a readable format.</li>
+                    <li>A mechanism to request permanent data deletion.</li>
+                </ul>
+
+                <h4>Where to Find Source Code (Corresponding Source)</h4>
+                <p>
+                    "Corresponding Source" is the preferred form for making modifications. Include:
+                </p>
+                <ul>
+                    <li>Complete source code (no obfuscation).</li>
+                    <li>Build and deployment scripts.</li>
+                    <li>For AI systems: model weights, training data, and configuration files.</li>
+                    <li>Interface definitions and documentation needed to understand and modify the software.</li>
+                </ul>
+                <p>
+                    Source must be available through: 
+                </p>
+                <ul>
+                    <li>A public git repository or source code archive.</li>
+                    <li>A direct download link or HTTP(S) endpoint.</li>
+                    <li>A machine-readable metadata file (MRSL_SOURCE.json) that describes where to find it.</li>
+                    <li>Public archival services (software heritage, archive.org) as backup.</li>
+                </ul>
+
+                <h4>License Compatibility</h4>
+                <p>
+                    You can use MRSL code with other open-source licenses.  Combined works must comply with all applicable license obligations. Create a clear README explaining which components use which licenses.
+                </p>
+
+                <h4>Breaking the Rules</h4>
+                <p>
+                    If you don't comply with Part I obligations, you lose your right to distribute the software. If you're a Steward and breach the Ethical Covenant, you lose Steward benefits but retain Part I rights if you fix the breach.
+                </p>
+
+                <h4>Questions or Disputes? </h4>
+                <p>
+                    <strong>Contact the MRSL stewards:</strong> <a href="mailto:contact@mitsuolabs.com">contact@mitsuolabs.com</a>
+                </p>
+                <p>
+                    <strong>Dispute resolution process:</strong> 30 days informal negotiation → 60 days mediation → litigation per Section 32.
+                </p>
+
+                <h4>Final Summary</h4>
+                <p>
+                    MRSL-1.0 ensures that open-source software remains free and modifiable for everyone, while providing a path for developers who care about ethics to get legal protection and governance rights. Choose the responsibility level that fits your project and values.
+                </p>
+
+                <p style="margin-top: 2rem; text-align: center; font-style: italic; color: #000000;">
+                    — End of Plain-Language Summary —
+                </p>
+            </div>
+        </div>
+
+        <!-- APPENDIX 17 -->
+        <div class="appendix-section">
+            <h3>Appendix 17 — Corporate Compliance Checklist (Actionable)</h3>
+            <ul>
+                <li>Inventory MRSL components and their Corresponding Source locations.</li>
+                <li>Decide whether to accept Stewardship for the Work (use STEWARD.md).</li>
+                <li>Assess patent exposure and indemnity needs; consult IP counsel.</li>
+                <li>Implement MAP for compiled distributions if using MMPEULA.</li>
+                <li>Document telemetry and implement opt‑out mechanisms.</li>
+                <li>Ensure data export/erasure endpoints exist and are tested.</li>
+            </ul>
+        </div>
+
+        <!-- APPENDIX 18 -->
+        <div class="appendix-section">
+            <h3>Appendix 18 — Developer Quickstart (Practical Steps)</h3>
+            <ul>
+                <li>Add MRSL‑1.0 LICENSE file to repo root.</li>
+                <li>Add NOTICE file with required attributions.</li>
+                <li>Add STEWARD.md if project accepts Stewards.</li>
+                <li>Publish Corresponding Source (source tarball, git repo, or content‑addressed archive) and include retrieval instructions in MRSL_SOURCE.json. </li>
+                <li>Include MODEL_CARD.md for AI models and AI_PROVENANCE.md for AI contributions.</li>
+            </ul>
+        </div>
+
+        <!-- APPENDIX 19 -->
+        <div class="appendix-section">
+            <h3>Appendix 19 — License Rationale & Philosophy (Publication‑Ready)</h3>
+            <p>
+                MRSL‑1.0 exists to preserve core FOSS/FOSS-Compatible freedoms while enabling an enforceable, voluntary stewardship path that provides patent clarity, indemnity, governance rights, and ethical commitments for contributors who opt in.  It separates universal FOSS/FOSS-Compatible rights (Part I) from optional contractual protections (Part II) to remain fully compatible with the FOSS/FOSS-Compatible & Ethical-Source Definitions, while offering a practical mechanism for ethical stewardship in the age of AI, quantum computing, and human–machine integration.
+            </p>
+        </div>
+
+        <hr>
+
+        <!-- FINAL PROVISIONS -->
+        <h2>Final Provisions</h2>
+        <p>
+            This document (Parts I–III) together with Appendices 1–19 (non‑binding operational materials) constitutes the entire agreement regarding The Work to the extent permitted by law.  Notices regarding the license text may be sent to:
+        </p>
+        <p style="text-align: center; font-weight: 700;">
+            <a href="mailto:contact@mitsuolabs.com">contact@mitsuolabs.com</a>
+        </p>
+        <p style="text-align: center; font-size: 1.1rem; font-weight: 700; margin-top: 2rem;">
+            Short title: "MRSL‑1.0"
+        </p>
+
+        <footer>
+            <p>
+                The MitsuoLabs™ Reciprocity and Stewardship License v1.0 (MRSL‑1.0)
+            </p>
+            <p>
+                Canonical source: <a href="https://github.com/MitsuoLabs/LegalFramework/mrsl-1.0.txt">https://github.com/MitsuoLabs/LegalFramework/mrsl-1.0.txt</a>
+            </p>
+            <p style="margin-top: 1rem; font-size: 0.85rem;">
+                This document should be professionally formatted with cosmic-latte background and true black text for optimal readability and publication quality in all formatted versions (except .txt, .pdf, .docx and .doc and other exceptions as .json).
+            </p>
+        </footer>
+
+    </div>
+</body>
+</html>
