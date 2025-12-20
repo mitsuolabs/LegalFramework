@@ -1,7 +1,7 @@
 The MitsuoLabs™ Reciprocity and Stewardship License
 Version 1.0 — MRSL‑1.0
-Canonical source: https://github.com/MitsuoLabs/LegalFramework/mrsl-1.0.txt
-Copyright (c) 2025 MitsuoLabs™ and Daniel Mitsuo · ORCID: (orcid: 0009-0006-6909-0990 {https://orcid.org/0009-0006-6909-0990})
+Canonical source: https://mitsuolabs.github.io/LegalFramework/mmpeula-1.0.html
+Copyright (c) 2025 MitsuoLabs™ and Daniel Mitsuo · ORCID: 0009-0006-6909-0990
 License text notice: The text of this License is itself licensed under MRSL‑1.0 {©-(c)-2025} (Brazil as Jurisdiction and Stewardship as option). MitsuoLabs™ and Daniel Mitsuo (orcid: 0009-0006-6909-0990 {https://orcid.org/0009-0006-6909-0990}) are the stewards and licensors of the canonical MRSL text. Contact for license text matters: contact@mitsuolabs.com.
 Table of Contents (ToC)
 Preamble
@@ -262,7 +262,7 @@ Nothing in this License grants permission to use MitsuoLabs™ or Contributor tr
 MitsuoLabs™ is the steward of MRSL and may publish new versions. You may use the version you received or any later version. Once You adopt a newer version for a specific Work, that choice is irrevocable for that Work. New versions do not apply retroactively to copies already distributed under earlier versions. Downgrades are not permitted.
 
 32. Governing Law, Jurisdiction, and Venue
-This License is governed by the laws of Federative Republique of Brazil, excluding conflict‑of‑law principles. By Conveying The Work, You consent to the exclusive jurisdiction and venue of the courts of Federative Republique of Brazil for enforcement, subject to mandatory legal protections.
+This License is governed by the laws of Federative Republic of Brazil, excluding conflict‑of‑law principles. By Conveying The Work, You consent to the exclusive jurisdiction and venue of the courts of Federative Republic of Brazil for enforcement, subject to mandatory legal protections (if not filled, goes to the default Federative Republic of Brazil jurisdiction).
 
 33. Severability and Reformation (Blue‑Pencil Clause)
 If any provision is held unenforceable, a court is requested to reform it to the maximum extent permitted to achieve original intent. If reformation is impossible, sever the provision and keep the remainder in force.
@@ -715,12 +715,14 @@ Assess patent exposure and indemnity needs; consult IP counsel.
 Implement MAP for compiled distributions if using MMPEULA.
 Document telemetry and implement opt‑out mechanisms.
 Ensure data export/erasure endpoints exist and are tested.
+
 Appendix 18 — Developer Quickstart (Practical Steps)
 Add MRSL‑1.0 LICENSE file to repo root.
 Add NOTICE file with required attributions.
 Add STEWARD.md if project accepts Stewards.
 Publish Corresponding Source (source tarball, git repo, or content‑addressed archive) and include retrieval instructions in MRSL_SOURCE.json.
 Include MODEL_CARD.md for AI models and AI_PROVENANCE.md for AI contributions.
+
 Appendix 19 — License Rationale & Philosophy (Publication‑Ready)
 MRSL‑1.0 exists to preserve core FOSS/FOSS-Compatible freedoms while enabling an enforceable, voluntary stewardship path that provides patent clarity, indemnity, governance rights, and ethical commitments for contributors who opt in. It separates universal FOSS/FOSS-Compatible rights (Part I) from optional contractual protections (Part II) to remain fully compatible with the FOSS/FOSS-Compatible & Ethical-Source Definitions, while offering a practical mechanism for ethical stewardship in the age of AI, quantum computing, and human–machine integration.
 
