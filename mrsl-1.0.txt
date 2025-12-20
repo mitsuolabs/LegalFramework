@@ -1,6 +1,6 @@
 The MitsuoLabs™ Reciprocity and Stewardship License
 Version 1.0 — MRSL‑1.0
-Canonical source: https://github.com/MitsuoLabs/LegalFramework/mrsl-1.0.txt
+Canonical source: https://mitsuolabs.github.io/LegalFramework/mmpeula-1.0.html
 Copyright (c) [[YEAR]] [[LICENSOR_NAME]] · ORCID: [[ORCID_ID]]
 License text notice: The text of this License is itself licensed under MRSL‑1.0 {©-(c)-2025} (Brazil as Jurisdiction and Stewardship as option). MitsuoLabs™ and Daniel Mitsuo (orcid: 0009-0006-6909-0990 {https://orcid.org/0009-0006-6909-0990}) are the stewards and licensors of the canonical MRSL text. Contact for license text matters: contact@mitsuolabs.com.
 Table of Contents (ToC)
