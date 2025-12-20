@@ -1,4 +1,4 @@
-MitsuoLabs™ MASTER PROFESSIONAL AND END USER LICENSE AGREEMENT (MMPEULA-1.0) {https://github.com/MitsuoLabs/LegalFramework/mmpeula-1.0.txt}
+MitsuoLabs™ MASTER PROFESSIONAL AND END USER LICENSE AGREEMENT (MMPEULA-1.0) https://mitsuolabs.github.io/LegalFramework/mmpeula-1.0.html
 Source-Code License: [[source-license]]
 Product Name: [[product-name]]
 This MitsuoLabs™ MASTER PROFESSIONAL AND END USER LICENSE AGREEMENT (MMPEULA-1.0) (“Agreement”, “EULA”) is designed to apply, on a consolidated basis, to all executable binaries of current and future projects of Licensor that are: (i) compiled, bundled, packaged, or otherwise made available by or on behalf of Licensor; and (ii) distributed subject to this Agreement, by reference, incorporation, or explicit presentation to the end user.
