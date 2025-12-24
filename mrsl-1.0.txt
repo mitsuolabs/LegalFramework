@@ -217,7 +217,44 @@ e) For Packet and Traffic Inspection Systems (e.g., Firewall-like, Suricata-like
 f) For Decentralized and P2P Systems (e.g., IPFS-like): When Conveying The Work over a decentralized or peer-to-peer network, the obligation to provide Corresponding Source must be fulfilled by embedding a permanent, content-addressed identifier (such as an IPFS CID or a Magnet URI) within the Work's metadata. This identifier must resolve to the complete Corresponding Source on the public, decentralized network itself.
 g) For Secure Tunneling and Evasion Systems (e.g., WireGuard-like): If The Work is used to create secure tunnels or implement traffic obfuscation, You may not build in a "backdoor" or any mechanism that would allow a third party to decrypt or inspect the tunnel's contents without access to the user's private keys.
 h) For Future Network Analogues: The obligations defined in this Section extend to any future system—whether based on quantum, biological, or other substrates—that serves an analogous foundational function (e.g., a "quantum DNS" or a "neural overlay network"). The determining factor is the function's role in the digital commons, not its technical implementation.
-Breach of this Section (25.a & 25.b & 25.c) results in immediate termination of the advanced rights in Section 26 for the breaching Steward with respect to the affected Work. Part I rights remain if in compliance with Part I.
+Breach of this Section (25.a & 25.b & 25.c & 25.d) results in immediate termination of the advanced rights in Section 26 for the breaching Steward with respect to the affected Work. Part I rights remain if in compliance with Part I.
+
+Section 25.d
+25.d.1 Genetic Manipulation Technologies
+Any software, hardware, or integrated system that enables, supports, or accelerates genetic modification, editing, or synthesis must be governed by strict ethical oversight.
+
+Developers and users are prohibited from deploying such technologies for:
+
+Human germline editing intended for reproduction.
+
+Unconsented genetic experimentation on living beings.
+
+Weaponization of genetic data or engineered organisms.
+
+Permitted uses include:
+
+Research with transparent peer review and regulatory compliance.
+
+Medical applications with informed consent and oversight by recognized bioethics boards.
+
+Agricultural or environmental projects that demonstrably reduce harm and respect biodiversity.
+
+25.d.2 Transparency & Accountability
+All projects involving genetic manipulation must maintain publicly accessible documentation of methods, risks, and safeguards.
+
+A responsibility covenant must be signed by contributors, affirming adherence to international bioethics standards (e.g., UNESCO Bioethics Declaration, WHO guidelines).
+
+25.d.3 Data Privacy & Genetic Information
+Genetic data is classified as sensitive personal information under MRSL.
+
+Storage, transmission, and analysis of genetic data must employ privacy-first architectures, ensuring encryption, anonymization, and explicit consent.
+
+25.d.4 Extended Bioethical Safeguards
+Technologies intersecting with synthetic biology, neuroengineering, or reproductive systems fall under the same ethical constraints.
+
+Any attempt to bypass safeguards through proprietary loopholes or jurisdictional gaps constitutes a material breach of MRSL.
+
+MitsuoLabs & [[LICENSOR_NAME]] reserves the right to revoke covenant rights (stewards extra-rights) for entities found in violation, with public disclosure of breaches.
 
 26. Grant of Advanced Rights to Stewards
 Upon acceptance of this Rider for a specific Work, Contributors grant the Steward the following additional rights, conditioned on continued adherence to the Ethical Use Covenant:
