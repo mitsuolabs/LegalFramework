@@ -254,7 +254,7 @@ Technologies intersecting with synthetic biology, neuroengineering, or reproduct
 
 Any attempt to bypass safeguards through proprietary loopholes or jurisdictional gaps constitutes a material breach of MRSL.
 
-MitsuoLabs & [[LICENSOR_NAME]] reserves the right to revoke covenant rights (stewards extra-rights) for entities found in violation, with public disclosure of breaches.
+MitsuoLabs & [[LICENSOR_NAME]] reserves the right to revoke covenant rights (stewards extra-rights) for entities found in violation, with public disclosure of breaches (for transparency).
 
 26. Grant of Advanced Rights to Stewards
 Upon acceptance of this Rider for a specific Work, Contributors grant the Steward the following additional rights, conditioned on continued adherence to the Ethical Use Covenant:
