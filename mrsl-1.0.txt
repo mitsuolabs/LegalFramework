@@ -3,6 +3,7 @@ Version 1.0 — MRSL‑1.0
 Canonical source: https://mitsuolabs.github.io/LegalFramework/mmpeula-1.0.html
 Copyright (c) [[YEAR]] [[LICENSOR_NAME]] · ORCID: [[ORCID_ID]]
 License text notice: The text of this License is itself licensed under MRSL‑1.0 {©-(c)-2025} (Brazil as Jurisdiction and Stewardship as option). MitsuoLabs™ and Daniel Mitsuo (orcid: 0009-0006-6909-0990 {https://orcid.org/0009-0006-6909-0990}) are the stewards and licensors of the canonical MRSL text. Contact for license text matters: contact@mitsuolabs.com.
+Scholar-Academic Level Extensive Documentation (and future official releases): https://github.com/mitsuolabs/LegalFramework
 Table of Contents (ToC)
 Preamble
 Contribution Policy Declaration
@@ -19,7 +20,7 @@ PART I: The Core Public License
 10. Trademarks (Overview)
 11. Artificial Intelligence Systems and Synthetic Agents
 12. Patent Grant
-13. Digital Assets, Tokens, and Blockchain
+13. Digital Assets, Tokens, and Blockchain (Anti-Economic Tivoization; Anti-Trapzation)
 14. Community Bill of Rights
 15. Contributor Obligations
 16. Maintainer Responsibilities
@@ -256,12 +257,110 @@ Any attempt to bypass safeguards through proprietary loopholes or jurisdictional
 
 MitsuoLabs & [[LICENSOR_NAME]] reserves the right to revoke covenant rights (stewards extra-rights) for entities found in violation, with public disclosure of breaches (for transparency).
 
+Clause 25.e — Ethical-Like Technologies Covenant (Final Expanded Draft)
+a) Scope of Application
+Licensed Materials are restricted from use in technologies that pose direct ethical, existential, or catastrophic risks, including but not limited to:
+
+Sexual robotics and intimacy simulators ("sex bots")
+
+Autonomous vehicles and transportation systems
+
+Military artificial intelligence systems (targeting, surveillance, autonomous weapons)
+
+Nuclear command-and-control systems (including "dead-hand" retaliation mechanisms)
+
+Future risky technologies reasonably foreseeable to endanger human dignity, safety, or global security
+
+b) Mandatory Safeguards & Prohibitions
+Sexual Robotics:
+
+Must uphold human dignity, consent, and prevention of exploitation.
+
+Strict prohibition against child-like, coercive, or non-consensual simulations.
+
+Systems must implement verifiable consent protocols and undergo independent ethical audits.
+
+Autonomous Vehicles:
+
+Deployment requires certified safety audits, fail-safe overrides, and human-in-the-loop controls.
+
+Must maintain transparent accountability logs and comply with international safety standards.
+
+Military AI:
+
+Prohibited from removing meaningful human control in lethal decision-making.
+
+Any military-adjacent use requires independent ethical review and public disclosure.
+
+Strict prohibition on autonomous weapons deployment without human authorization.
+
+Nuclear & Catastrophic Systems:
+
+Licensed Materials shall not be used in nuclear command, control, or retaliation systems.
+
+Any derivative work involving catastrophic risk must include:
+• Absolute human oversight  
+• Multi-party verification protocols  
+• Fail-safe shutdown mechanisms
+
+Strict prohibition on "dead-hand" or automated retaliation mechanisms.
+
+Future Risky Technologies:
+
+Any new technology with foreseeable existential risk requires:
+• Transparent disclosure to the stewardship community
+• Independent ethical and safety review  
+• Precautionary principle enforcement: deployment prohibited until safeguards are proven
+
+c) Enforcement & Remedies
+Violation of this covenant results in immediate termination of license rights.
+
+The stewardship community may:
+
+Publicly disclose violations
+
+Revoke derivative rights
+
+Pursue legal remedies consistent with international law
+
+Repeat or egregious violations may result in permanent exclusion from stewardship community participation.
+
+d) Rules for Use in Movies, Media, and Entertainment
+To prevent misuse of Licensed Materials in cinema, television, streaming, gaming, and other media, the following rules apply:
+
+Prohibited Depictions
+
+Licensed Materials may not be used to create realistic simulations of prohibited technologies (e.g., autonomous weapons, nuclear retaliation systems, coercive sex bots) in ways that normalize, glorify, or trivialize harm.
+
+Strict prohibition on media that romanticizes exploitative or catastrophic technologies.
+
+Permitted Depictions (Conditional)
+
+Licensed Materials may be used in fictional or artistic works only if:
+• The depiction is clearly fictionalized and does not simulate operational functionality.
+• The work includes contextual disclaimers (e.g., “This depiction is fictional and not a functional system”).
+• The narrative does not endorse or encourage unethical deployment.
+
+Educational & Critical Media:
+
+Licensed Materials may be used in documentaries, journalism, or critical art only for the purpose of critique, education, or ethical debate.
+
+Such works must include clear framing that highlights risks, ethical concerns, and stewardship obligations.
+
+Cinema Loophole Closure:
+
+Any attempt to bypass restrictions by labeling harmful simulations as “artistic” or “cinematic” is explicitly prohibited.
+
+Licensed Materials may not be used to create functional prototypes disguised as props or media assets.
+
 26. Grant of Advanced Rights to Stewards
 Upon acceptance of this Rider for a specific Work, Contributors grant the Steward the following additional rights, conditioned on continued adherence to the Ethical Use Covenant:
 
-a) Irrevocable Patent and Trademark Indemnification: The Licensor grants the Steward an irrevocable, royalty-free, and perpetual indemnification against any third-party claims of patent infringement arising solely from the Steward's exercise of the rights granted in Section 12 (limited to a mandatory maximum of US$1,000 (one thousand United States dollars) per Licensor entity), provided the Steward strictly adheres to all terms of this Agreement and immediately notifies the Licensor of any such claim, the patent grant may be to the max extent permitted by the law.
+a) Irrevocable Patent and Trademark Indemnification
+The Licensor grants the Steward an irrevocable, royalty‑free, and perpetual indemnification against any third‑party claims of patent or trademark infringement arising solely from the Steward’s exercise of the rights granted in Section 12. Indemnification is limited to a mandatory maximum of US$1,000 (one thousand United States dollars) per Licensor entity, or, if a competent court determines such limitation to be legally insufficient, to the lowest indemnification amount required by applicable law. This indemnification is conditioned upon the Steward’s strict adherence to all terms of this Agreement and immediate written notice to the Licensor of any such claim. The patent and trademark grant shall apply to the maximum extent permitted by law.
 b) Comprehensive Limitation of Liability. Except as required by law (e.g., deliberate or grossly negligent acts), Contributors shall not be liable for damages arising from This License or use of The Work. The limitation of liability is subject to any mandatory statutory protections and does not waive consumer rights where applicable.
-c) Mutual Indemnification for Contributions. Each Steward agrees to defend and indemnify other Stewards against claims that the Indemnifying Steward's Contribution infringes third‑party IP rights, where the Contribution is attributable to that Steward. Indemnity obligations are limited to direct damages and reasonable defense costs and exclude consequential, punitive, or speculative damages. Indemnity is conditioned on prompt notice and reasonable cooperation by the indemnified party, and is limited to a mandatory maximum of US$1,000 (one thousand United States dollars).
+c) Mutual Indemnification for Contributions
+Each Steward agrees to defend and indemnify other Stewards against claims that the Indemnifying Steward’s Contribution infringes third‑party intellectual property rights, where the Contribution is attributable to that Steward. Indemnity obligations are limited to direct damages and reasonable defense costs, expressly excluding consequential, punitive, or speculative damages. Indemnification is capped at US$1,000 (one thousand United States dollars), or, if a competent court determines such limitation to be legally insufficient, to the lowest indemnification amount required by applicable law. Obligations are conditioned upon prompt notice and reasonable cooperation by the indemnified party.
 d) Right to Seek Collective Defense. Stewards may apply for legal/financial assistance from any collective defense fund established by MitsuoLabs™ or a designated foundation; assistance is subject to the fund's rules and availability. No Steward has an automatic entitlement to funds; grants are discretionary and subject to conflict‑of‑interest rules.
 e) Safe Harbor from Upstream Infringement. A good‑faith Steward is held harmless for infringement unknowingly incorporated by another Contributor, provided the Steward promptly ceases distribution or remedies the infringement upon notice. The originating Contributor retains primary responsibility for upstream infringement.
 f) Right of Influence and Priority. Stewards receive good‑faith review and prioritized engagement from maintainers for Contributions, security reports, and feature requests.
@@ -334,7 +433,33 @@ MitsuoLabs™ may publish new versions of MRSL. For changes to the canonical MRS
 43. Injunctive Relief and Remedies
 Because monetary damages may be inadequate to remedy certain breaches (for example, misuse of trademarks, unauthorized removal of attribution, or breach of the Ethical Covenant by a Steward), the Licensor and Contributors may seek injunctive or equitable relief in addition to other remedies. Nothing in this License limits the right to seek provisional remedies in urgent cases.
 
-44. Entire Agreement
+44. Unforeseen Loopholes
+
+a) Purpose  
+This Section prevents exploitation of gaps or ambiguities in the License. It applies to all Parts of the License.
+
+b) General Rule  
+Any use, distribution, or derivative of Licensed Materials that undermines the intent, obligations, or ethical principles of this License is prohibited, even if not explicitly listed elsewhere.
+
+c) Scope
+
+Part 1 (FOSS‑like Core): No re‑licensing tricks, concealment of proprietary forks, or dual‑licensing to strip obligations.
+
+Part 2 (Ethical Covenant): No relabeling of prohibited technologies, no jurisdictional workarounds, no media loopholes to normalize harmful systems.
+
+Part 3 (General Provisions): No evasion of repair, preservation, or governance duties through technicalities or interpretation gaps.
+
+d) Examples
+
+Rebranding autonomous weapons as “defensive drones.”
+
+Deploying nuclear AI in countries with weak oversight.
+
+Using cinema or games to simulate harmful systems without disclaimers.
+
+Avoiding archival duties by claiming “temporary use.”
+
+45. Entire Agreement
 This License (Parts I–III) together with Appendices (non‑binding interpretive materials) constitutes the entire agreement regarding The Work to the extent permitted by law and supersedes prior agreements, except where separate written agreements expressly supplement but do not contradict this License.
 
 APPENDICES (1–19) — DETAILED, READY‑TO‑DEPLOY TEMPLATES & PROTOCOLS
