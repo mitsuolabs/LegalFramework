@@ -1,37 +1,46 @@
-# CONTRIBUTING TO THE MITSUOLABS LICENSES PROJECT
+# Contributing to the MitsuoLabs Licenses Project
 
-Thank you for your interest in contributing to this project. Your contribution is a commitment to the principles of reciprocity, stewardship, and long-term legal resilience that this project embodies.
+Thank you for your interest in contributing! By participating, you are joining a community committed to **reciprocity, stewardship, and long-term legal resilience**.
 
-## OUR GOVERNING LICENSE: MRSL-1.0
+---
 
-This project and all contributions to it are governed by the **MitsuoLabs™ Reciprocity and Stewardship License (MRSL-1.0)**. The full text of the license can be found in the `LICENSE` file in the root of this repository.
+## Governing License: MRSL-1.0
+All contributions are governed by the **MitsuoLabs™ Reciprocity and Stewardship License (MRSL-1.0)**.  
+See the full text in the [LICENSE](./LICENSE) file.
 
-## CONTRIBUTION POLICY: AXIOMATIC STEWARDSHIP
+---
 
-This project has adopted the **Axiomatic Stewardship** policy as defined in the MRSL-1.0 Contribution Policy Declaration.
+## Contribution Policy: Axiomatic Stewardship
+This project follows the **Axiomatic Stewardship Policy** defined in MRSL-1.0.
 
-**BY SUBMITTING A CONTRIBUTION (E.G., A PULL REQUEST), YOU ARE AGREEING TO THE FOLLOWING:**
+By submitting a contribution (e.g., a Pull Request), you agree that:
+- Your contribution is licensed under MRSL-1.0.
+- You accept the **Stewardship Rider (Part II)** of MRSL-1.0.
+- You become a **Steward** of your contribution, bound by the **Ethical Use Covenant (Section 25)**.
 
-1.  YOU ARE LICENSING YOUR CONTRIBUTION UNDER THE TERMS OF THE MRSL-1.0.
-2.  YOU ARE ACCEPTING THE STEWARDSHIP RIDER (PART II OF THE MRSL-1.0) FOR YOUR CONTRIBUTION.
-3.  YOU ARE BECOMING A "STEWARD" FOR THIS WORK, BOUND BY THE ETHICAL USE COVENANT (SECTION 25) WITH RESPECT TO YOUR CONTRIBUTION.
+This is automatic — no separate Contributor License Agreement (CLA) is required.  
+Your act of contribution is your declaration of Stewardship.
 
-This is an automatic process. There is no separate Contributor License Agreement (CLA) to sign. Your act of contribution is your declaration of Stewardship.
+---
 
-## CONTRIBUTION WORKFLOW
+## Contribution Workflow
+We welcome all contributions, from typo fixes to major new sections. Please follow this workflow:
 
-We welcome all contributions, from minor typo fixes to major new sections. Please follow this workflow:
+1. **Fork the Repository**: Create your own copy.  
+2. **Create a Feature Branch**: `git checkout -b feature/your-change`  
+3. **Commit Your Changes**: Use clear, descriptive commit messages.  
+4. **Push to Your Fork**: Upload your branch.  
+5. **Open a Pull Request**: Submit to the main branch with a clear title and description.  
 
-1.  **Fork the Repository:** Create your own copy of the project to work on.
-2.  **Create a Feature Branch:** Isolate your changes in a dedicated branch (e.g., `git checkout -b feature/improve-definitions`).
-3.  **Commit Your Changes:** Make your changes and commit them with a clear, descriptive commit message.
-4.  **Push to Your Fork:** Push your feature branch to your forked repository.
-5.  **Open a Pull Request:** Submit a Pull Request from your feature branch to the `main` branch of this repository. Please provide a clear title and description for your changes.
-6. **Optional:** To Void The Legal Risk of Being Not Considered a Steward, Formalize at `STEWARD.md`.
-7. **NOTE:** You can Fork Without Accepting the Stewardship Rider and exercise all your patt 1 &  part 3 rights.
+Optional: You may formalize your Stewardship in `STEWARD.md`, this strenghts your stewards rights by giving a formal verifiable timestamp & acceptance.  
+Note: You may fork without accepting the Stewardship Rider and still exercise **Part I & Part III rights**.
 
-## CODE OF CONDUCT
+---
 
-As a project governed by the MRSL-1.0, we are implicitly bound by the principles of ethical conduct and good-faith collaboration. All contributors are expected to interact respectfully and professionally.
+## Code of Conduct
+As a project under MRSL-1.0, all contributors are expected to uphold **ethical conduct and good-faith collaboration**.  
+Please interact respectfully and professionally.
 
-Thank you again for your valuable contribution.
+---
+
+Thank you again for your valuable contribution!
