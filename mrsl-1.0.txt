@@ -184,7 +184,7 @@ You accept this Rider and become a "Steward of MRSL‑1.0" for a specific Work b
 
 Evidence of Acceptance: A Steward's acceptance must be recorded in the project repository (STEWARD.md) and accompanied by a signed, timestamped declaration (digital signature or equivalent) in the commit history or a signed PDF stored in the repository. This evidence is the primary proof of acceptance for contractual purposes.
 25. The Ethical Use Covenant
-25.a The Ethical Use Covenant (Unambiguous Formulation)
+25.a The Ethical Use Covenant
 
 As a Steward, You agree that Your Contributions and Modifications will not be used, by You or any entity You control, for any of the following purposes. Breach of this section constitutes a breach of the Stewardship Rider. These obligations apply only to Your use of Your own Contributions and Modifications and do not restrict general use of The Work by others under Part I.
 
@@ -218,7 +218,8 @@ e) For Packet and Traffic Inspection Systems (e.g., Firewall-like, Suricata-like
 f) For Decentralized and P2P Systems (e.g., IPFS-like): When Conveying The Work over a decentralized or peer-to-peer network, the obligation to provide Corresponding Source must be fulfilled by embedding a permanent, content-addressed identifier (such as an IPFS CID or a Magnet URI) within the Work's metadata. This identifier must resolve to the complete Corresponding Source on the public, decentralized network itself.
 g) For Secure Tunneling and Evasion Systems (e.g., WireGuard-like): If The Work is used to create secure tunnels or implement traffic obfuscation, You may not build in a "backdoor" or any mechanism that would allow a third party to decrypt or inspect the tunnel's contents without access to the user's private keys.
 h) For Future Network Analogues: The obligations defined in this Section extend to any future system—whether based on quantum, biological, or other substrates—that serves an analogous foundational function (e.g., a "quantum DNS" or a "neural overlay network"). The determining factor is the function's role in the digital commons, not its technical implementation.
-Breach of this Section (25.a & 25.b & 25.c & 25.d) results in immediate termination of the advanced rights in Section 26 for the breaching Steward with respect to the affected Work. Part I rights remain if in compliance with Part I.
+
+Breach of this Section (25.a & 25.b & 25.c & 25.d & 25.e) results in immediate termination of the advanced rights in Section 26 for the breaching Steward with respect to the affected Work. Part I rights remain if in compliance with Part I.
 
 Section 25.d
 25.d.1 Genetic Manipulation Technologies
