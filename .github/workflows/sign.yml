@@ -1,0 +1,48 @@
+# This workflow creates a cryptographic signature of the repository state on every push to main.
+# This serves as a verifiable, immutable record of the project's history, embodying the principle of auditable integrity.
+
+name: 'Repository Self-Signature'
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  sign-repository:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # This permission is required to commit the signature back to the repository
+    steps:
+      - name: 'Checkout code'
+        uses: actions/checkout@v3
+
+      - name: 'Generate Repository Hash'
+        id: hash
+        run: |
+          # We hash a sorted list of all file hashes to ensure a consistent repository hash
+          # regardless of file system ordering.
+          # We exclude the signature file itself from the hash.
+          find . -type f -not -path "./SIGNATURE.txt" -print0 | xargs -0 sha256sum | sort -k 2 | sha256sum | awk '{print $1}' > REPO_HASH.txt
+          echo "Repository hash generated."
+          cat REPO_HASH.txt
+
+      - name: 'Create Signature Artifact'
+        run: |
+          echo "--- MitsuoLabs Repository State Signature ---" > SIGNATURE.txt
+          echo "Timestamp (UTC): $(date -u --iso-8601=seconds)" >> SIGNATURE.txt
+          echo "Commit SHA: ${{ github.sha }}" >> SIGNATURE.txt
+          echo "Triggering Actor: ${{ github.actor }}" >> SIGNATURE.txt
+          echo "SHA256 Hash of Repository Contents: $(cat REPO_HASH.txt)" >> SIGNATURE.txt
+          echo "--- End of Signature ---"
+          echo "SIGNATURE.txt created:"
+          cat SIGNATURE.txt
+
+      - name: 'Commit SIGNATURE.txt'
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: 'CI: Create repository state signature for ${{ github.sha }}'
+          file_pattern: SIGNATURE.txt
+          commit_user_name: 'MitsuoLabs CI Bot'
+          commit_user_email: 'ci-bot@mitsuolabs.com'
+          commit_author: 'MitsuoLabs CI Bot <ci-bot@mitsuolabs.com>'

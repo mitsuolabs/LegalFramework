@@ -1,0 +1,117 @@
+# This file contains the CI/CD pipeline for the project.
+# It includes jobs for testing, archiving, signing, and deploying.
+
+stages:
+  - test
+  - archive
+  - sign
+  - deploy
+
+# This job is from your original .gitlab-ci.yml. It creates a simple archive
+# on every push to the main branch.
+create_archive:
+  stage: archive
+  script:
+    - tar -czf mitsuolabs-licenses-archive.tar.gz .
+  artifacts:
+    paths:
+      - mitsuolabs-licenses-archive.tar.gz
+    expire_in: 1 week
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "main"'
+
+# This new job translates the "Release Archival preparation" GitHub Action.
+# It runs when you create a new tag (release) and prepares a formal release archive.
+prepare_release_archive:
+  stage: archive
+  script:
+    - |
+      tar -czvf "${CI_PROJECT_NAME}-${CI_COMMIT_TAG}.tar.gz" .
+      echo "A release tarball has been created: ${CI_PROJECT_NAME}-${CI_COMMIT_TAG}.tar.gz"
+      echo ""
+      echo "As per PRESERVATION.md, you must now submit this artifact to the designated public archives:"
+      echo "1. Software Heritage: https://www.softwareheritage.org/save-code-now/"
+      echo "2. The Internet Archive: https://archive.org/upload/"
+      echo "3. The Bodleian Libraries (Digital Archives): https://www.bodleian.ox.ac.uk/"
+      echo ""
+      echo "Please log the archival transaction details in the project's permanent records."
+  artifacts:
+    paths:
+      - "*.tar.gz"
+  rules:
+    - if: $CI_COMMIT_TAG
+
+# This new job translates the "Steward Ledger Integrity Check" GitHub Action.
+# It runs on merge requests that modify STEWARD.md to prevent unauthorized removals.
+verify_steward_ledger:
+  stage: test
+  before_script:
+    - apt-get update -y && apt-get install -y git
+  script:
+    - |
+      git show "origin/${CI_MERGE_REQUEST_TARGET_BRANCH_NAME}":STEWARD.md > base_steward.md
+      base_stewards=$(cat base_steward.md | grep -o "### .*" | sort)
+      head_stewards=$(cat STEWARD.md | grep -o "### .*" | sort)
+      removed_stewards=$(comm -23 <(echo "$base_stewards") <(echo "$head_stewards"))
+      if [[ -n "$removed_stewards" ]]; then
+        echo "ERROR: This MR attempts to remove the following Steward(s) from STEWARD.md:"
+        echo "$removed_stewards"
+        echo "Removal of a Steward requires explicit, signed approval and is blocked by this CI check."
+        exit 1
+      fi
+      echo "STEWARD.md integrity check passed. No Stewards were removed."
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+      changes:
+        - STEWARD.md
+
+# This job updates your 'self_sign_and_timestamp' job to match the logic of the
+# "Repository Self-Signature" GitHub Action. It generates a cryptographic hash of
+# the repository and commits a SIGNATURE.txt file back to the main branch.
+#
+# IMPORTANT: For this job to work, you must create a Project Access Token with
+# the 'write_repository' scope and add it as a CI/CD variable named 'GIT_ACCESS_TOKEN'
+# in your project's settings.
+self_sign_and_timestamp:
+  stage: sign
+  before_script:
+    - apt-get update -y && apt-get install -y git
+    - git config --global user.name "GitLab CI Bot"
+    - git config --global user.email "gitlab-ci-bot@${CI_SERVER_HOST}"
+  script:
+    - |
+      find . -type f -not -path "./SIGNATURE.txt" -print0 | xargs -0 sha256sum | sort -k 2 | sha256sum | awk '{print $1}' > REPO_HASH.txt
+      echo "--- MitsuoLabs Repository State Signature ---" > SIGNATURE.txt
+      echo "Timestamp (UTC): $(date -u --iso-8601=seconds)" >> SIGNATURE.txt
+      echo "Commit SHA: ${CI_COMMIT_SHA}" >> SIGNATURE.txt
+      echo "Triggering Actor: ${GITLAB_USER_LOGIN}" >> SIGNATURE.txt
+      echo "SHA256 Hash of Repository Contents: $(cat REPO_HASH.txt)" >> SIGNATURE.txt
+      echo "--- End of Signature ---"
+      git remote set-url origin "https://oauth2:${GIT_ACCESS_TOKEN}@${CI_SERVER_HOST}/${CI_PROJECT_PATH}.git"
+      git add SIGNATURE.txt REPO_HASH.txt
+      if git diff --staged --quiet; then
+        echo "Signature file is already up-to-date. No new commit needed."
+      else
+        git commit -m "CI: Create repository state signature for ${CI_COMMIT_SHA} [skip ci]"
+        git push origin HEAD:${CI_COMMIT_BRANCH}
+        echo "Pushed updated signature to ${CI_COMMIT_BRANCH}."
+      fi
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "main"'
+
+# This job is from your original .gitlab-ci.yml. It mirrors the repository
+# to GitHub.
+push_to_github:
+  stage: deploy
+  before_script:
+    - command -v ssh-agent >/dev/null || ( apt-get update -y && apt-get install openssh-client git -y )
+    - eval $(ssh-agent -s)
+    - echo "${GITHUB_SSH_PRIVATE_KEY}" | tr -d '\r' | ssh-add -
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    - ssh-keyscan github.com >> ~/.ssh/known_hosts
+    - chmod 644 ~/.ssh/known_hosts
+  script:
+    - git push --mirror "git@github.com:MitsuoLabs/licenses.git"
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "main" && $GITLAB_USER_LOGIN != "your_gitlab_bot_username"'

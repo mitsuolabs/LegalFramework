@@ -1,0 +1,26 @@
+name: Push to GitLab
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  push_to_gitlab:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Fetch all history for a mirror push
+
+      - name: Set up SSH
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.GITLAB_SSH_PRIVATE_KEY }}
+
+      - name: Add GitLab to known_hosts
+        run: ssh-keyscan gitlab.com >> ~/.ssh/known_hosts
+
+      - name: Push to GitLab
+        run: git push --mirror "git@gitlab.com:mitsuolabs/licenses.git"

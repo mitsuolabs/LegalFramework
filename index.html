@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'unsafe-inline' data: blob:; style-src 'self' 'unsafe-inline'; img-src data:; connect-src 'self' wss: ws: data:; object-src 'none'; base-uri 'none'; form-action 'none';">
+    <meta http-equiv="Cross-Origin-Opener-Policy" content="same-origin">
+    <meta http-equiv="Cross-Origin-Embedder-Policy" content="require-corp">
+    <meta http-equiv="Permissions-Policy" content="accelerometer=(), ambient-light-sensor=(), autoplay=(), battery=(), camera=(), display-capture=(), document-domain=(), encrypted-media=(), execution-while-not-rendered=(), execution-while-out-of-viewport=(), fullscreen=(), geolocation=(), gyroscope=(), hid=(), identity-credentials-get=(), idle-detection=(), interest-cohort=(), join-ad-interest-group=(), magnetometer=(), microphone=(), midi=(), navigation-override=(), payment=(), picture-in-picture=(), publickey-credentials-get=(), screen-wake-lock=(), serial=(), speaker=(), usb=(), vr=(), web-share=(), xr-spatial-tracking=()">
+    <meta name="referrer" content="no-referrer">
+    <meta name="X-Content-Type-Options" content="nosniff">
+    <meta name="X-Frame-Options" content="DENY">
+    <link rel="dns-prefetch" href="https://0.0.0.0/">
+    <link rel="preconnect" href="https://0.0.0.0/">
+    <title>MitsuoLabs Legal Framework</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 fill=%22none%22/></svg>">
+    <style>
+        :root {
+            --bg-dark: #020204;
+            --bg-card: #0c0c10;
+            --text-primary: #e6e6e6;
+            --text-secondary: #8a8a92;
+            --accent-gold: #D4AF37;
+            --accent-blue: #4a90e2;
+            --border-color: rgba(212, 175, 55, 0.15);
+            --shadow-color: rgba(0, 0, 0, 0.6);
+            --highlight-bg: rgba(212, 175, 55, 0.05);
+        }
+        *, *::before, *::after { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.7;
+            font-size: clamp(16px, 1.1vw, 18px);
+            overflow-x: hidden;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            cursor: none; /* Hide default cursor */
+        }
+        body.loaded { opacity: 1; }
+        body.inverted { transform: rotate(180deg); }
+        #cosmos { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
+        .overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(2, 2, 4, 0.98); z-index: 2000;
+            display: none; align-items: center; justify-content: center; text-align: center;
+            padding: 2rem;
+            opacity: 0;
+            animation: fadeIn 2s forwards;
+        }
+        .overlay-content { max-width: 800px; }
+        .overlay-content h1 { font-size: clamp(2rem, 5vw, 4rem); color: var(--accent-gold); }
+        .overlay-content p { font-size: clamp(1rem, 2vw, 1.5rem); color: var(--text-secondary); }
+        h1, h2, h3, .nav-logo a, .footer-logo { font-family: 'Lexend Deca', sans-serif; }
+        h1 {
+            font-size: clamp(2.8rem, 6vw, 6rem); font-weight: 800; letter-spacing: -0.05em;
+            background: linear-gradient(45deg, var(--accent-gold), #ffffff);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+        }
+        h2 {
+            font-size: clamp(2.2rem, 5vw, 3.8rem); font-weight: 700; letter-spacing: -0.04em;
+            text-align: center; margin-top: clamp(100px, 15vh, 200px); margin-bottom: 2rem;
+        }
+        .section-intro {
+            text-align: center; max-width: 900px; margin: 0 auto 5rem auto;
+            font-size: clamp(1.1rem, 1.5vw, 1.3rem); color: var(--text-secondary); line-height: 1.8;
+        }
+        .navbar {
+            position: sticky; top: 0; width: 100%; background-color: rgba(5, 5, 7, 0.7);
+            backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+            z-index: 1000; border-bottom: 1px solid var(--border-color);
+        }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1800px; margin: 0 auto; padding: clamp(0.8rem, 2vw, 1.2rem) 2rem; }
+        .nav-logo a { font-weight: 700; font-size: clamp(1.1rem, 2vw, 1.4rem); color: var(--text-primary); text-decoration: none; }
+        .nav-logo span { color: var(--accent-gold); }
+        .nav-links { display: flex; gap: clamp(1rem, 2.5vw, 2.8rem); }
+        .nav-links a { color: var(--text-secondary); text-decoration: none; font-weight: 500; transition: color 0.3s; position: relative; }
+        .nav-links a::after { content: ''; position: absolute; width: 0; height: 1px; bottom: -4px; left: 50%; background: var(--accent-gold); transition: all 0.3s ease-out; }
+        .nav-links a:hover { color: var(--text-primary); }
+        .nav-links a:hover::after { width: 100%; left: 0; }
+        .nav-links a.external-link { color: var(--accent-blue); }
+        .container { max-width: 1600px; margin: 0 auto; padding: 2rem; }
+        header { text-align: center; min-height: 60vh; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 5rem 0; }
+        header p { font-size: clamp(1.2rem, 2vw, 1.6rem); color: var(--text-secondary); max-width: 900px; margin: 1rem auto 0 auto; }
+        .section { animation: fadeIn 1s 0.5s ease-out forwards; opacity: 0; }
+        .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(clamp(320px, 30vw, 420px), 1fr)); gap: clamp(1.5rem, 3vw, 2.5rem); }
+        .card {
+            background-color: var(--bg-card); border: 1px solid var(--border-color); padding: 2.5rem;
+            border-radius: 16px; box-shadow: 0 10px 30px var(--shadow-color);
+            transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+            display: flex; flex-direction: column; position: relative; overflow: hidden;
+        }
+        .card:hover { transform: translateY(-12px) scale(1.02); border-color: rgba(212, 175, 55, 0.7); box-shadow: 0 20px 50px var(--shadow-color); }
+        .card h3 { font-size: 1.6rem; font-weight: 700; color: var(--accent-gold); margin: 0 0 1rem 0; }
+        .card p { color: var(--text-secondary); font-size: 1.05rem; flex-grow: 1; transition: opacity 0.3s; }
+        .card .sub-axiom { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: var(--highlight-bg); display: flex; align-items: center; justify-content: center; text-align: center; padding: 2rem; font-style: italic; font-size: 1.1rem; opacity: 0; transition: opacity 0.4s ease; pointer-events: none; }
+        .card:hover .sub-axiom { opacity: 1; }
+        .card:hover > p, .card:hover > h3, .card:hover > a.button { opacity: 0.1; }
+        .card a.button { display: block; background: var(--accent-gold); color: var(--bg-dark); padding: 1rem; border-radius: 8px; font-weight: 700; text-align: center; text-decoration: none; margin-top: 2rem; transition: background-color 0.2s, transform 0.2s; z-index: 2; }
+        .card a.button:hover { background-color: #fff; transform: scale(1.05); }
+        .philosophy-item { background: var(--highlight-bg); border-left: 4px solid var(--accent-gold); padding: 2rem; border-radius: 0 8px 8px 0; }
+        .philosophy-item strong { display: block; color: var(--text-primary); font-size: 1.25rem; margin-bottom: 0.5rem; }
+        .philosophy-item p { margin: 0; }
+        .clash-container { display: flex; gap: 2rem; margin-top: 4rem; flex-wrap: wrap; }
+        .clash-column { flex: 1; min-width: 300px; border-radius: 12px; padding: 2rem; text-align: center; }
+        .clash-stewardship { border: 2px solid var(--accent-gold); }
+        .clash-capture { border: 2px solid #555; }
+        .clash-column h3 { margin-top: 0; font-size: 2rem; }
+        .clash-column ul { list-style: none; padding: 0; }
+        .clash-column li { margin-bottom: 1rem; font-size: 1.1rem; }
+        .clash-stewardship h3 { color: var(--accent-gold); }
+        .clash-capture h3 { color: #888; }
+        footer {
+            text-align: center; margin-top: clamp(100px, 15vh, 200px); padding: 4rem 2rem;
+            border-top: 1px solid var(--border-color); background-color: var(--bg-card);
+        }
+        .footer-logo { font-weight: 700; font-size: 1.5rem; color: var(--text-primary); margin-bottom: 1.5rem; }
+        .footer-logo span { color: var(--accent-gold); }
+        .footer-links { display: flex; justify-content: center; gap: clamp(1rem, 3vw, 2rem); margin-bottom: 2rem; flex-wrap: wrap; }
+        .footer-links a:hover { color: var(--accent-gold); }
+        .footer-note { font-size: 0.9rem; color: #666; }
+        #audio-toggle {
+            position: fixed; bottom: 20px; right: 20px; z-index: 1001;
+            background: var(--bg-card); border: 1px solid rgba(212, 175, 55, 0.2);
+            color: var(--text-secondary); border-radius: 50%; width: 50px; height: 50px;
+            cursor: pointer; font-size: 24px; display: flex; align-items: center; justify-content: center;
+            transition: color 0.3s, border-color 0.3s, transform 0.3s;
+        }
+        #audio-toggle:hover { color: var(--text-primary); border-color: var(--accent-gold); transform: scale(1.1); }
+        #spaceship {
+            position: fixed;
+            width: 24px;
+            height: 24px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M12 2L2 22h20L12 2zm0 4.55L17.52 18H6.48L12 6.55z"/></svg>');
+            background-size: contain;
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%) rotate(0deg);
+            transition: transform 0.1s linear;
+        }
+        #tooltip {
+            position: fixed;
+            display: none;
+            background: rgba(12, 12, 16, 0.9);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 14px;
+            pointer-events: none;
+            z-index: 10000;
+            transform: translate(20px, -40px);
+        }
+        
+        /* CRT Mode Styles */
+        body.crt-mode {
+            font-family: 'Courier New', Courier, monospace !important;
+            background-color: #000 !important;
+            color: #0F0 !important;
+            filter: blur(0.5px) saturate(1.5);
+        }
+        body.crt-mode::before {
+            content: " ";
+            display: block;
+            position: fixed;
+            top: 0; left: 0; bottom: 0; right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            z-index: 10001;
+            background-size: 100% 2px, 3px 100%;
+            pointer-events: none;
+            animation: flicker 0.15s infinite;
+        }
+        body.crt-mode::after {
+            content: " ";
+            display: block;
+            position: fixed;
+            top: 0; left: 0; bottom: 0; right: 0;
+            background: rgba(18, 16, 16, 0.1);
+            opacity: 0.5;
+            z-index: 10001;
+            pointer-events: none;
+            animation: scanline 7s linear infinite;
+        }
+        @keyframes flicker { 0% { opacity: 0.27; } 5% { opacity: 0.34; } 10% { opacity: 0.23; } 15% { opacity: 0.9; } 20% { opacity: 0.18; } 25% { opacity: 0.83; } 30% { opacity: 0.65; } 35% { opacity: 0.67; } 40% { opacity: 0.26; } 45% { opacity: 0.84; } 50% { opacity: 0.96; } 55% { opacity: 0.08; } 60% { opacity: 0.2; } 65% { opacity: 0.71; } 70% { opacity: 0.53; } 75% { opacity: 0.37; } 80% { opacity: 0.71; } 85% { opacity: 0.7; } 90% { opacity: 0.7; } 95% { opacity: 0.36; } 100% { opacity: 0.24; } }
+        @keyframes scanline { 0% { transform: translateY(-100vh); } 100% { transform: translateY(100vh); } }
+        body.crt-mode h1 { background: none; -webkit-text-fill-color: #0F0; text-shadow: 0 0 5px #0F0, 0 0 10px #0F0; }
+        body.crt-mode .navbar { background-color: rgba(0, 15, 0, 0.7); border-bottom-color: #0F0; }
+        body.crt-mode .card { background-color: #030303; border-color: #0A0; color: #0F0; }
+        body.crt-mode .card h3, body.crt-mode .nav-logo a, body.crt-mode .footer-logo { color: #0F0; text-shadow: 0 0 3px #0F0; }
+        body.crt-mode .nav-logo span, body.crt-mode .footer-logo span { color: #5F5; text-shadow: none; }
+        body.crt-mode .card a.button { background: #0A0; color: #000; text-shadow: none; }
+        body.crt-mode p, body.crt-mode .nav-links a { color: #0D0 !important; }
+        
+        @media (max-width: 768px) { .nav-links { display: none; } }
+    </style>
+</head>
+<body>
+
+    <div id="foreword-overlay" class="overlay" style="display: flex;">
+        <div class="overlay-content"><h1>The substance of progress is not invention, but stewardship.</h1></div>
+    </div>
+    <div id="steward-call-overlay" class="overlay">
+        <div class="overlay-content">
+            <h1>A Steward's Call</h1>
+            <p>You were not led here by chance. You stand at a precipice of great technological and moral consequence. The framework before you is more than a license; it is a choice. A commitment to build, to create, and to invent not for the sake of power, but for the sake of life. This is your call to stewardship. Will you answer?</p>
+        </div>
+    </div>
+    <div id="genesis-overlay" class="overlay">
+        <div class="overlay-content"><h1>In the beginning, there was a choice.</h1></div>
+    </div>
+
+    <canvas id="cosmos"></canvas>
+    <div id="spaceship"></div>
+    <div id="tooltip"></div>
+    <button id="audio-toggle">🔇</button>
+    
+    <div id="main-content" style="visibility: hidden;">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo"><a href="#">MitsuoLabs™ <span>Legal</span></a></div>
+                <div class="nav-links">
+                    <a href="#philosophy">Philosophy</a>
+                    <a href="#architecture">Architecture</a>
+                    <a href="#components">Components</a>
+                    <a href="#innovations">Innovations</a>
+                    <a href="https://mitsuolabs.com" target="_blank" rel="noopener noreferrer" class="external-link">MitsuoLabs.com</a>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container">
+            <header>
+                <h1 id="main-header">A New Covenant for the Digital Age</h1>
+                <p>The MitsuoLabs™ Legal Framework is a complete moral and legal operating system engineered for the complexities and existential risks of 21st-century technology.</p>
+            </header>
+
+            <section id="philosophy" class="section">
+                <h2>Guiding Principles</h2>
+                <p class="section-intro">This framework is animated by the non-binding *Declaration of Modern Days*. These are not suggestions; they are the moral axioms upon which this entire legal structure is built.</p>
+                <div class="card-grid">
+                    <div class="philosophy-item"><strong>Stewardship of Life.</strong><p>Design must account for ecological limits. Regeneration, not extraction, is our baseline. Product lifecycles must include restoration budgets.</p></div>
+                    <div class="philosophy-item"><strong>Safety and Duty to Repair.</strong><p>We accept moral responsibility for harms. Preserve evidence, report transparently, and remediate swiftly. Concealment is a material breach.</p></div>
+                    <div class="philosophy-item"><strong>The Duty to Act.</strong><p>We reject the sin of omission. Knowing of a harm and failing to act is complicity. Silence is not neutrality; it is a choice.</p></div>
+                </div>
+            </section>
+
+            <section id="architecture" class="section">
+                <h2>The Dual-License Architecture</h2>
+                <p class="section-intro">The framework’s core innovation is its revolutionary dual-license architecture. It cleanly separates the governance of source code from compiled binaries, providing a seamless and legally robust transition from open-source development to professional commercialization.</p>
+                <div class="card">
+                    <pre style="background: var(--bg-dark); color: var(--text-primary); padding: 2.5rem; border-radius: 12px; font-family: 'SF Mono', 'Fira Code', monospace; font-size: clamp(0.9rem, 1.2vw, 1.1rem); line-height: 1.8; text-align: left; overflow-x: auto;">
+      [ SOURCE CODE ]
+            |
+    (Governed by <strong style="color:var(--accent-gold);">MRSL-1.0</strong>)
+     (Radical Freedom & Ethical Stewardship)
+            |
+         compiles
+            |
+            v
+    [ EXECUTABLE BINARY ]
+            |
+     (Governed by <strong style="color:var(--accent-blue);">MMPEULA-1.0</strong>)
+    (Professional-Grade Commercial Use)
+                    </pre>
+                </div>
+            </section>
+            
+            <section id="clash" class="section">
+                <h2>A Clash of Philosophies</h2>
+                <p class="section-intro">The MRSL was engineered to prevent the systemic value extraction common with permissive licenses, creating a protected commons instead of a corporate resource pool.</p>
+                <div class="clash-container">
+                    <div class="clash-column clash-stewardship">
+                        <h3>Stewardship & Commons (MRSL)</h3>
+                        <ul>
+                            <li>✓ Guarantees user freedom</li>
+                            <li>✓ Mandates source availability</li>
+                            <li>✓ Builds a protected, shared commons</li>
+                            <li>✓ Prevents proprietary capture</li>
+                        </ul>
+                    </div>
+                    <div class="clash-column clash-capture">
+                        <h3>Permissive & Capture (MIT/BSD)</h3>
+                        <ul>
+                            <li>✗ Allows user freedom to be revoked</li>
+                            <li>✗ Allows proprietary, closed derivatives</li>
+                            <li>✗ Can lead to commons collapse</li>
+                            <li>✗ Enables total proprietary capture</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section id="components" class="section">
+                <h2>Explore the Core Components</h2>
+                <div class="card-grid">
+                </div>
+            </section>
+            
+            <section id="innovations" class="section">
+                <h2>Key Innovations</h2>
+                <div id="innovations-grid" class="card-grid">
+                    <div class="card" data-sub-axiom="True reciprocity is the foundation of a just system."><h3>Revolutionary Ethical Bargain</h3><p>The optional Stewardship Rider allows contributors to adopt a binding Ethical Use Covenant in exchange for powerful legal protections, including patent indemnification.</p></div>
+                    <div class="card" data-sub-axiom="Clarity is the ultimate defense against litigation."><h3>Axiomatic Legal Engineering</h3><p>The MMPEULA is built on a system of 'Axioms'—clear, self-contained rules that provide a stable, predictable foundation, replacing ambiguity with precision.</p></div>
+                    <div class="card" data-sub-axiom="A community without rights is merely a crowd."><h3>Community Bill of Rights</h3><p>The MRSL-1.0 codifies the rights of users and contributors, including the right to transparent governance, the right to fork, and the right of repair.</p></div>
+                    <div class="card" data-sub-axiom="What is not preserved is eventually lost."><h3>The Alexandria Clause</h3><p>A binding commitment to the long-term, durable preservation of legal texts and source code in the world's most respected archives, ensuring perpetual access.</p></div>
+                </div>
+            </section>
+
+             <section id="stewardship-call" class="section">
+                <h2>A Call to Stewardship</h2>
+                <p class="section-intro">This is more than a legal document. It is a constitution for a new kind of technological development—one rooted in responsibility, reciprocity, and a profound respect for life. Adopting this framework is a declaration that you choose to be a steward, not just an inventor. You choose to build a future that is not only possible, but just.</p>
+            </section>
+
+        </div>
+
+        <footer>
+            <div class="footer-content">
+                <div class="footer-logo">MitsuoLabs™ <span>Legal Framework</span></div>
+                <div class="footer-links">
+                    <a href="https://mitsuolabs.com" target="_blank" rel="noopener noreferrer">MitsuoLabs.com</a>
+                    <a href="https://github.com/MitsuoLabs/LegalFramework" target="_blank" rel="noopener noreferrer">GitHub</a>
+                    <a href="mailto:contact@mitsuolabs.com">Contact</a>
+                </div>
+                <p class="footer-note">This website and its contents are licensed under MRSL-1.0 by MitsuoLabs™. © 2026 MitsuoLabs™. All Rights Reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // --- RARE EVENT CHECKS ---
+        const ONE_QUADRILLION = 1_000_000_000_000_000;
+        const ONE_TRILLION = 1_000_000_000_000;
+        const ONE_MILLION = 1_000_000;
+
+        function checkEvent(chance) {
+            return Math.floor(Math.random() * chance) === 0;
+        }
+
+        let eventTriggered = false;
+
+        if (checkEvent(ONE_QUADRILLION)) {
+            eventTriggered = true;
+            document.getElementById('genesis-overlay').style.display = 'flex';
+            setTimeout(() => {
+                document.getElementById('genesis-overlay').style.opacity = 1;
+                document.getElementById('foreword-overlay').style.display = 'none';
+            }, 100);
+            setTimeout(() => {
+                 document.getElementById('genesis-overlay').style.opacity = 0;
+                 setTimeout(() => {
+                     document.getElementById('genesis-overlay').style.display = 'none';
+                     initMainContent();
+                 }, 2000);
+            }, 5000);
+        } else if (checkEvent(ONE_TRILLION)) {
+            eventTriggered = true;
+            document.body.classList.add('inverted');
+            initMainContent();
+        } else if (checkEvent(ONE_MILLION)) {
+            eventTriggered = true;
+            document.getElementById('steward-call-overlay').style.display = 'flex';
+            setTimeout(() => document.getElementById('steward-call-overlay').style.opacity = 1, 100);
+            document.getElementById('foreword-overlay').style.display = 'none';
+        } else {
+            setTimeout(() => {
+                const foreword = document.getElementById('foreword-overlay');
+                foreword.style.opacity = 0;
+                setTimeout(() => {
+                    foreword.style.display = 'none';
+                    if (!eventTriggered) initMainContent();
+                }, 1500);
+            }, 3000);
+        }
+        
+        function initMainContent() {
+            document.body.classList.add('loaded');
+            document.getElementById('main-content').style.visibility = 'visible';
+        }
+
+        // --- COSMIC SIMULATION & AUDIO ---
+        const cosmicBudget = {
+          dark_energy: 0.682998,
+          dark_matter: 0.268000,
+          normal_matter: 0.049000,
+          theoretical_anomalies: {
+            white_holes: 0.000001,
+            worm_holes: 0.000001
+          },
+          normal_matter_sub_distribution: {
+            intergalactic_plasma: 0.850,
+            interstellar_gas_and_dust: 0.048,
+            active_stars: 0.070,
+            stellar_remnants: {
+              white_dwarfs: 0.020,
+              neutron_stars: 0.001,
+              black_holes: 0.001
+            },
+            planetary_systems: 0.00010
+          }
+        };
+
+        const canvas = document.getElementById('cosmos');
+        const ctx = canvas.getContext('2d');
+        let width, height;
+        const entities = [];
+        const totalParticles = (window.innerWidth * window.innerHeight) / 10000; // Scaled particle count
+
+        const spaceship = document.getElementById('spaceship');
+        const tooltip = document.getElementById('tooltip');
+        let mouse = { x: window.innerWidth / 2, y: window.innerHeight / 2, oldX: window.innerWidth/2, oldY: window.innerHeight/2 };
+
+        function initCosmos() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+            entities.length = 0;
+
+            const normalMatterCount = totalParticles * cosmicBudget.normal_matter;
+            const sub = cosmicBudget.normal_matter_sub_distribution;
+
+            let count = normalMatterCount * sub.active_stars;
+            for (let i=0; i<count; i++) entities.push({ type: 'star', name: 'Active Star', x: Math.random()*width, y: Math.random()*height, radius: Math.random()*1.5 + 0.5 });
+            count = normalMatterCount * sub.stellar_remnants.white_dwarfs;
+            for (let i=0; i<count; i++) entities.push({ type: 'star', name: 'White Dwarf', x: Math.random()*width, y: Math.random()*height, radius: Math.random()*0.8 + 0.2, color: '#cdd1e0' });
+            count = normalMatterCount * sub.stellar_remnants.neutron_stars;
+            for (let i=0; i<count; i++) entities.push({ type: 'neutron_star', name: 'Neutron Star/Pulsar', x: Math.random()*width, y: Math.random()*height, radius: 2, pulse: Math.random()*100 });
+            count = normalMatterCount * sub.stellar_remnants.black_holes;
+            for (let i=0; i<count; i++) entities.push({ type: 'black_hole', name: 'Stellar Black Hole', x: Math.random()*width, y: Math.random()*height, radius: Math.random()*5+3 });
+            
+            count = totalParticles * cosmicBudget.dark_matter;
+            for (let i=0; i<count; i++) entities.push({ type: 'dark_matter', name: 'Dark Matter Concentration', x: Math.random()*width, y: Math.random()*height, radius: Math.random()*80+40, strength: Math.random()*0.05+0.01 });
+            
+            if (Math.random() < 0.05) entities.push({ type: 'anomaly', name: 'Theoretical Anomaly: Wormhole', x: Math.random()*width, y: Math.random()*height, radius: 10 });
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, width, height);
+            const panZone = 50;
+            const panSpeed = 1.5;
+            let worldVx = 0;
+            let worldVy = 0;
+
+            if (mouse.x < panZone) worldVx = panSpeed;
+            if (mouse.x > width - panZone) worldVx = -panSpeed;
+            if (mouse.y < panZone) worldVy = panSpeed;
+            if (mouse.y > height - panZone) worldVy = -panSpeed;
+            
+            entities.forEach(e => {
+                e.x += worldVx;
+                e.y += worldVy;
+
+                const buffer = e.radius > 20 ? e.radius : 20;
+                if (e.x > width + buffer) e.x = -buffer;
+                if (e.x < -buffer) e.x = width + buffer;
+                if (e.y > height + buffer) e.y = -buffer;
+                if (e.y < -buffer) e.y = height + buffer;
+
+                 switch(e.type) {
+                    case 'star':
+                        ctx.fillStyle = e.color || `rgba(255, 255, 255, 0.8)`;
+                        ctx.beginPath(); ctx.arc(e.x, e.y, e.radius, 0, Math.PI * 2); ctx.fill();
+                        break;
+                    case 'neutron_star':
+                        e.pulse = (e.pulse + 1) % 100;
+                        ctx.fillStyle = `rgba(173, 216, 230, ${Math.abs(Math.sin(e.pulse * 0.1))})`;
+                        ctx.beginPath(); ctx.arc(e.x, e.y, e.radius, 0, Math.PI * 2); ctx.fill();
+                        break;
+                    case 'black_hole':
+                        ctx.fillStyle = 'black';
+                        ctx.beginPath(); ctx.arc(e.x, e.y, e.radius, 0, Math.PI * 2); ctx.fill();
+                        ctx.strokeStyle = `rgba(212, 175, 55, 0.1)`;
+                        ctx.lineWidth = 1.5;
+                        ctx.beginPath(); ctx.arc(e.x, e.y, e.radius + 4, 0, Math.PI * 2); ctx.stroke();
+                        break;
+                    case 'anomaly':
+                         const anomalyGrad = ctx.createRadialGradient(e.x, e.y, 1, e.x, e.y, e.radius);
+                         anomalyGrad.addColorStop(0, 'rgba(255,255,255,0.5)');
+                         anomalyGrad.addColorStop(0.5, 'rgba(74, 226, 157, 0.5)');
+                         anomalyGrad.addColorStop(1, 'rgba(0,0,0,0)');
+                         ctx.fillStyle = anomalyGrad;
+                         ctx.beginPath(); ctx.arc(e.x, e.y, e.radius, 0, Math.PI*2); ctx.fill();
+                        break;
+                }
+            });
+            requestAnimationFrame(animate);
+        }
+
+        const audioToggle = document.getElementById('audio-toggle');
+        let audioCtx, gainNode, isPlaying = false;
+
+        function initCmbAudio() {
+            audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            const bufferSize = 2 * audioCtx.sampleRate;
+            const noiseBuffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
+            const output = noiseBuffer.getChannelData(0);
+            for (let i = 0; i < bufferSize; i++) { output[i] = Math.random() * 2 - 1; }
+            
+            const whiteNoise = audioCtx.createBufferSource();
+            whiteNoise.buffer = noiseBuffer;
+            whiteNoise.loop = true;
+
+            const filter = audioCtx.createBiquadFilter();
+            filter.type = "lowpass";
+            filter.frequency.setValueAtTime(120, audioCtx.currentTime);
+
+            const lfo = audioCtx.createOscillator();
+            lfo.type = 'sine';
+            lfo.frequency.setValueAtTime(0.03, audioCtx.currentTime);
+            const lfoGain = audioCtx.createGain();
+            lfoGain.gain.setValueAtTime(30, audioCtx.currentTime);
+            lfo.connect(lfoGain).connect(filter.frequency);
+            
+            gainNode = audioCtx.createGain();
+            gainNode.gain.setValueAtTime(0, audioCtx.currentTime);
+
+            whiteNoise.connect(filter).connect(gainNode).connect(audioCtx.destination);
+            whiteNoise.start();
+            lfo.start();
+        }
+
+        audioToggle.addEventListener('click', () => {
+            if (!audioCtx) initCmbAudio();
+            if (audioCtx.state === 'suspended') audioCtx.resume();
+            isPlaying = !isPlaying;
+            gainNode.gain.linearRampToValueAtTime(isPlaying ? 0.03 : 0, audioCtx.currentTime + 3);
+            audioToggle.textContent = isPlaying ? '🔊' : '🔇';
+        });
+
+        window.addEventListener('mousemove', e => {
+            mouse.oldX = mouse.x;
+            mouse.oldY = mouse.y;
+            mouse.x = e.clientX;
+            mouse.y = e.clientY;
+
+            const dx = mouse.x - mouse.oldX;
+            const dy = mouse.y - mouse.oldY;
+            const angle = Math.atan2(dy, dx) * 180 / Math.PI + 90;
+            spaceship.style.transform = `translate(${mouse.x}px, ${mouse.y}px) rotate(${angle}deg)`;
+
+            let foundEntity = null;
+            let min_dist = 20; // smaller detection radius
+            entities.forEach(ent => {
+                if(ent.type === 'dark_matter') return;
+                const dist = Math.sqrt(Math.pow(ent.x - mouse.x, 2) + Math.pow(ent.y - mouse.y, 2));
+                if (dist < min_dist) {
+                    min_dist = dist;
+                    foundEntity = ent;
+                }
+            });
+
+            if (foundEntity) {
+                tooltip.style.display = 'block';
+                tooltip.style.left = `${mouse.x}px`;
+                tooltip.style.top = `${mouse.y}px`;
+                tooltip.textContent = foundEntity.name;
+            } else {
+                tooltip.style.display = 'none';
+            }
+        });
+        
+        // --- CRT Mode Toggle ---
+        let lastShiftPress = 0;
+        window.addEventListener('keydown', e => {
+            if (e.key === 'Shift') {
+                const now = Date.now();
+                if (now - lastShiftPress < 300) { // Double-press within 300ms
+                    document.body.classList.toggle('crt-mode');
+                }
+                lastShiftPress = now;
+            }
+        });
+
+        // --- EXISTING DYNAMIC CONTENT & INTERACTIVITY ---
+        const components = [
+            { title: "MRSL-1.0: The Ethical Foundation", text: "A strong-copyleft, FOSS-compatible license that guarantees the perpetual freedom of source code and includes an optional, binding Ethical Use Covenant.", link: "mrsl-1.0.html", buttonText: "Read the MRSL-1.0 License" },
+            { title: "MMPEULA-1.0: The Professional Framework", text: "A professional-grade EULA for commercial distribution. Its axiomatic structure provides unprecedented legal clarity and a defensible foundation for B2B transactions.", link: "mmpeula-1.0.html", buttonText: "Examine the MMPEULA-1.0" },
+            { title: "MCAL-1.0: For Content & AI", text: "Governs datasets, articles, and all forms of content. The world's most advanced framework for licensing AI training data.", link: "mcal.html", buttonText: "Read the MCAL-1.0" },
+            { title: "MHL-1.0: For Hardware", text: "For schematics and physical designs. Codifies the Right to Repair, mandates hardware kill switches, and demands environmental responsibility.", link: "mhl.html", buttonText: "Read the MHL-1.0" },
+            { title: "The Acceptance Protocol (MAP)", text: "A fortress of consent. A proprietary, multi-stage consent-verification process, creating a robust, auditable, and legally defensible record of informed agreement.", link: "mmpeula-1.0.html#appendix-1", buttonText: "Analyze the Protocol" },
+            { title: "The Complete Scholarly Archive", text: "This framework is a living academic resource. The official repository contains the canonical texts and extensive documentation intended for legal and technical scholars.", link: "https://github.com/MitsuoLabs/LegalFramework", buttonText: "Go to GitHub Repository" },
+        ];
+
+        const componentsGrid = document.querySelector('#components .card-grid');
+        componentsGrid.innerHTML = ''; // Clear existing before adding
+        components.forEach((comp, i) => {
+            const card = document.createElement('div');
+            card.className = 'card';
+            card.style.animationDelay = `${i * 0.1}s`;
+            card.innerHTML = `
+                <h3>${comp.title}</h3>
+                <p>${comp.text}</p>
+                <a href="${comp.link}" class="button" ${comp.link.startsWith('http') ? 'target="_blank" rel="noopener noreferrer"' : ''}>${comp.buttonText}</a>
+            `;
+            componentsGrid.appendChild(card);
+        });
+
+        const innovationCards = document.querySelectorAll('#innovations-grid .card');
+        innovationCards.forEach(card => {
+            const subAxiomText = card.dataset.subAxiom;
+            if (!card.querySelector('.sub-axiom')) { // Prevent adding duplicates
+                const subAxiomEl = document.createElement('div');
+                subAxiomEl.className = 'sub-axiom';
+                subAxiomEl.textContent = subAxiomText;
+                card.appendChild(subAxiomEl);
+            }
+        });
+
+        const sections = document.querySelectorAll('.section');
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15 });
+       sections.forEach(section => {
+            section.style.transition = 'opacity 1.2s cubic-bezier(0.2, 0.8, 0.2, 1), transform 1.2s cubic-bezier(0.2, 0.8, 0.2, 1)';
+            section.style.transform = 'translateY(60px)';
+            observer.observe(section);
+        });
+
+        // Initialize everything
+        initCosmos();
+        animate();
+        window.addEventListener('resize', initCosmos);
+    });
+    </script>
+</body>
+</html>

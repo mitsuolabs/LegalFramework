@@ -1,0 +1,14 @@
+{
+    "projectName": "My Awesome Project",
+    "productName": "My Awesome Product",
+    "licensorName": "My Company LLC",
+    "licensorContactAddress": "legal@my-company.com",
+    "consumerDeclarationAddress": "support@my-company.com",
+    "designatedJurisdiction": "The State of Delaware, USA",
+    "orcidId": "0000-0000-0000-0000",
+    "licenseFeeSchedule": "https://example.com/fees",
+    "projectFamilyName": "My Project Family",
+    "sourceLicense": "MRSL-1.0",
+    "sourceLicenseReference": "mrsl-1.0.txt",
+    "outputDir": "generated_licenses"
+}

@@ -1,0 +1,18 @@
+name: Create Archive
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  archive:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Create archive
+        run: tar -czf mitsuolabs-licenses-archive.tar.gz .
+      - uses: actions/upload-artifact@v3
+        with:
+          name: mitsuolabs-licenses-archive
+          path: mitsuolabs-licenses-archive.tar.gz
