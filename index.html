@@ -38,11 +38,11 @@
             overflow-x: hidden;
             opacity: 0;
             transition: opacity 1s ease-in-out;
-            cursor: none; /* Hide default cursor */
+            cursor: none !important;
         }
         body.loaded { opacity: 1; }
         body.inverted { transform: rotate(180deg); }
-        #cosmos { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
+        #cosmos { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; transition: transform 2s cubic-bezier(0.16, 1, 0.3, 1); pointer-events: none; }
         .overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(2, 2, 4, 0.98); z-index: 2000;
@@ -58,7 +58,7 @@
         h1 {
             font-size: clamp(2.8rem, 6vw, 6rem); font-weight: 800; letter-spacing: -0.05em;
             background: linear-gradient(45deg, var(--accent-gold), #ffffff);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;
             margin-bottom: 1rem;
         }
         h2 {
@@ -74,11 +74,12 @@
             backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
             z-index: 1000; border-bottom: 1px solid var(--border-color);
         }
+        .navbar a { cursor: none !important; }
         .nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1800px; margin: 0 auto; padding: clamp(0.8rem, 2vw, 1.2rem) 2rem; }
         .nav-logo a { font-weight: 700; font-size: clamp(1.1rem, 2vw, 1.4rem); color: var(--text-primary); text-decoration: none; }
         .nav-logo span { color: var(--accent-gold); }
         .nav-links { display: flex; gap: clamp(1rem, 2.5vw, 2.8rem); }
-        .nav-links a { color: var(--text-secondary); text-decoration: none; font-weight: 500; transition: color 0.3s; position: relative; }
+        .nav-links a { color: var(--text-secondary); text-decoration: none; font-weight: 500; transition: color 0.3s; position: relative; cursor: none !important; }
         .nav-links a::after { content: ''; position: absolute; width: 0; height: 1px; bottom: -4px; left: 50%; background: var(--accent-gold); transition: all 0.3s ease-out; }
         .nav-links a:hover { color: var(--text-primary); }
         .nav-links a:hover::after { width: 100%; left: 0; }
@@ -100,7 +101,7 @@
         .card .sub-axiom { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: var(--highlight-bg); display: flex; align-items: center; justify-content: center; text-align: center; padding: 2rem; font-style: italic; font-size: 1.1rem; opacity: 0; transition: opacity 0.4s ease; pointer-events: none; }
         .card:hover .sub-axiom { opacity: 1; }
         .card:hover > p, .card:hover > h3, .card:hover > a.button { opacity: 0.1; }
-        .card a.button { display: block; background: var(--accent-gold); color: var(--bg-dark); padding: 1rem; border-radius: 8px; font-weight: 700; text-align: center; text-decoration: none; margin-top: 2rem; transition: background-color 0.2s, transform 0.2s; z-index: 2; }
+        .card a.button { display: block; background: var(--accent-gold); color: var(--bg-dark); padding: 1rem; border-radius: 8px; font-weight: 700; text-align: center; text-decoration: none; margin-top: 2rem; transition: background-color 0.2s, transform 0.2s; z-index: 2; cursor: none !important; }
         .card a.button:hover { background-color: #fff; transform: scale(1.05); }
         .philosophy-item { background: var(--highlight-bg); border-left: 4px solid var(--accent-gold); padding: 2rem; border-radius: 0 8px 8px 0; }
         .philosophy-item strong { display: block; color: var(--text-primary); font-size: 1.25rem; margin-bottom: 0.5rem; }
@@ -121,40 +122,63 @@
         .footer-logo { font-weight: 700; font-size: 1.5rem; color: var(--text-primary); margin-bottom: 1.5rem; }
         .footer-logo span { color: var(--accent-gold); }
         .footer-links { display: flex; justify-content: center; gap: clamp(1rem, 3vw, 2rem); margin-bottom: 2rem; flex-wrap: wrap; }
+        .footer-links a { color: var(--text-secondary); text-decoration: none; cursor: none !important; }
         .footer-links a:hover { color: var(--accent-gold); }
         .footer-note { font-size: 0.9rem; color: #666; }
         #audio-toggle {
             position: fixed; bottom: 20px; right: 20px; z-index: 1001;
             background: var(--bg-card); border: 1px solid rgba(212, 175, 55, 0.2);
             color: var(--text-secondary); border-radius: 50%; width: 50px; height: 50px;
-            cursor: pointer; font-size: 24px; display: flex; align-items: center; justify-content: center;
+            cursor: none !important; font-size: 24px; display: flex; align-items: center; justify-content: center;
             transition: color 0.3s, border-color 0.3s, transform 0.3s;
         }
         #audio-toggle:hover { color: var(--text-primary); border-color: var(--accent-gold); transform: scale(1.1); }
         #spaceship {
             position: fixed;
-            width: 24px;
-            height: 24px;
+            width: 32px;
+            height: 32px;
             background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M12 2L2 22h20L12 2zm0 4.55L17.52 18H6.48L12 6.55z"/></svg>');
             background-size: contain;
             pointer-events: none;
             z-index: 9999;
             transform: translate(-50%, -50%) rotate(0deg);
-            transition: transform 0.1s linear;
+            filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.5));
+        }
+        #spaceship::after {
+            content: '';
+            position: absolute;
+            top: -6px; left: -6px; right: -6px; bottom: -6px;
+            border-radius: 50%;
+            border: 1px solid rgba(74, 144, 226, 0.6);
+            box-shadow: 0 0 15px rgba(74, 144, 226, 0.4);
+            opacity: var(--shield-opacity, 0.5);
+            transition: opacity 0.3s;
         }
         #tooltip {
             position: fixed;
             display: none;
-            background: rgba(12, 12, 16, 0.9);
+            background: rgba(12, 12, 16, 0.95);
             color: var(--text-primary);
             border: 1px solid var(--border-color);
             padding: 8px 12px;
             border-radius: 6px;
-            font-size: 14px;
+            font-size: 12px;
             pointer-events: none;
             z-index: 10000;
             transform: translate(20px, -40px);
+            font-family: 'SF Mono', monospace;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
         }
+
+        #rebirth-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: #fff; z-index: 3000;
+            display: none; align-items: center; justify-content: center;
+            opacity: 0; transition: opacity 1s ease-in-out;
+            pointer-events: none;
+        }
+        #rebirth-overlay h1 { font-family: 'Lexend Deca', sans-serif; color: #000; font-size: 2.5rem; letter-spacing: 0.4em; text-align: center; text-transform: uppercase; }
         
         /* CRT Mode Styles */
         body.crt-mode {
@@ -162,6 +186,7 @@
             background-color: #000 !important;
             color: #0F0 !important;
             filter: blur(0.5px) saturate(1.5);
+            animation: crt-distortion 0.15s infinite;
         }
         body.crt-mode::before {
             content: " ";
@@ -185,15 +210,26 @@
             pointer-events: none;
             animation: scanline 7s linear infinite;
         }
+        @keyframes crt-distortion {
+            0% { filter: blur(0.4px) saturate(1.5) contrast(1); }
+            50% { filter: blur(0.6px) saturate(1.8) contrast(1.1); transform: translate(0.3px, 0.3px); }
+            100% { filter: blur(0.4px) saturate(1.5) contrast(1); transform: translate(0, 0); }
+        }
         @keyframes flicker { 0% { opacity: 0.27; } 5% { opacity: 0.34; } 10% { opacity: 0.23; } 15% { opacity: 0.9; } 20% { opacity: 0.18; } 25% { opacity: 0.83; } 30% { opacity: 0.65; } 35% { opacity: 0.67; } 40% { opacity: 0.26; } 45% { opacity: 0.84; } 50% { opacity: 0.96; } 55% { opacity: 0.08; } 60% { opacity: 0.2; } 65% { opacity: 0.71; } 70% { opacity: 0.53; } 75% { opacity: 0.37; } 80% { opacity: 0.71; } 85% { opacity: 0.7; } 90% { opacity: 0.7; } 95% { opacity: 0.36; } 100% { opacity: 0.24; } }
         @keyframes scanline { 0% { transform: translateY(-100vh); } 100% { transform: translateY(100vh); } }
         body.crt-mode h1 { background: none; -webkit-text-fill-color: #0F0; text-shadow: 0 0 5px #0F0, 0 0 10px #0F0; }
-        body.crt-mode .navbar { background-color: rgba(0, 15, 0, 0.7); border-bottom-color: #0F0; }
+        body.crt-mode .navbar { background-color: rgba(0, 15, 0, 0.8); border-bottom-color: #0F0; }
         body.crt-mode .card { background-color: #030303; border-color: #0A0; color: #0F0; }
         body.crt-mode .card h3, body.crt-mode .nav-logo a, body.crt-mode .footer-logo { color: #0F0; text-shadow: 0 0 3px #0F0; }
         body.crt-mode .nav-logo span, body.crt-mode .footer-logo span { color: #5F5; text-shadow: none; }
         body.crt-mode .card a.button { background: #0A0; color: #000; text-shadow: none; }
         body.crt-mode p, body.crt-mode .nav-links a { color: #0D0 !important; }
+        body.crt-mode #spaceship {
+            filter: drop-shadow(0 0 5px #0F0);
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%2300FF00"><path d="M12 2L2 22h20L12 2zm0 4.55L17.52 18H6.48L12 6.55z"/></svg>') !important;
+        }
+        body.crt-mode #spaceship::after { border-color: #0A0; box-shadow: 0 0 10px #0A0; }
+        body.crt-mode #tooltip { background: rgba(0, 20, 0, 0.95); border-color: #0F0; color: #0F0; }
         
         @media (max-width: 768px) { .nav-links { display: none; } }
     </style>
@@ -212,6 +248,7 @@
     <div id="genesis-overlay" class="overlay">
         <div class="overlay-content"><h1>In the beginning, there was a choice.</h1></div>
     </div>
+    <div id="rebirth-overlay"><h1>IN ANOTHER UNIVERSE...</h1></div>
 
     <canvas id="cosmos"></canvas>
     <div id="spaceship"></div>
@@ -369,11 +406,13 @@
         } else {
             setTimeout(() => {
                 const foreword = document.getElementById('foreword-overlay');
-                foreword.style.opacity = 0;
-                setTimeout(() => {
-                    foreword.style.display = 'none';
-                    if (!eventTriggered) initMainContent();
-                }, 1500);
+                if(foreword) {
+                    foreword.style.opacity = 0;
+                    setTimeout(() => {
+                        foreword.style.display = 'none';
+                        if (!eventTriggered) initMainContent();
+                    }, 1500);
+                }
             }, 3000);
         }
         
@@ -382,231 +421,618 @@
             document.getElementById('main-content').style.visibility = 'visible';
         }
 
-        // --- COSMIC SIMULATION & AUDIO ---
+        // --- TITANIC COSMIC SIMULATION & PHYSICS ---
         const cosmicBudget = {
-          dark_energy: 0.682998,
-          dark_matter: 0.268000,
-          normal_matter: 0.049000,
-          theoretical_anomalies: {
-            white_holes: 0.000001,
-            worm_holes: 0.000001
-          },
-          normal_matter_sub_distribution: {
-            intergalactic_plasma: 0.850,
-            interstellar_gas_and_dust: 0.048,
-            active_stars: 0.070,
-            stellar_remnants: {
-              white_dwarfs: 0.020,
-              neutron_stars: 0.001,
-              black_holes: 0.001
-            },
-            planetary_systems: 0.00010
-          }
+            dark_energy: 0.682998,
+            dark_matter: 0.268000,
+            normal_matter: 0.049000,
+            normal_matter_distribution: {
+                intergalactic_plasma: 0.850,
+                interstellar_gas_dust: 0.048,
+                active_stars: 0.070,
+                white_dwarfs: 0.020,
+                neutron_stars: 0.001,
+                black_holes: 0.001,
+                planetary_systems: 0.0001
+            }
         };
 
         const canvas = document.getElementById('cosmos');
         const ctx = canvas.getContext('2d');
         let width, height;
-        const entities = [];
-        const totalParticles = (window.innerWidth * window.innerHeight) / 10000; // Scaled particle count
+        let entities = [];
+        let projectiles = [];
+        let particles = [];
+        let starFields = [[], [], []];
 
         const spaceship = document.getElementById('spaceship');
         const tooltip = document.getElementById('tooltip');
-        let mouse = { x: window.innerWidth / 2, y: window.innerHeight / 2, oldX: window.innerWidth/2, oldY: window.innerHeight/2 };
+        const rebirthOverlay = document.getElementById('rebirth-overlay');
+
+        let mouse = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
+        let sessionStartTime = Date.now();
+        let initialSpawnDone = false;
+        let player = {
+            x: window.innerWidth / 2,
+            y: window.innerHeight / 2,
+            vx: 0,
+            vy: 0,
+            angle: 0,
+            shield: 1, // 0 to 1
+            hull: 1,   // 0 to 1
+            shieldCooldown: 0,
+            isLeftClick: false,
+            isConsumed: false,
+            consumeTimer: 0,
+            isDying: false
+        };
 
         function initCosmos() {
             width = canvas.width = window.innerWidth;
             height = canvas.height = window.innerHeight;
-            entities.length = 0;
-
-            const normalMatterCount = totalParticles * cosmicBudget.normal_matter;
-            const sub = cosmicBudget.normal_matter_sub_distribution;
-
-            let count = normalMatterCount * sub.active_stars;
-            for (let i=0; i<count; i++) entities.push({ type: 'star', name: 'Active Star', x: Math.random()*width, y: Math.random()*height, radius: Math.random()*1.5 + 0.5 });
-            count = normalMatterCount * sub.stellar_remnants.white_dwarfs;
-            for (let i=0; i<count; i++) entities.push({ type: 'star', name: 'White Dwarf', x: Math.random()*width, y: Math.random()*height, radius: Math.random()*0.8 + 0.2, color: '#cdd1e0' });
-            count = normalMatterCount * sub.stellar_remnants.neutron_stars;
-            for (let i=0; i<count; i++) entities.push({ type: 'neutron_star', name: 'Neutron Star/Pulsar', x: Math.random()*width, y: Math.random()*height, radius: 2, pulse: Math.random()*100 });
-            count = normalMatterCount * sub.stellar_remnants.black_holes;
-            for (let i=0; i<count; i++) entities.push({ type: 'black_hole', name: 'Stellar Black Hole', x: Math.random()*width, y: Math.random()*height, radius: Math.random()*5+3 });
+            entities = [];
+            projectiles = [];
+            particles = [];
+            starFields = [[], [], []];
             
-            count = totalParticles * cosmicBudget.dark_matter;
-            for (let i=0; i<count; i++) entities.push({ type: 'dark_matter', name: 'Dark Matter Concentration', x: Math.random()*width, y: Math.random()*height, radius: Math.random()*80+40, strength: Math.random()*0.05+0.01 });
+            for(let layer=0; layer<3; layer++) {
+                const count = layer === 0 ? 300 : (layer === 1 ? 150 : 80);
+                for(let i=0; i<count; i++) {
+                    starFields[layer].push({
+                        x: Math.random() * width,
+                        y: Math.random() * height,
+                        radius: Math.random() * (layer === 0 ? 0.8 : (layer === 1 ? 1.5 : 2.5)),
+                        opacity: Math.random() * 0.5 + 0.2
+                    });
+                }
+            }
+
+            for (let i = 0; i < 80; i++) {
+                spawnEntity(Math.random() * width, Math.random() * height);
+            }
+        }
+
+        function spawnEntity(x, y) {
+            const randMatter = Math.random();
+            const totalMatter = cosmicBudget.normal_matter + cosmicBudget.dark_matter;
             
-            if (Math.random() < 0.05) entities.push({ type: 'anomaly', name: 'Theoretical Anomaly: Wormhole', x: Math.random()*width, y: Math.random()*height, radius: 10 });
+            if (randMatter < (cosmicBudget.dark_matter / totalMatter)) {
+                entities.push({ type: 'dark_matter', name: 'Dark Matter Well', x, y, radius: 60 });
+                return;
+            }
+
+            const rand = Math.random();
+            const d = cosmicBudget.normal_matter_distribution;
+            
+            if (rand < d.intergalactic_plasma) {
+                entities.push({ type: 'plasma', name: 'Intergalactic Plasma', x, y, radius: Math.random() * 40 + 20, color: 'rgba(74, 144, 226, 0.05)' });
+            } else if (rand < d.intergalactic_plasma + d.interstellar_gas_dust) {
+                entities.push({ type: 'dust', name: 'Nebular Dust Cloud', x, y, radius: Math.random() * 120 + 60, color: 'rgba(120, 80, 200, 0.03)' });
+            } else if (rand < d.intergalactic_plasma + d.interstellar_gas_dust + d.active_stars) {
+                if (Math.random() < 0.3) {
+                    entities.push({ type: 'asteroid', name: 'Asteroid', x, y, radius: Math.random() * 15 + 10, hull: 2, color: '#6e686c' });
+                } else {
+                    entities.push({ type: 'star', name: 'Active Star', x, y, radius: Math.random() * 4 + 2, color: '#fff' });
+                }
+            } else if (rand < d.intergalactic_plasma + d.interstellar_gas_dust + d.active_stars + d.white_dwarfs) {
+                entities.push({ type: 'white_dwarf', name: 'White Dwarf', x, y, radius: 1.5, color: '#eef' });
+            } else if (rand < d.intergalactic_plasma + d.interstellar_gas_dust + d.active_stars + d.white_dwarfs + d.neutron_stars) {
+                entities.push({ type: 'neutron_star', name: 'Pulsar', x, y, radius: 1, pulse: 0 });
+            } else if (rand < d.intergalactic_plasma + d.interstellar_gas_dust + d.active_stars + d.white_dwarfs + d.neutron_stars + d.black_holes) {
+                entities.push({ type: 'black_hole', name: 'Schwarzschild Singularity', x, y, radius: 50 });
+            } else {
+                if (Math.random() < 0.2) {
+                    spawnAI(x, y);
+                } else {
+                    entities.push({ type: 'planetary_system', name: 'Planetary System', x, y, radius: 30, color: '#fdb' });
+                }
+            }
+        }
+
+        function spawnAI(x, y) {
+            const types = [
+                { faction: 'dominion', colors: ['#4a90e2', '#9013fe'], behavior: 'hunt', name: 'Dominion Hunter' },
+                { faction: 'ravager', colors: ['#ff3333', '#f5a623'], behavior: 'hunt', name: 'Ravager Drone' },
+                { faction: 'independent', colors: ['#7ed321', '#fff'], behavior: 'neutral', name: 'Neutral Freighter' },
+                { faction: 'chaos', colors: ['#9b9b9b', '#8b572a'], behavior: 'pirate', name: 'Chaos Pirate' }
+            ];
+            const t = types[Math.floor(Math.random() * types.length)];
+            entities.push({
+                type: 'ship',
+                faction: t.faction,
+                colors: t.colors,
+                behavior: t.behavior,
+                name: t.name,
+                x, y,
+                vx: (Math.random() - 0.5) * 2,
+                vy: (Math.random() - 0.5) * 2,
+                angle: Math.random() * Math.PI * 2,
+                radius: 14,
+                shield: 1,
+                hull: 1,
+                shieldCooldown: 0
+            });
+        }
+
+        function createExplosion(x, y, color, titanic = false) {
+            const count = titanic ? 60 : 25;
+            for (let k = 0; k < count; k++) {
+                particles.push({
+                    x, y,
+                    vx: (Math.random() - 0.5) * (titanic ? 20 : 12),
+                    vy: (Math.random() - 0.5) * (titanic ? 20 : 12),
+                    radius: Math.random() * (titanic ? 8 : 4) + 1,
+                    life: titanic ? 120 : 60,
+                    color: color || '#ffaa00'
+                });
+            }
+            if (titanic) playExplosionSound();
+            else playShieldSound();
+        }
+
+        function createShieldBurst(x, y) {
+            for (let k = 0; k < 15; k++) {
+                particles.push({
+                    x, y,
+                    vx: (Math.random() - 0.5) * 8,
+                    vy: (Math.random() - 0.5) * 8,
+                    radius: Math.random() * 2 + 1,
+                    life: 30,
+                    color: '#4a90e2'
+                });
+            }
+            playShieldSound();
+        }
+
+        function resetUniverse() {
+            player.isDying = true;
+            rebirthOverlay.style.display = 'flex';
+            canvas.style.transform = 'scale(15)';
+            setTimeout(() => rebirthOverlay.style.opacity = 1, 50);
+            
+            setTimeout(() => {
+                player.shield = 1;
+                player.hull = 1;
+                player.vx = 0; player.vy = 0;
+                player.x = width / 2; player.y = height / 2;
+                player.isDying = false;
+                initCosmos();
+                canvas.style.transform = 'scale(1)';
+                rebirthOverlay.style.opacity = 0;
+                setTimeout(() => rebirthOverlay.style.display = 'none', 1000);
+            }, 3000);
         }
 
         function animate() {
             ctx.clearRect(0, 0, width, height);
-            const panZone = 50;
-            const panSpeed = 1.5;
-            let worldVx = 0;
-            let worldVy = 0;
+            const isCrt = document.body.classList.contains('crt-mode');
 
-            if (mouse.x < panZone) worldVx = panSpeed;
-            if (mouse.x > width - panZone) worldVx = -panSpeed;
-            if (mouse.y < panZone) worldVy = panSpeed;
-            if (mouse.y > height - panZone) worldVy = -panSpeed;
-            
-            entities.forEach(e => {
-                e.x += worldVx;
-                e.y += worldVy;
+            if (!initialSpawnDone && (Date.now() - sessionStartTime) > 30000) {
+                initialSpawnDone = true;
+                spawnAI(Math.random() * width, -50);
+                spawnAI(width + 50, Math.random() * height);
+                spawnAI(Math.random() * width, height + 50);
+                spawnAI(-50, Math.random() * height);
+            }
 
-                const buffer = e.radius > 20 ? e.radius : 20;
-                if (e.x > width + buffer) e.x = -buffer;
-                if (e.x < -buffer) e.x = width + buffer;
-                if (e.y > height + buffer) e.y = -buffer;
-                if (e.y < -buffer) e.y = height + buffer;
+            if (player.hull <= 0 && !player.isDying) {
+                createExplosion(player.x, player.y, '#D4AF37', true);
+                resetUniverse();
+            }
 
-                 switch(e.type) {
+            // --- PLAYER UPDATES ---
+            if (!player.isConsumed && !player.isDying) {
+                player.angle = Math.atan2(mouse.y - player.y, mouse.x - player.x);
+                
+                if (player.isLeftClick) {
+                    const lerp = 0.06;
+                    const nextX = player.x + (mouse.x - player.x) * lerp;
+                    const nextY = player.y + (mouse.y - player.y) * lerp;
+
+                    const rw = width * 0.6;
+                    const rh = height * 0.6;
+                    const rx = (width - rw) / 2;
+                    const ry = (height - rh) / 2;
+                    const rMaxX = rx + rw;
+                    const rMaxY = ry + rh;
+
+                    let dx = 0, dy = 0;
+                    
+                    if (nextX < rx) { dx = nextX - rx; player.x = rx; }
+                    else if (nextX > rMaxX) { dx = nextX - rMaxX; player.x = rMaxX; }
+                    else { player.x = nextX; }
+
+                    if (nextY < ry) { dy = nextY - ry; player.y = ry; }
+                    else if (nextY > rMaxY) { dy = nextY - rMaxY; player.y = rMaxY; }
+                    else { player.y = nextY; }
+
+                    player.vx = dx;
+                    player.vy = dy;
+
+                    if (Math.abs(dx) > 0.1 || Math.abs(dy) > 0.1) {
+                         if (Math.random() < 0.15) {
+                            const b = 300;
+                            let sx, sy;
+                            if(Math.abs(dx) > Math.abs(dy)) {
+                                sx = dx < 0 ? -b : width + b;
+                                sy = Math.random() * height;
+                            } else {
+                                sx = Math.random() * width;
+                                sy = dy < 0 ? -b : height + b;
+                            }
+                            spawnEntity(sx, sy);
+                        }
+                    }
+
+                    if (Math.random() < 0.8) {
+                        particles.push({
+                            x: player.x - Math.cos(player.angle) * 16,
+                            y: player.y - Math.sin(player.angle) * 16,
+                            vx: -Math.cos(player.angle) * 5,
+                            vy: -Math.sin(player.angle) * 5,
+                            radius: Math.random() * 5 + 1,
+                            life: 40,
+                            color: Math.random() < 0.4 ? '#4a90e2' : '#D4AF37'
+                        });
+                    }
+                    playFuelSound(0.07);
+                } else {
+                    player.vx *= 0.94;
+                    player.vy *= 0.94;
+                }
+
+                if(player.shieldCooldown > 0) player.shieldCooldown--;
+                else player.shield = Math.min(1, player.shield + 0.001);
+            } else if (player.isConsumed) {
+                player.consumeTimer--;
+                if (player.consumeTimer <= 0) {
+                    player.isConsumed = false;
+                    player.x = width / 2; player.y = height / 2;
+                    player.vx = 0; player.vy = 0;
+                }
+            }
+
+            const worldVx = -player.vx;
+            const worldVy = -player.vy;
+
+            starFields.forEach((field, layer) => {
+                const speed = (layer + 1) * 0.2;
+                ctx.fillStyle = isCrt ? '#0F0' : '#fff';
+                field.forEach(s => {
+                    s.x += worldVx * speed;
+                    s.y += worldVy * speed;
+                    if(s.x < 0) s.x = width; if(s.x > width) s.x = 0;
+                    if(s.y < 0) s.y = height; if(s.y > height) s.y = 0;
+                    ctx.globalAlpha = s.opacity;
+                    ctx.beginPath(); ctx.arc(s.x, s.y, s.radius, 0, Math.PI*2); ctx.fill();
+                    ctx.globalAlpha = 1;
+                });
+            });
+
+            let hoveredEntity = null;
+
+            for (let i = entities.length - 1; i >= 0; i--) {
+                const e = entities[i];
+                e.x += worldVx; e.y += worldVy;
+
+                if (e.x < -width * 3 || e.x > width * 4 || e.y < -height * 3 || e.y > height * 4) {
+                    entities.splice(i, 1);
+                    continue;
+                }
+
+                const distToPlayer = Math.sqrt((e.x - player.x)**2 + (e.y - player.y)**2);
+                if (distToPlayer < 200) hoveredEntity = e;
+
+                if ((e.type === 'black_hole' || e.type === 'dark_matter') && !player.isConsumed && !player.isDying) {
+                    const dx = e.x - player.x; dy = e.y - player.y;
+                    const distSq = dx*dx + dy*dy; const dist = Math.sqrt(distSq);
+                    const force = (e.type === 'black_hole' ? 4000 : 1200) / (distSq + 3500);
+                    
+                    player.vx += (dx / dist) * force;
+                    player.vy += (dy / dist) * force;
+
+                    if (e.type === 'black_hole' && dist < 35) {
+                        player.isConsumed = true;
+                        player.consumeTimer = 180;
+                    }
+                }
+
+                if (e.type === 'ship') {
+                    if (e.behavior === 'hunt') {
+                        const adx = player.x - e.x; const ady = player.y - e.y;
+                        e.angle = Math.atan2(ady, adx);
+                        e.vx += Math.cos(e.angle) * 0.2; e.vy += Math.sin(e.angle) * 0.2;
+                    } else if (e.behavior === 'pirate') {
+                        let target = player; let minDist = 1000;
+                        entities.forEach(other => {
+                            if (other === e || (other.type !== 'ship' && other.type !== 'asteroid')) return;
+                            const d = Math.sqrt((other.x-e.x)**2 + (other.y-e.y)**2);
+                            if (d < minDist) { minDist = d; target = other; }
+                        });
+                        const adx = target.x - e.x; const ady = target.y - e.y;
+                        e.angle = Math.atan2(ady, adx);
+                        e.vx += Math.cos(e.angle) * 0.25; e.vy += Math.sin(e.angle) * 0.25;
+                    } else {
+                        if (Math.random() < 0.01) e.angle += (Math.random() - 0.5);
+                        e.vx += Math.cos(e.angle) * 0.15; e.vy += Math.sin(e.angle) * 0.15;
+                    }
+                    e.vx *= 0.95; e.vy *= 0.95;
+                    e.x += e.vx; e.y += e.vy;
+
+                    if(e.x < 0 || e.x > width) e.vx *= -1;
+                    if(e.y < 0 || e.y > height) e.vy *= -1;
+
+                    if(e.shieldCooldown > 0) e.shieldCooldown--;
+                    else e.shield = Math.min(1, e.shield + 0.001);
+
+                    if (!player.isConsumed && !player.isDying && distToPlayer < 25) {
+                        if(player.shield > 0) { player.shield = 0; player.shieldCooldown = 900; createShieldBurst(player.x, player.y); }
+                        else { player.hull = 0; createExplosion(player.x, player.y, '#D4AF37', true); }
+                        entities.splice(i, 1);
+                        continue;
+                    }
+                }
+
+                switch(e.type) {
                     case 'star':
-                        ctx.fillStyle = e.color || `rgba(255, 255, 255, 0.8)`;
-                        ctx.beginPath(); ctx.arc(e.x, e.y, e.radius, 0, Math.PI * 2); ctx.fill();
+                    case 'white_dwarf':
+                        ctx.fillStyle = isCrt ? '#0F0' : (e.color || '#fff');
+                        ctx.beginPath(); ctx.arc(e.x, e.y, e.radius, 0, Math.PI*2); ctx.fill();
+                        break;
+                    case 'asteroid':
+                        ctx.fillStyle = isCrt ? '#080' : '#6e686c';
+                        ctx.beginPath();
+                        ctx.arc(e.x, e.y, e.radius, 0, Math.PI*2);
+                        ctx.fill();
+                        if(e.hull < 2) {
+                            ctx.strokeStyle = '#fff'; ctx.lineWidth = 1; ctx.stroke();
+                        }
+                        break;
+                    case 'plasma':
+                    case 'dust':
+                        const cloudGrad = ctx.createRadialGradient(e.x, e.y, 0, e.x, e.y, e.radius);
+                        cloudGrad.addColorStop(0, isCrt ? 'rgba(0, 255, 0, 0.1)' : e.color);
+                        cloudGrad.addColorStop(1, 'transparent');
+                        ctx.fillStyle = cloudGrad;
+                        ctx.beginPath(); ctx.arc(e.x, e.y, e.radius, 0, Math.PI*2); ctx.fill();
                         break;
                     case 'neutron_star':
-                        e.pulse = (e.pulse + 1) % 100;
-                        ctx.fillStyle = `rgba(173, 216, 230, ${Math.abs(Math.sin(e.pulse * 0.1))})`;
-                        ctx.beginPath(); ctx.arc(e.x, e.y, e.radius, 0, Math.PI * 2); ctx.fill();
+                        e.pulse = (e.pulse + 0.6) % (Math.PI * 2);
+                        const nColor = isCrt ? '#0F0' : '#fff';
+                        ctx.save();
+                        if(!isCrt) { ctx.shadowBlur = 40 * (1.2 + Math.sin(e.pulse)); ctx.shadowColor = '#4a90e2'; }
+                        ctx.fillStyle = nColor;
+                        ctx.beginPath(); ctx.arc(e.x, e.y, 2, 0, Math.PI*2); ctx.fill();
+                        ctx.restore();
                         break;
                     case 'black_hole':
-                        ctx.fillStyle = 'black';
-                        ctx.beginPath(); ctx.arc(e.x, e.y, e.radius, 0, Math.PI * 2); ctx.fill();
-                        ctx.strokeStyle = `rgba(212, 175, 55, 0.1)`;
-                        ctx.lineWidth = 1.5;
-                        ctx.beginPath(); ctx.arc(e.x, e.y, e.radius + 4, 0, Math.PI * 2); ctx.stroke();
+                        const t = Date.now() * 0.001;
+                        ctx.save(); ctx.translate(e.x, e.y); ctx.rotate(t * 0.08);
+                        for(let l=0; l<3; l++) {
+                            const diskGrad = ctx.createRadialGradient(0, 0, 15, 0, 0, 70 + l*10);
+                            diskGrad.addColorStop(0.15, '#000');
+                            diskGrad.addColorStop(0.25, isCrt ? '#0F0' : '#D4AF37');
+                            diskGrad.addColorStop(0.5, isCrt ? 'rgba(0, 100, 0, 0.2)' : 'rgba(212, 175, 55, 0.3)');
+                            diskGrad.addColorStop(1, 'transparent');
+                            ctx.fillStyle = diskGrad;
+                            ctx.save(); ctx.scale(2.2 + l*0.2, 0.45);
+                            ctx.beginPath(); ctx.arc(0, 0, 70 + l*10, 0, Math.PI*2); ctx.fill();
+                            ctx.restore();
+                        }
+                        ctx.restore();
+                        ctx.fillStyle = '#000'; ctx.beginPath(); ctx.arc(e.x, e.y, 22, 0, Math.PI*2); ctx.fill();
                         break;
-                    case 'anomaly':
-                         const anomalyGrad = ctx.createRadialGradient(e.x, e.y, 1, e.x, e.y, e.radius);
-                         anomalyGrad.addColorStop(0, 'rgba(255,255,255,0.5)');
-                         anomalyGrad.addColorStop(0.5, 'rgba(74, 226, 157, 0.5)');
-                         anomalyGrad.addColorStop(1, 'rgba(0,0,0,0)');
-                         ctx.fillStyle = anomalyGrad;
-                         ctx.beginPath(); ctx.arc(e.x, e.y, e.radius, 0, Math.PI*2); ctx.fill();
+                    case 'ship':
+                        ctx.save(); ctx.translate(e.x, e.y); ctx.rotate(e.angle + Math.PI/2);
+                        ctx.fillStyle = isCrt ? '#0F0' : e.colors[0];
+                        ctx.beginPath(); ctx.moveTo(0, -12); ctx.lineTo(9, 12); ctx.lineTo(-9, 12); ctx.closePath(); ctx.fill();
+                        if(e.shield > 0) {
+                            ctx.strokeStyle = isCrt ? '#0F0' : 'rgba(74, 144, 226, 0.6)';
+                            ctx.lineWidth = 2; ctx.beginPath(); ctx.arc(0, 0, 18, 0, Math.PI*2); ctx.stroke();
+                        }
+                        ctx.restore();
+                        break;
+                    case 'planetary_system':
+                        ctx.strokeStyle = isCrt ? '#0F0' : 'rgba(255, 200, 150, 0.3)';
+                        ctx.lineWidth = 1; ctx.beginPath(); ctx.arc(e.x, e.y, e.radius, 0, Math.PI*2); ctx.stroke();
+                        ctx.fillStyle = isCrt ? '#0F0' : '#fff';
+                        ctx.beginPath(); ctx.arc(e.x, e.y, 4, 0, Math.PI*2); ctx.fill();
                         break;
                 }
-            });
+            }
+
+            if (hoveredEntity) {
+                tooltip.style.display = 'block';
+                tooltip.style.left = `${hoveredEntity.x}px`;
+                tooltip.style.top = `${hoveredEntity.y}px`;
+                tooltip.textContent = hoveredEntity.name;
+            } else {
+                tooltip.style.display = 'none';
+            }
+
+            for (let i = projectiles.length - 1; i >= 0; i--) {
+                const p = projectiles[i];
+                p.x += p.vx + worldVx; p.y += p.vy + worldVy;
+                if (p.x < -200 || p.x > width+200 || p.y < -200 || p.y > height+200) { projectiles.splice(i, 1); continue; }
+                
+                entities.filter(e => e.type === 'dark_matter').forEach(dm => {
+                    const dx = dm.x - p.x; dy = dm.y - p.y;
+                    const d = Math.sqrt(dx*dx + dy*dy);
+                    if(d < 150) { p.vx += (dx/d)*0.5; p.vy += (dy/d)*0.5; }
+                });
+
+                ctx.save();
+                if(!isCrt) { ctx.shadowBlur = 15; ctx.shadowColor = '#ff4444'; }
+                ctx.fillStyle = isCrt ? '#0F0' : '#fff';
+                ctx.beginPath(); ctx.arc(p.x, p.y, 4, 0, Math.PI*2); ctx.fill();
+                ctx.restore();
+
+                for(let j=entities.length-1; j>=0; j--) {
+                    const ent = entities[j];
+                    if(ent.type === 'asteroid' || ent.type === 'ship') {
+                        const d = Math.sqrt((ent.x-p.x)**2 + (ent.y-p.y)**2);
+                        if(d < ent.radius + 10) {
+                            if(ent.type === 'ship') {
+                                if(ent.shield > 0) { ent.shield = 0; ent.shieldCooldown = 900; createShieldBurst(ent.x, ent.y); }
+                                else { createExplosion(ent.x, ent.y, ent.colors[0], true); entities.splice(j, 1); }
+                            } else {
+                                ent.hull--;
+                                if(ent.hull <= 0) { createExplosion(ent.x, ent.y, '#666', true); entities.splice(j, 1); }
+                                else { createExplosion(ent.x, ent.y, '#666', false); }
+                            }
+                            projectiles.splice(i, 1); break;
+                        }
+                    }
+                }
+            }
+
+            for (let i = particles.length - 1; i >= 0; i--) {
+                const p = particles[i];
+                p.x += p.vx + worldVx; p.y += p.vy + worldVy;
+                p.life--;
+                if (p.life <= 0) { particles.splice(i, 1); continue; }
+                ctx.fillStyle = isCrt ? '#0F0' : p.color;
+                ctx.globalAlpha = p.life / 80;
+                ctx.beginPath(); ctx.arc(p.x, p.y, p.radius, 0, Math.PI*2); ctx.fill();
+                ctx.globalAlpha = 1;
+            }
+
+            if (!player.isConsumed && !player.isDying) {
+                const angleDeg = player.angle * 180 / Math.PI + 90;
+                spaceship.style.transform = `translate(${player.x}px, ${player.y}px) rotate(${angleDeg}deg)`;
+                spaceship.style.setProperty('--shield-opacity', player.shield);
+                spaceship.style.opacity = 1;
+            } else {
+                spaceship.style.opacity = 0;
+            }
+
             requestAnimationFrame(animate);
         }
 
         const audioToggle = document.getElementById('audio-toggle');
         let audioCtx, gainNode, isPlaying = false;
 
-        function initCmbAudio() {
+        function initAudio() {
+            if (audioCtx) return;
             audioCtx = new (window.AudioContext || window.webkitAudioContext)();
             const bufferSize = 2 * audioCtx.sampleRate;
             const noiseBuffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
             const output = noiseBuffer.getChannelData(0);
-            for (let i = 0; i < bufferSize; i++) { output[i] = Math.random() * 2 - 1; }
-            
+            for (let i = 0; i < bufferSize; i++) output[i] = Math.random() * 2 - 1;
             const whiteNoise = audioCtx.createBufferSource();
-            whiteNoise.buffer = noiseBuffer;
-            whiteNoise.loop = true;
-
+            whiteNoise.buffer = noiseBuffer; whiteNoise.loop = true;
             const filter = audioCtx.createBiquadFilter();
-            filter.type = "lowpass";
-            filter.frequency.setValueAtTime(120, audioCtx.currentTime);
-
-            const lfo = audioCtx.createOscillator();
-            lfo.type = 'sine';
-            lfo.frequency.setValueAtTime(0.03, audioCtx.currentTime);
-            const lfoGain = audioCtx.createGain();
-            lfoGain.gain.setValueAtTime(30, audioCtx.currentTime);
-            lfo.connect(lfoGain).connect(filter.frequency);
-            
-            gainNode = audioCtx.createGain();
-            gainNode.gain.setValueAtTime(0, audioCtx.currentTime);
-
+            filter.type = "lowpass"; filter.frequency.setValueAtTime(120, audioCtx.currentTime);
+            gainNode = audioCtx.createGain(); gainNode.gain.setValueAtTime(0, audioCtx.currentTime);
             whiteNoise.connect(filter).connect(gainNode).connect(audioCtx.destination);
             whiteNoise.start();
-            lfo.start();
+        }
+
+        function playShootSound() {
+            if (!isPlaying || !audioCtx) return;
+            const osc = audioCtx.createOscillator();
+            const g = audioCtx.createGain();
+            osc.type = 'triangle'; osc.frequency.setValueAtTime(1200, audioCtx.currentTime);
+            osc.frequency.exponentialRampToValueAtTime(40, audioCtx.currentTime + 0.15);
+            g.gain.setValueAtTime(0.06, audioCtx.currentTime); g.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 0.15);
+            osc.connect(g).connect(audioCtx.destination); osc.start(); osc.stop(audioCtx.currentTime + 0.15);
+        }
+
+        function playFuelSound(vol) {
+            if (!isPlaying || !audioCtx) return;
+            const g = audioCtx.createGain();
+            const osc = audioCtx.createOscillator();
+            osc.type = 'sawtooth'; osc.frequency.setValueAtTime(40, audioCtx.currentTime);
+            const f = audioCtx.createBiquadFilter(); f.type = 'lowpass'; f.frequency.setValueAtTime(80, audioCtx.currentTime);
+            g.gain.setValueAtTime(vol || 0.05, audioCtx.currentTime);
+            g.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 0.1);
+            osc.connect(f).connect(g).connect(audioCtx.destination);
+            osc.start(); osc.stop(audioCtx.currentTime + 0.1);
+        }
+
+        function playShieldSound() {
+            if (!isPlaying || !audioCtx) return;
+            const osc = audioCtx.createOscillator();
+            const g = audioCtx.createGain();
+            osc.type = 'sine'; osc.frequency.setValueAtTime(800, audioCtx.currentTime);
+            osc.frequency.linearRampToValueAtTime(1200, audioCtx.currentTime + 0.05);
+            g.gain.setValueAtTime(0.1, audioCtx.currentTime); g.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 0.1);
+            osc.connect(g).connect(audioCtx.destination); osc.start(); osc.stop(audioCtx.currentTime + 0.1);
+        }
+
+        function playExplosionSound() {
+            if (!isPlaying || !audioCtx) return;
+            const b = audioCtx.createBuffer(1, 1.5 * audioCtx.sampleRate, audioCtx.sampleRate);
+            const d = b.getChannelData(0);
+            for (let i=0; i<d.length; i++) d[i] = Math.random() * 2 - 1;
+            const n = audioCtx.createBufferSource(); n.buffer = b;
+            const f = audioCtx.createBiquadFilter(); f.type = 'lowpass'; f.frequency.setValueAtTime(40, audioCtx.currentTime);
+            const g = audioCtx.createGain(); g.gain.setValueAtTime(0.4, audioCtx.currentTime); g.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 1.5);
+            n.connect(f).connect(g).connect(audioCtx.destination); n.start();
         }
 
         audioToggle.addEventListener('click', () => {
-            if (!audioCtx) initCmbAudio();
+            initAudio();
             if (audioCtx.state === 'suspended') audioCtx.resume();
             isPlaying = !isPlaying;
-            gainNode.gain.linearRampToValueAtTime(isPlaying ? 0.03 : 0, audioCtx.currentTime + 3);
+            gainNode.gain.linearRampToValueAtTime(isPlaying ? 0.05 : 0, audioCtx.currentTime + 2);
             audioToggle.textContent = isPlaying ? '🔊' : '🔇';
         });
 
-        window.addEventListener('mousemove', e => {
-            mouse.oldX = mouse.x;
-            mouse.oldY = mouse.y;
-            mouse.x = e.clientX;
-            mouse.y = e.clientY;
-
-            const dx = mouse.x - mouse.oldX;
-            const dy = mouse.y - mouse.oldY;
-            const angle = Math.atan2(dy, dx) * 180 / Math.PI + 90;
-            spaceship.style.transform = `translate(${mouse.x}px, ${mouse.y}px) rotate(${angle}deg)`;
-
-            let foundEntity = null;
-            let min_dist = 20; // smaller detection radius
-            entities.forEach(ent => {
-                if(ent.type === 'dark_matter') return;
-                const dist = Math.sqrt(Math.pow(ent.x - mouse.x, 2) + Math.pow(ent.y - mouse.y, 2));
-                if (dist < min_dist) {
-                    min_dist = dist;
-                    foundEntity = ent;
-                }
-            });
-
-            if (foundEntity) {
-                tooltip.style.display = 'block';
-                tooltip.style.left = `${mouse.x}px`;
-                tooltip.style.top = `${mouse.y}px`;
-                tooltip.textContent = foundEntity.name;
-            } else {
-                tooltip.style.display = 'none';
+        window.addEventListener('mousemove', e => { mouse.x = e.clientX; mouse.y = e.clientY; });
+        window.addEventListener('mousedown', e => {
+            initAudio();
+            if (audioCtx && audioCtx.state === 'suspended') audioCtx.resume();
+            if (e.button === 0) player.isLeftClick = true;
+            if (e.button === 2 && !player.isConsumed && !player.isDying) {
+                const speed = 24;
+                projectiles.push({
+                    x: player.x + Math.cos(player.angle) * 20,
+                    y: player.y + Math.sin(player.angle) * 20,
+                    vx: Math.cos(player.angle) * speed + player.vx,
+                    vy: Math.sin(player.angle) * speed + player.vy,
+                    radius: 4
+                });
+                playShootSound();
             }
         });
-        
-        // --- CRT Mode Toggle ---
+        window.addEventListener('mouseup', e => { if (e.button === 0) player.isLeftClick = false; });
+        window.addEventListener('contextmenu', e => e.preventDefault());
+
         let lastShiftPress = 0;
         window.addEventListener('keydown', e => {
             if (e.key === 'Shift') {
                 const now = Date.now();
-                if (now - lastShiftPress < 300) { // Double-press within 300ms
-                    document.body.classList.toggle('crt-mode');
-                }
+                if (now - lastShiftPress < 300) document.body.classList.toggle('crt-mode');
                 lastShiftPress = now;
             }
         });
 
-        // --- EXISTING DYNAMIC CONTENT & INTERACTIVITY ---
         const components = [
-            { title: "MRSL-1.0: The Ethical Foundation", text: "A strong-copyleft, FOSS-compatible license that guarantees the perpetual freedom of source code and includes an optional, binding Ethical Use Covenant.", link: "mrsl-1.0.html", buttonText: "Read the MRSL-1.0 License" },
-            { title: "MMPEULA-1.0: The Professional Framework", text: "A professional-grade EULA for commercial distribution. Its axiomatic structure provides unprecedented legal clarity and a defensible foundation for B2B transactions.", link: "mmpeula-1.0.html", buttonText: "Examine the MMPEULA-1.0" },
-            { title: "MCAL-1.0: For Content & AI", text: "Governs datasets, articles, and all forms of content. The world's most advanced framework for licensing AI training data.", link: "mcal.html", buttonText: "Read the MCAL-1.0" },
-            { title: "MHL-1.0: For Hardware", text: "For schematics and physical designs. Codifies the Right to Repair, mandates hardware kill switches, and demands environmental responsibility.", link: "mhl.html", buttonText: "Read the MHL-1.0" },
-            { title: "The Acceptance Protocol (MAP)", text: "A fortress of consent. A proprietary, multi-stage consent-verification process, creating a robust, auditable, and legally defensible record of informed agreement.", link: "mmpeula-1.0.html#appendix-1", buttonText: "Analyze the Protocol" },
+            { title: "MRSL-1.0: The Ethical Foundation", text: "A strong-copyleft, FOSS-compatible license that guarantees the perpetual freedom of source code and includes an optional, binding Ethical Use Covenant.", link: "mrsl-1.0.txt", buttonText: "Read the MRSL-1.0 License" },
+            { title: "MMPEULA-1.0: The Professional Framework", text: "A professional-grade EULA for commercial distribution. Its axiomatic structure provides unprecedented legal clarity and a defensible foundation for B2B transactions.", link: "mmpeula-1.0.txt", buttonText: "Examine the MMPEULA-1.0" },
+            { title: "MCAL-1.0: For Content & AI", text: "Governs datasets, articles, and all forms of content. The world's most advanced framework for licensing AI training data.", link: "MCAL.md", buttonText: "Read the MCAL-1.0" },
+            { title: "MHL-1.0: For Hardware", text: "For schematics and physical designs. Codifies the Right to Repair, mandates hardware kill switches, and demands environmental responsibility.", link: "MHL.md", buttonText: "Read the MHL-1.0" },
+            { title: "The Acceptance Protocol (MAP)", text: "A fortress of consent. A proprietary, multi-stage consent-verification process, creating a robust, auditable, and legally defensible record of informed agreement.", link: "mmpeula-1.0.txt", buttonText: "Analyze the Protocol" },
             { title: "The Complete Scholarly Archive", text: "This framework is a living academic resource. The official repository contains the canonical texts and extensive documentation intended for legal and technical scholars.", link: "https://github.com/MitsuoLabs/LegalFramework", buttonText: "Go to GitHub Repository" },
         ];
-
         const componentsGrid = document.querySelector('#components .card-grid');
-        componentsGrid.innerHTML = ''; // Clear existing before adding
-        components.forEach((comp, i) => {
-            const card = document.createElement('div');
-            card.className = 'card';
-            card.style.animationDelay = `${i * 0.1}s`;
-            card.innerHTML = `
-                <h3>${comp.title}</h3>
-                <p>${comp.text}</p>
-                <a href="${comp.link}" class="button" ${comp.link.startsWith('http') ? 'target="_blank" rel="noopener noreferrer"' : ''}>${comp.buttonText}</a>
-            `;
-            componentsGrid.appendChild(card);
-        });
+        if(componentsGrid) {
+            componentsGrid.innerHTML = '';
+            components.forEach((comp, i) => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.innerHTML = `<h3>${comp.title}</h3><p>${comp.text}</p><a href="${comp.link}" class="button">${comp.buttonText}</a>`;
+                componentsGrid.appendChild(card);
+            });
+        }
 
         const innovationCards = document.querySelectorAll('#innovations-grid .card');
         innovationCards.forEach(card => {
-            const subAxiomText = card.dataset.subAxiom;
-            if (!card.querySelector('.sub-axiom')) { // Prevent adding duplicates
-                const subAxiomEl = document.createElement('div');
-                subAxiomEl.className = 'sub-axiom';
-                subAxiomEl.textContent = subAxiomText;
-                card.appendChild(subAxiomEl);
-            }
+            const subAxiomEl = document.createElement('div');
+            subAxiomEl.className = 'sub-axiom';
+            subAxiomEl.textContent = card.dataset.subAxiom;
+            card.appendChild(subAxiomEl);
         });
 
         const sections = document.querySelectorAll('.section');
@@ -615,17 +1041,15 @@
                 if (entry.isIntersecting) {
                     entry.target.style.opacity = 1;
                     entry.target.style.transform = 'translateY(0)';
-                    observer.unobserve(entry.target);
                 }
             });
         }, { threshold: 0.15 });
-       sections.forEach(section => {
+        sections.forEach(section => {
             section.style.transition = 'opacity 1.2s cubic-bezier(0.2, 0.8, 0.2, 1), transform 1.2s cubic-bezier(0.2, 0.8, 0.2, 1)';
             section.style.transform = 'translateY(60px)';
             observer.observe(section);
         });
 
-        // Initialize everything
         initCosmos();
         animate();
         window.addEventListener('resize', initCosmos);
