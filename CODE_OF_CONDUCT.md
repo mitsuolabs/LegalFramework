@@ -4,6 +4,8 @@
 
 This Code of Conduct is not a separate set of rules, but a direct extension of the legal and ethical principles codified in the **MitsuoLabs™ Reciprocity and Stewardship License (MRSL-1.0)**. All participants in this project's spaces—including but not limited to contributors, maintainers, stewards, and users interacting in forums, issue trackers, and pull requests—are expected to abide by these standards. Our foundational principle is **respect**. We are a community of professionals, and we conduct ourselves professionally.
 
+This Code of Conduct shall not be used to weaponize enforcement, engage in mass bans, or audit speech. We do not mandate any specific worldview; we encourage you to be free to be yourself.
+
 ## 2. Our Standards
 
 In line with MRSL-1.0 Axiom 26, we are committed to providing a community environment that is free from harassment and discrimination. Examples of behavior that contributes to a positive environment include:

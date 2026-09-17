@@ -87,3 +87,7 @@ This is more than a repository; it's the beginning of a movement to build a more
 *   **Discuss:** For questions, legal notices, or inquiries regarding the canonical license texts, please contact the steward of the licenses:
 
     **contact@mitsuolabs.com**
+
+**A Note on Legal Advice**
+
+This project, including the contents of the `docs` directory, was created by developers, for developers. It is intended to provide useful tools and information, not legal advice. None of the authors or contributors are lawyers, and you should not treat any part of this project as a substitute for consultation with a qualified legal professional.
