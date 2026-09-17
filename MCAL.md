@@ -6,7 +6,7 @@ Copyright 2026 Daniel Mitsuo (0009-0006-6909-0990) [(c) 2026]
 
 To apply this license, please include the following notice in your work, replacing the bracketed text with your own information:
 
-"Copyright [year] [name] ([orcid]). This work is licensed under the MitsuoLabs Content and Architecture License v1.9 (MCAL 1.0). For the full license text, see [URL to your license file]. Contact: [contact]"
+"Copyright [year] [name] ([orcid]). This work is licensed under the MitsuoLabs Content and Architecture License v1.0 (MCAL 1.0). For the full license text, see [URL to your license file]. Contact: [contact]"
 
 ---
 
