@@ -60,7 +60,7 @@ This MitsuoLabs Content and Architecture License ("License") is a legally bindin
 
 For the purposes of this License, the following terms shall have the meanings ascribed to them below:
 
-2.  **"The License"**: Refers to this document, the MitsuoLabs Content and Architecture License, Version 1.9, in its entirety.
+2.  **"The License"**: Refers to this document, the MitsuoLabs Content and Architecture License, Version 1.0, in its entirety.
 3.  **"The Work"**: Refers to the original, copyrightable creative material, in any medium or format, including but not limited to text, images, data, databases, audio, video, software documentation, and multimedia, to which The Licensor has attached or otherwise designated this License as the governing instrument.
 4.  **"Adapted Work"**: Refers to any work created by modifying, translating, transforming, or otherwise creating a derivative of The Work, in a manner that would, absent the permissions granted by this License, constitute an act of copyright infringement under applicable law.
 5.  **"The Licensor"**: Refers to the individual, group of individuals, or legal entity that holds the copyright to The Work and has elected to apply this License to it, thereby making the initial grant of rights.
